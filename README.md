@@ -1,2 +1,2 @@
-# ETS2MPLauncher
-Unoffical ETS2MP launcher
+# Unofficial Euro Truck 2 Mulitplayer Mod Launcher
+Made by TheUnknownKiller

@@ -1,0 +1,10 @@
+F:\Projects\VS\ets2mplauncher2\ets2mplauncher2\bin\Release\ets2mplauncher.exe.config
+F:\Projects\VS\ets2mplauncher2\ets2mplauncher2\bin\Release\ets2mplauncher.exe
+F:\Projects\VS\ets2mplauncher2\ets2mplauncher2\bin\Release\ets2mplauncher.pdb
+F:\Projects\VS\ets2mplauncher2\ets2mplauncher2\obj\Release\ets2mplauncher.About.resources
+F:\Projects\VS\ets2mplauncher2\ets2mplauncher2\obj\Release\ets2mplauncher.Main.resources
+F:\Projects\VS\ets2mplauncher2\ets2mplauncher2\obj\Release\ets2mplauncher.locpopup.resources
+F:\Projects\VS\ets2mplauncher2\ets2mplauncher2\obj\Release\ets2mplauncher.Properties.Resources.resources
+F:\Projects\VS\ets2mplauncher2\ets2mplauncher2\obj\Release\ets2mplauncher2.csproj.GenerateResource.Cache
+F:\Projects\VS\ets2mplauncher2\ets2mplauncher2\obj\Release\ets2mplauncher.exe
+F:\Projects\VS\ets2mplauncher2\ets2mplauncher2\obj\Release\ets2mplauncher.pdb

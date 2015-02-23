@@ -26,18 +26,6 @@ namespace ets2mplauncher.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Ver {
-            get {
-                return ((string)(this["Ver"]));
-            }
-            set {
-                this["Ver"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string mploc {
             get {
                 return ((string)(this["mploc"]));
@@ -68,6 +56,42 @@ namespace ets2mplauncher.Properties {
             }
             set {
                 this["steamlaunch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public decimal steamdelay {
+            get {
+                return ((decimal)(this["steamdelay"]));
+            }
+            set {
+                this["steamdelay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool launchclose {
+            get {
+                return ((bool)(this["launchclose"]));
+            }
+            set {
+                this["launchclose"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.03")]
+        public string LauncherVersion {
+            get {
+                return ((string)(this["LauncherVersion"]));
+            }
+            set {
+                this["LauncherVersion"] = value;
             }
         }
     }

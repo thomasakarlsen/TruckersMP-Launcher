@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>Launcher Version: Early alpha - 0.02
+    <value>Launcher Version: Early alpha - 0.03
 
 The ETS2MP Unoffical launcher or TheUnknownKiller is in no way associated
 with the developers of the ETS2 Multiplayer mod.
 
-DISCLAIMER: I do not take any responsibility if this program or any associtated
-harm your system in any way, even tho there should be none.
-If you belive there are any harmfull files in this program you are free to check
-the source code over at my github.</value>
+I am a strong beliver in not making bloatware, if you somehow detect that this
+launcher contains such or any harmfull files. Please let me know so i can remove 
+them. I would never distrobute a software that could damage your system.
+You are free to view the source at my github repo.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

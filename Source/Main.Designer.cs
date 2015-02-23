@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.About_btn = new System.Windows.Forms.PictureBox();
             this.Play_btn = new System.Windows.Forms.PictureBox();
-            this.ServerListHeader = new System.Windows.Forms.PictureBox();
             this.Banner = new System.Windows.Forms.PictureBox();
             this.UpdateOrMods_Btn = new System.Windows.Forms.PictureBox();
             this.Server1_Name = new System.Windows.Forms.Label();
@@ -45,13 +44,16 @@
             this.Server1_Players = new System.Windows.Forms.Label();
             this.Server1_Status = new System.Windows.Forms.Label();
             this.Settings_btn = new System.Windows.Forms.PictureBox();
+            this.ServerHeader = new System.Windows.Forms.Panel();
+            this.Refresh_btn = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.About_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play_btn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ServerListHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Banner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpdateOrMods_Btn)).BeginInit();
             this.ServerContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Settings_btn)).BeginInit();
+            this.ServerHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Refresh_btn)).BeginInit();
             this.SuspendLayout();
             // 
             // About_btn
@@ -75,16 +77,6 @@
             this.Play_btn.TabIndex = 1;
             this.Play_btn.TabStop = false;
             this.Play_btn.Click += new System.EventHandler(this.Play_btn_Click);
-            // 
-            // ServerListHeader
-            // 
-            this.ServerListHeader.BackColor = System.Drawing.Color.Transparent;
-            this.ServerListHeader.BackgroundImage = global::ets2mplauncher.Properties.Resources.ServerStatusHeader;
-            this.ServerListHeader.Location = new System.Drawing.Point(12, 97);
-            this.ServerListHeader.Name = "ServerListHeader";
-            this.ServerListHeader.Size = new System.Drawing.Size(226, 30);
-            this.ServerListHeader.TabIndex = 2;
-            this.ServerListHeader.TabStop = false;
             // 
             // Banner
             // 
@@ -245,17 +237,38 @@
             this.Settings_btn.TabStop = false;
             this.Settings_btn.Click += new System.EventHandler(this.Settings_btn_Click);
             // 
+            // ServerHeader
+            // 
+            this.ServerHeader.BackColor = System.Drawing.Color.Transparent;
+            this.ServerHeader.BackgroundImage = global::ets2mplauncher.Properties.Resources.ServerStatusHeader;
+            this.ServerHeader.Controls.Add(this.Refresh_btn);
+            this.ServerHeader.Location = new System.Drawing.Point(12, 94);
+            this.ServerHeader.Name = "ServerHeader";
+            this.ServerHeader.Size = new System.Drawing.Size(226, 33);
+            this.ServerHeader.TabIndex = 11;
+            // 
+            // Refresh_btn
+            // 
+            this.Refresh_btn.BackColor = System.Drawing.Color.Transparent;
+            this.Refresh_btn.Image = global::ets2mplauncher.Properties.Resources.Button_Refresh;
+            this.Refresh_btn.Location = new System.Drawing.Point(201, 3);
+            this.Refresh_btn.Name = "Refresh_btn";
+            this.Refresh_btn.Size = new System.Drawing.Size(22, 22);
+            this.Refresh_btn.TabIndex = 12;
+            this.Refresh_btn.TabStop = false;
+            this.Refresh_btn.Click += new System.EventHandler(this.Refresh_btn_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(720, 562);
+            this.Controls.Add(this.ServerHeader);
             this.Controls.Add(this.Settings_btn);
             this.Controls.Add(this.ServerContainer);
             this.Controls.Add(this.UpdateOrMods_Btn);
             this.Controls.Add(this.Banner);
-            this.Controls.Add(this.ServerListHeader);
             this.Controls.Add(this.Play_btn);
             this.Controls.Add(this.About_btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -268,12 +281,13 @@
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.About_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play_btn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ServerListHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Banner)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpdateOrMods_Btn)).EndInit();
             this.ServerContainer.ResumeLayout(false);
             this.ServerContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Settings_btn)).EndInit();
+            this.ServerHeader.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Refresh_btn)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -282,7 +296,6 @@
 
         private System.Windows.Forms.PictureBox About_btn;
         private System.Windows.Forms.PictureBox Play_btn;
-        private System.Windows.Forms.PictureBox ServerListHeader;
         private System.Windows.Forms.PictureBox Banner;
         private System.Windows.Forms.PictureBox UpdateOrMods_Btn;
         private System.Windows.Forms.Label Server1_Name;
@@ -296,6 +309,8 @@
         private System.Windows.Forms.Label Server2_Status;
         private System.Windows.Forms.Label Server2_Name;
         private System.Windows.Forms.PictureBox Settings_btn;
+        private System.Windows.Forms.Panel ServerHeader;
+        private System.Windows.Forms.PictureBox Refresh_btn;
 
     }
 }

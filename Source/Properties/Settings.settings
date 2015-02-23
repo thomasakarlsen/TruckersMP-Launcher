@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ets2mplauncher.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Ver" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="mploc" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -13,6 +10,15 @@
     </Setting>
     <Setting Name="steamlaunch" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="steamdelay" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="launchclose" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LauncherVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0.03</Value>
     </Setting>
   </Settings>
 </SettingsFile>

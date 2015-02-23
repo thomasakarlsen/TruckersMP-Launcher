@@ -23,8 +23,8 @@ namespace ets2mplauncher
         public MyContext()
         {
             Application.Idle += new EventHandler(Application_Idle);
-            launcher launcher = new launcher();
-            launcher.Launch();
+            Main main = new Main();
+            main.Show();
         }
 
         void Application_Idle(object sender, EventArgs e)

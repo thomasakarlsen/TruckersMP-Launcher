@@ -15,7 +15,6 @@ namespace ets2mplauncher
 {
     public partial class Main : Form
     {
-        launcher launcher = new launcher();
         public Main()
         {
             AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
@@ -35,6 +34,11 @@ namespace ets2mplauncher
 
         private void Main_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.mploc == "" || Properties.Settings.Default.steamloc == "")
+            {
+                FirstTime frm = new FirstTime();
+                frm.ShowDialog();
+            }
             ServerStatus();
         }
 
@@ -50,6 +54,10 @@ namespace ets2mplauncher
             {
                 SteamLaunch();
             }
+            else
+            {
+                ets2mpLaunch();
+            }
            
         }
 
@@ -60,18 +68,24 @@ namespace ets2mplauncher
 
         private void Settings_btn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This feature has not been implemented", "ETS2MP - Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Settings settings = new Settings();
+            settings.ShowDialog();
         }
 
         private void About_btn_Click(object sender, EventArgs e)
         {
             About about = new About();
-            about.Show();
+            about.ShowDialog();
         }
 
         private void Banner_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("http://forum.scssoft.com/viewtopic.php?f=41&t=171000");
+        }
+
+        private void Refresh_btn_Click(object sender, EventArgs e)
+        {
+            ServerStatus();
         }
 
         //
@@ -86,7 +100,8 @@ namespace ets2mplauncher
             if (runningProcessByName.Length == 0)
             {
                 Process.Start(steam_path + "\\Steam.exe");
-                System.Threading.Thread.Sleep(10000);
+                int Delay = Decimal.ToInt32(Properties.Settings.Default.steamdelay) * 1000;
+                System.Threading.Thread.Sleep(Delay);
             }
             ets2mpLaunch();
 
@@ -102,13 +117,23 @@ namespace ets2mplauncher
             }
             else
             {
-                MessageBox.Show("Euro Truck Simulator 2 (Multiplayer) is already running!", "Launch Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Euro Truck Simulator 2 (Multiplayer) is already running!", "ETS2MP Launcher - Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 Play_btn.Image = Properties.Resources.Button_Play;
                 Play_btn.Enabled = true;
                 return;
             }
-            System.Threading.Thread.Sleep(5000);
-            Application.Exit();
+
+            if (!Properties.Settings.Default.launchclose)
+            {
+                System.Threading.Thread.Sleep(5000);
+                Application.Exit();
+            }
+            else
+            {
+                Play_btn.Image = Properties.Resources.Button_Play;
+                Play_btn.Enabled = true;
+            }
+            
        }
 
         //

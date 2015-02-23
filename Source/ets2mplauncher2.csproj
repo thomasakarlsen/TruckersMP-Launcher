@@ -97,23 +97,28 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="launcher.cs" />
-    <Compile Include="locpopup.cs">
+    <Compile Include="FirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="locpopup.Designer.cs">
-      <DependentUpon>locpopup.cs</DependentUpon>
+    <Compile Include="FirstTime.Designer.cs">
+      <DependentUpon>FirstTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="locpopup.resx">
-      <DependentUpon>locpopup.cs</DependentUpon>
+    <EmbeddedResource Include="FirstTime.resx">
+      <DependentUpon>FirstTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -125,6 +130,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="ets2mplauncher.pfx" />
     <None Include="Properties\app.manifest" />
@@ -182,6 +190,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Button_Refresh.png" />
     <None Include="bin\Release\Newtonsoft.Json.dll" />
     <EmbeddedResource Include="lib\Newtonsoft.Json.dll" />
     <Content Include="logohd.ico" />

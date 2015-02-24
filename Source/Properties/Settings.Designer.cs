@@ -83,15 +83,24 @@ namespace ets2mplauncher.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.03")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.04")]
         public string LauncherVersion {
             get {
                 return ((string)(this["LauncherVersion"]));
             }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ets2sin {
+            get {
+                return ((bool)(this["ets2sin"]));
+            }
             set {
-                this["LauncherVersion"] = value;
+                this["ets2sin"] = value;
             }
         }
     }

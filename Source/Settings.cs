@@ -25,6 +25,9 @@ namespace ets2mplauncher
 
             //Launcher
             LauncherClose_chkbox.Checked = Properties.Settings.Default.launchclose;
+
+            //ETS2
+            ets2sin_chkbox.Checked = Properties.Settings.Default.ets2sin;
         }
 
         //
@@ -49,7 +52,7 @@ namespace ets2mplauncher
 
         private void UpdateCheck_btn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This feature has not been implemented", "ETS2MP - Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You have accquired 1337 status. Yeez. Pressing a disabled button. That is real skillz, M8.", "ETS2MP - Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Done_btn_Click(object sender, EventArgs e)
@@ -64,6 +67,9 @@ namespace ets2mplauncher
 
             //Launcher
             Properties.Settings.Default.launchclose = LauncherClose_chkbox.Checked;
+
+            //ETS2
+            Properties.Settings.Default.ets2sin = ets2sin_chkbox.Checked;
 
             Properties.Settings.Default.Save();
             this.Close();

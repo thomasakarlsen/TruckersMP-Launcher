@@ -113,7 +113,14 @@ namespace ets2mplauncher
             var runningProcessByName = Process.GetProcessesByName("eurotrucks2");
             if (runningProcessByName.Length == 0)
             {
-                Process.Start(ets2mp_path + "\\launcher.exe");
+                if (Properties.Settings.Default.ets2sin)
+                {
+                    Process.Start(ets2mp_path + "\\launcher.exe ","-nointro");
+                }
+                else
+                {
+                    Process.Start(ets2mp_path + "\\launcher.exe");
+                }
             }
             else
             {

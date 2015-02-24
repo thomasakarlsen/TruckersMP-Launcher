@@ -17,8 +17,11 @@
     <Setting Name="launchclose" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="LauncherVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0.03</Value>
+    <Setting Name="LauncherVersion" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">0.04</Value>
+    </Setting>
+    <Setting Name="ets2sin" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.About_btn = new System.Windows.Forms.PictureBox();
             this.Play_btn = new System.Windows.Forms.PictureBox();
@@ -46,6 +47,10 @@
             this.Settings_btn = new System.Windows.Forms.PictureBox();
             this.ServerHeader = new System.Windows.Forms.Panel();
             this.Refresh_btn = new System.Windows.Forms.PictureBox();
+            this.ListenToRadio_btn = new System.Windows.Forms.PictureBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.ETR_Controls = new AxWMPLib.AxWindowsMediaPlayer();
+            this.ListenToRadioTT = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.About_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Banner)).BeginInit();
@@ -54,11 +59,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.Settings_btn)).BeginInit();
             this.ServerHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Refresh_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ListenToRadio_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ETR_Controls)).BeginInit();
             this.SuspendLayout();
             // 
             // About_btn
             // 
             this.About_btn.BackColor = System.Drawing.Color.Transparent;
+            this.About_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.About_btn.Image = global::ets2mplauncher.Properties.Resources.Button_About;
             this.About_btn.Location = new System.Drawing.Point(621, 12);
             this.About_btn.Name = "About_btn";
@@ -70,8 +78,9 @@
             // Play_btn
             // 
             this.Play_btn.BackColor = System.Drawing.Color.Transparent;
+            this.Play_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Play_btn.Image = global::ets2mplauncher.Properties.Resources.Button_Play;
-            this.Play_btn.Location = new System.Drawing.Point(510, 500);
+            this.Play_btn.Location = new System.Drawing.Point(512, 479);
             this.Play_btn.Name = "Play_btn";
             this.Play_btn.Size = new System.Drawing.Size(170, 50);
             this.Play_btn.TabIndex = 1;
@@ -82,7 +91,7 @@
             // 
             this.Banner.BackColor = System.Drawing.Color.Transparent;
             this.Banner.Image = global::ets2mplauncher.Properties.Resources.Banner_Telemetry;
-            this.Banner.Location = new System.Drawing.Point(12, 377);
+            this.Banner.Location = new System.Drawing.Point(12, 358);
             this.Banner.Name = "Banner";
             this.Banner.Size = new System.Drawing.Size(455, 173);
             this.Banner.TabIndex = 6;
@@ -92,8 +101,9 @@
             // UpdateOrMods_Btn
             // 
             this.UpdateOrMods_Btn.BackColor = System.Drawing.Color.Transparent;
+            this.UpdateOrMods_Btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UpdateOrMods_Btn.Image = global::ets2mplauncher.Properties.Resources.Button_UpdateMods;
-            this.UpdateOrMods_Btn.Location = new System.Drawing.Point(510, 444);
+            this.UpdateOrMods_Btn.Location = new System.Drawing.Point(512, 423);
             this.UpdateOrMods_Btn.Name = "UpdateOrMods_Btn";
             this.UpdateOrMods_Btn.Size = new System.Drawing.Size(170, 50);
             this.UpdateOrMods_Btn.TabIndex = 7;
@@ -229,6 +239,7 @@
             // Settings_btn
             // 
             this.Settings_btn.BackColor = System.Drawing.Color.Transparent;
+            this.Settings_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Settings_btn.Image = global::ets2mplauncher.Properties.Resources.Button_Settings;
             this.Settings_btn.Location = new System.Drawing.Point(528, 12);
             this.Settings_btn.Name = "Settings_btn";
@@ -250,6 +261,7 @@
             // Refresh_btn
             // 
             this.Refresh_btn.BackColor = System.Drawing.Color.Transparent;
+            this.Refresh_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Refresh_btn.Image = global::ets2mplauncher.Properties.Resources.Button_Refresh;
             this.Refresh_btn.Location = new System.Drawing.Point(201, 3);
             this.Refresh_btn.Name = "Refresh_btn";
@@ -258,12 +270,41 @@
             this.Refresh_btn.TabStop = false;
             this.Refresh_btn.Click += new System.EventHandler(this.Refresh_btn_Click);
             // 
+            // ListenToRadio_btn
+            // 
+            this.ListenToRadio_btn.BackColor = System.Drawing.Color.Transparent;
+            this.ListenToRadio_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ListenToRadio_btn.Image = global::ets2mplauncher.Properties.Resources.ETR_Logo;
+            this.ListenToRadio_btn.InitialImage = global::ets2mplauncher.Properties.Resources.ETR_Logo;
+            this.ListenToRadio_btn.Location = new System.Drawing.Point(96, 5);
+            this.ListenToRadio_btn.Name = "ListenToRadio_btn";
+            this.ListenToRadio_btn.Size = new System.Drawing.Size(76, 57);
+            this.ListenToRadio_btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ListenToRadio_btn.TabIndex = 12;
+            this.ListenToRadio_btn.TabStop = false;
+            this.ListenToRadio_btn.Tag = "";
+            this.ListenToRadioTT.SetToolTip(this.ListenToRadio_btn, "Listen to \"Euro Truck Radio\"");
+            this.ListenToRadio_btn.Click += new System.EventHandler(this.ListenToRadio_btn_Click);
+            // 
+            // ETR_Controls
+            // 
+            this.ETR_Controls.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ETR_Controls.Enabled = true;
+            this.ETR_Controls.Location = new System.Drawing.Point(0, 532);
+            this.ETR_Controls.Name = "ETR_Controls";
+            this.ETR_Controls.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("ETR_Controls.OcxState")));
+            this.ETR_Controls.Size = new System.Drawing.Size(720, 30);
+            this.ETR_Controls.TabIndex = 13;
+            this.ETR_Controls.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(720, 562);
+            this.Controls.Add(this.ETR_Controls);
+            this.Controls.Add(this.ListenToRadio_btn);
             this.Controls.Add(this.ServerHeader);
             this.Controls.Add(this.Settings_btn);
             this.Controls.Add(this.ServerContainer);
@@ -288,6 +329,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Settings_btn)).EndInit();
             this.ServerHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Refresh_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ListenToRadio_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ETR_Controls)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -311,6 +354,10 @@
         private System.Windows.Forms.PictureBox Settings_btn;
         private System.Windows.Forms.Panel ServerHeader;
         private System.Windows.Forms.PictureBox Refresh_btn;
+        private System.Windows.Forms.PictureBox ListenToRadio_btn;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private AxWMPLib.AxWindowsMediaPlayer ETR_Controls;
+        private System.Windows.Forms.ToolTip ListenToRadioTT;
 
     }
 }

@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>Launcher Version: Early alpha - 0.04
+    <value>Launcher Version: Early alpha - 0.04.01
 
 The ETS2MP Unoffical launcher or TheUnknownKiller is in no way associated
-with the developers of the ETS2 Multiplayer mod.
+with the developers of the ETS2 Multiplayer mod or Euro Truck Radio.
 
 I am a strong beliver in not making bloatware, if you somehow detect that this
 launcher contains such or any harmfull files. Please let me know so i can remove 

@@ -53,7 +53,7 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>ets2mplauncher.pfx</AssemblyOriginatorKeyFile>
@@ -91,6 +91,8 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kharenis\ConfigFile.cs" />
+    <Compile Include="Kharenis\EuroTruckRadio.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,8 +192,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\ETR_Logo.png" />
     <None Include="Resources\Button_Refresh.png" />
-    <None Include="bin\Release\Newtonsoft.Json.dll" />
+    <EmbeddedResource Include="bin\Release\Newtonsoft.Json.dll" />
     <EmbeddedResource Include="lib\Newtonsoft.Json.dll" />
     <Content Include="logohd.ico" />
     <None Include="Resources\Button_Play_Clicked.png" />
@@ -199,6 +202,26 @@
     <None Include="Resources\Banner_Telemetry.png" />
     <None Include="Resources\Button_UpdateMods.png" />
     <None Include="Resources\banner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+      <Private>True</Private>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

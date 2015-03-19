@@ -26,5 +26,10 @@ namespace ets2mplauncher
             System.Diagnostics.Process.Start("https://github.com/TheUnknownKiller/ETS2MPLauncher");
         }
 
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://forum.ets2mp.com/index.php?/user/22967-kharenis/");
+        }
+
     }
 }

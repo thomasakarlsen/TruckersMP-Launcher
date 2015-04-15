@@ -10,11 +10,13 @@ using System.Diagnostics;
 using System.Net;
 using Newtonsoft.Json.Linq;
 using System.Reflection;
+using ets2mplauncher.Kharenis; //Added by Kharenis
 
 namespace ets2mplauncher
 {
     public partial class Main : Form
     {
+        private EuroTruckRadio ETR;
         public Main()
         {
             AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
@@ -29,6 +31,7 @@ namespace ets2mplauncher
                     return Assembly.Load(assemblyData);
                 }
             };
+
             InitializeComponent();
         }
 
@@ -209,6 +212,23 @@ namespace ets2mplauncher
                     Server3_Status.Text = "Status: OFFLINE";
                 }
                 Server3_Players.Text = "Players: " + Players + "/" + Maxplayers;
+            }
+        }
+
+        private void ListenToRadio_btn_Click(object sender, EventArgs e)
+        {
+            if(ETR == null)
+                ETR = new EuroTruckRadio(ETR_Controls);
+
+            if (!ETR.IsPlaying)
+            {
+                ListenToRadio_btn.BorderStyle = BorderStyle.FixedSingle;
+                ETR.StartListening();
+            }
+            else
+            {
+                ListenToRadio_btn.BorderStyle = BorderStyle.None;
+                ETR.StopListening();
             }
         }
 

@@ -22,10 +22,12 @@ namespace ets2mplauncher
             if (Environment.Is64BitOperatingSystem)
             {
                 steam_dir_txt.Text = Environment.GetEnvironmentVariable("ProgramFiles(x86)") + "\\Steam";
+                ets2mp_dir_txt.Text = Environment.GetEnvironmentVariable("ProgramFiles(x86)") + @"\Euro Truck Simulator 2 Multiplayer";
             }
             else
             {
                 steam_dir_txt.Text = Environment.GetEnvironmentVariable("ProgramFiles") + "\\Steam";
+                ets2mp_dir_txt.Text = Environment.GetEnvironmentVariable("ProgramFiles") + @"\Euro Truck Simulator 2 Multiplayer";
             }
         }
 

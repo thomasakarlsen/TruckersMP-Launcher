@@ -8,65 +8,73 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Net;
+using System.Configuration;
+using System.Net.Configuration;
 using Newtonsoft.Json.Linq;
 using System.Reflection;
-using ets2mplauncher.Kharenis; //Added by Kharenis
 
 namespace ets2mplauncher
 {
     public partial class Main : Form
     {
-        private EuroTruckRadio ETR;
         public Main()
         {
-            AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
-            {
-                string resourceName = new AssemblyName(args.Name).Name + ".dll";
-                string resource = Array.Find(this.GetType().Assembly.GetManifestResourceNames(), element => element.EndsWith(resourceName));
-
-                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource))
-                {
-                    Byte[] assemblyData = new Byte[stream.Length];
-                    stream.Read(assemblyData, 0, assemblyData.Length);
-                    return Assembly.Load(assemblyData);
-                }
-            };
-
             InitializeComponent();
+            Main_Load();
         }
 
-        private void Main_Load(object sender, EventArgs e)
+        private void Main_Load()
         {
-            if (Properties.Settings.Default.mploc == "" || Properties.Settings.Default.steamloc == "")
+            
+
+            //Add hover events
+            this.Play_btn.MouseHover += new System.EventHandler(this.Play_btn_Hover);
+            this.Settings_btn.MouseHover += new System.EventHandler(this.Settings_btn_Hover);
+            this.Updates_btn.MouseHover += new System.EventHandler(this.Updates_btn_Hover);
+            this.server_connect_btn_1.MouseHover += new System.EventHandler(this.server_connect_btn_1_Hover);
+            this.server_connect_btn_2.MouseHover += new System.EventHandler(this.server_connect_btn_2_Hover);
+            this.server_connect_btn_3.MouseHover += new System.EventHandler(this.server_connect_btn_3_Hover);
+            this.server_connect_btn_4.MouseHover += new System.EventHandler(this.server_connect_btn_4_Hover);
+            this.server_connect_btn_5.MouseHover += new System.EventHandler(this.server_connect_btn_5_Hover);
+
+            if (Properties.Settings.Default.mploc == "")
             {
                 FirstTime frm = new FirstTime();
                 frm.ShowDialog();
             }
             ServerStatus();
+            
         }
 
         //
         // Buttons
         //
 
+        private void Play_btn_Hover(object sender, System.EventArgs e)
+        {
+
+        }
+
         private void Play_btn_Click(object sender, EventArgs e)
         {
-            Play_btn.Image = Properties.Resources.Button_Play_Clicked;
             Play_btn.Enabled = false;
-            if (Properties.Settings.Default.steamlaunch == true)
-            {
-                SteamLaunch();
-            }
-            else
-            {
-                ets2mpLaunch();
-            }
+            ets2mpLaunch();
            
         }
 
-        private void UpdateOrMods_Btn_Click(object sender, EventArgs e)
+        private void Updates_btn_Hover(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void Updates_btn_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This feature has not been implemented", "ETS2MP - Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void Settings_btn_Hover(object sender, System.EventArgs e)
+        {
+
         }
 
         private void Settings_btn_Click(object sender, EventArgs e)
@@ -81,34 +89,87 @@ namespace ets2mplauncher
             about.ShowDialog();
         }
 
+        private void ets2mp_site_link_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://ets2mp.com");
+        }
+
         private void Banner_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("http://forum.scssoft.com/viewtopic.php?f=41&t=171000");
         }
-
-        private void Refresh_btn_Click(object sender, EventArgs e)
+        
+        private void design_creator_Click(object sender, EventArgs e)
         {
-            ServerStatus();
+            System.Diagnostics.Process.Start("http://forum.ets2mp.com/index.php?/user/50-gama/");
         }
+
+        //Server 1
+
+        private void server_connect_btn_1_Hover(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void server_connect_btn_1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature has not been implemented", "ETS2MP - Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //Server 2
+
+        private void server_connect_btn_2_Hover(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void server_connect_btn_2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature has not been implemented", "ETS2MP - Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //Server 3
+
+        private void server_connect_btn_3_Hover(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void server_connect_btn_3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature has not been implemented", "ETS2MP - Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //Server 4
+
+        private void server_connect_btn_4_Hover(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void server_connect_btn_4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature has not been implemented", "ETS2MP - Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //Server 5
+
+        private void server_connect_btn_5_Hover(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void server_connect_btn_5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature has not been implemented", "ETS2MP - Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
 
         //
         // Functions
         //
 
-        private void SteamLaunch()
-        {
-            
-            String steam_path = Properties.Settings.Default.steamloc;
-            var runningProcessByName = Process.GetProcessesByName("Steam");
-            if (runningProcessByName.Length == 0)
-            {
-                Process.Start(steam_path + "\\Steam.exe");
-                int Delay = Decimal.ToInt32(Properties.Settings.Default.steamdelay) * 1000;
-                System.Threading.Thread.Sleep(Delay);
-            }
-            ets2mpLaunch();
-
-        }
+       
 
         private void ets2mpLaunch()
         {
@@ -128,7 +189,7 @@ namespace ets2mplauncher
             else
             {
                 MessageBox.Show("Euro Truck Simulator 2 (Multiplayer) is already running!", "ETS2MP Launcher - Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                Play_btn.Image = Properties.Resources.Button_Play;
+                Play_btn.Image = Properties.Resources.play_btn;
                 Play_btn.Enabled = true;
                 return;
             }
@@ -140,7 +201,7 @@ namespace ets2mplauncher
             }
             else
             {
-                Play_btn.Image = Properties.Resources.Button_Play;
+                Play_btn.Image = Properties.Resources.play_btn;
                 Play_btn.Enabled = true;
             }
             
@@ -175,61 +236,66 @@ namespace ets2mplauncher
         { 
             if (ID == "1")
             {
-                Server1_Name.Text = Name;
                 if (online)
                 {
-                    Server1_Status.Text = "Status: ONLINE";
+                    server_status_1.BackColor = Color.FromArgb(160,197,95);
                 }
                 else
                 {
-                    Server1_Status.Text = "Status: OFFLINE";
+                    server_status_1.BackColor = Color.FromArgb(193, 94, 94);
                 }
-                Server1_Players.Text = "Players: " + Players + "/" + Maxplayers;
+                server_players_1.Text = "PLAYERS " + Players + " out of " + Maxplayers;
 
             }
             else if (ID == "4")
             {
-                Server2_Name.Text = Name;
                 if (online)
                 {
-                    Server2_Status.Text = "Status: ONLINE";
+                    server_status_2.BackColor = Color.FromArgb(160, 197, 95);
                 }
                 else
                 {
-                    Server2_Status.Text = "Status: OFFLINE";
+                    server_status_2.BackColor = Color.FromArgb(193, 94, 94);
                 }
-                Server2_Players.Text = "Players: " + Players + "/" + Maxplayers;
+                server_players_2.Text = "PLAYERS " + Players + " out of " + Maxplayers;
             }
             else if (ID == "3")
             {
-                Server3_Name.Text = Name;
                 if (online)
                 {
-                    Server3_Status.Text = "Status: ONLINE";
+                    server_status_3.BackColor = Color.FromArgb(160, 197, 95);
                 }
                 else
                 {
-                    Server3_Status.Text = "Status: OFFLINE";
+                    server_status_3.BackColor = Color.FromArgb(193, 94, 94);
                 }
-                Server3_Players.Text = "Players: " + Players + "/" + Maxplayers;
+                server_players_3.Text = "PLAYERS " + Players + " out of " + Maxplayers;
             }
-        }
-
-        private void ListenToRadio_btn_Click(object sender, EventArgs e)
-        {
-            if(ETR == null)
-                ETR = new EuroTruckRadio(ETR_Controls);
-
-            if (!ETR.IsPlaying)
+            else if (ID == "6")
             {
-                ListenToRadio_btn.BorderStyle = BorderStyle.FixedSingle;
-                ETR.StartListening();
+                if (online)
+                {
+                    server_status_4.BackColor = Color.FromArgb(160, 197, 95);
+                }
+                else
+                {
+                    server_status_4.BackColor = Color.FromArgb(193, 94, 94);
+                }
+                server_players_4.Text = "PLAYERS " + Players + " out of " + Maxplayers;
             }
-            else
+            else if (ID == "7")
             {
-                ListenToRadio_btn.BorderStyle = BorderStyle.None;
-                ETR.StopListening();
+                if (online)
+                {
+                    server_status_5.BackColor = Color.FromArgb(160, 197, 95);
+                }
+                else
+                {
+                    server_status_5.BackColor = Color.FromArgb(193, 94, 94);
+                }
+                server_players_5.Text = "PLAYERS " + Players + " out of " + Maxplayers;
             }
+
         }
 
     }

@@ -30,16 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.Directories_container = new System.Windows.Forms.GroupBox();
-            this.steam_brw_btn = new System.Windows.Forms.Button();
             this.ets2mp_brw_btn = new System.Windows.Forms.Button();
-            this.steam_dir_txt = new System.Windows.Forms.TextBox();
             this.ets2mp_dir_txt = new System.Windows.Forms.TextBox();
-            this.steam_dir_label = new System.Windows.Forms.Label();
             this.ets2mp_dir_label = new System.Windows.Forms.Label();
-            this.Steam_container = new System.Windows.Forms.GroupBox();
-            this.SteamLaunchInt_label = new System.Windows.Forms.Label();
-            this.SteamLaunchInt_num = new System.Windows.Forms.NumericUpDown();
-            this.steam_launch_chkbox = new System.Windows.Forms.CheckBox();
             this.Launcher_container = new System.Windows.Forms.GroupBox();
             this.LauncherClose_chkbox = new System.Windows.Forms.CheckBox();
             this.UpdateCheck_btn = new System.Windows.Forms.Button();
@@ -51,53 +44,27 @@
             this.NotImplemented_label = new System.Windows.Forms.Label();
             this.ets2_tab = new System.Windows.Forms.TabPage();
             this.ets2sin_chkbox = new System.Windows.Forms.CheckBox();
-            this.profile_dir_label = new System.Windows.Forms.Label();
-            this.profile_dir_txt = new System.Windows.Forms.TextBox();
-            this.profile_brw_btn = new System.Windows.Forms.Button();
-            this.ets2re_chkbox = new System.Windows.Forms.CheckBox();
-            this.ets2ef_chkbox = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.AutoUpdate_chkbox = new System.Windows.Forms.CheckBox();
             this.Directories_container.SuspendLayout();
-            this.Steam_container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SteamLaunchInt_num)).BeginInit();
             this.Launcher_container.SuspendLayout();
             this.Settings_tabControl.SuspendLayout();
             this.Launcher_tab.SuspendLayout();
             this.ets2mp_tab.SuspendLayout();
             this.ets2_tab.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Directories_container
             // 
-            this.Directories_container.Controls.Add(this.profile_brw_btn);
-            this.Directories_container.Controls.Add(this.profile_dir_txt);
-            this.Directories_container.Controls.Add(this.profile_dir_label);
-            this.Directories_container.Controls.Add(this.steam_brw_btn);
             this.Directories_container.Controls.Add(this.ets2mp_brw_btn);
-            this.Directories_container.Controls.Add(this.steam_dir_txt);
             this.Directories_container.Controls.Add(this.ets2mp_dir_txt);
-            this.Directories_container.Controls.Add(this.steam_dir_label);
             this.Directories_container.Controls.Add(this.ets2mp_dir_label);
             this.Directories_container.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Directories_container.Location = new System.Drawing.Point(6, 6);
             this.Directories_container.Name = "Directories_container";
-            this.Directories_container.Size = new System.Drawing.Size(526, 129);
+            this.Directories_container.Size = new System.Drawing.Size(526, 57);
             this.Directories_container.TabIndex = 0;
             this.Directories_container.TabStop = false;
-            this.Directories_container.Text = "Directories";
-            // 
-            // steam_brw_btn
-            // 
-            this.steam_brw_btn.Location = new System.Drawing.Point(445, 53);
-            this.steam_brw_btn.Name = "steam_brw_btn";
-            this.steam_brw_btn.Size = new System.Drawing.Size(75, 27);
-            this.steam_brw_btn.TabIndex = 5;
-            this.steam_brw_btn.Text = "Browse";
-            this.steam_brw_btn.UseVisualStyleBackColor = true;
-            this.steam_brw_btn.Click += new System.EventHandler(this.steam_brw_btn_Click);
+            this.Directories_container.Text = "Directory";
             // 
             // ets2mp_brw_btn
             // 
@@ -109,28 +76,12 @@
             this.ets2mp_brw_btn.UseVisualStyleBackColor = true;
             this.ets2mp_brw_btn.Click += new System.EventHandler(this.ets2mp_brw_btn_Click);
             // 
-            // steam_dir_txt
-            // 
-            this.steam_dir_txt.Location = new System.Drawing.Point(77, 53);
-            this.steam_dir_txt.Name = "steam_dir_txt";
-            this.steam_dir_txt.Size = new System.Drawing.Size(362, 27);
-            this.steam_dir_txt.TabIndex = 3;
-            // 
             // ets2mp_dir_txt
             // 
             this.ets2mp_dir_txt.Location = new System.Drawing.Point(77, 20);
             this.ets2mp_dir_txt.Name = "ets2mp_dir_txt";
             this.ets2mp_dir_txt.Size = new System.Drawing.Size(362, 27);
             this.ets2mp_dir_txt.TabIndex = 2;
-            // 
-            // steam_dir_label
-            // 
-            this.steam_dir_label.AutoSize = true;
-            this.steam_dir_label.Location = new System.Drawing.Point(18, 53);
-            this.steam_dir_label.Name = "steam_dir_label";
-            this.steam_dir_label.Size = new System.Drawing.Size(53, 19);
-            this.steam_dir_label.TabIndex = 1;
-            this.steam_dir_label.Text = "Steam:";
             // 
             // ets2mp_dir_label
             // 
@@ -141,62 +92,14 @@
             this.ets2mp_dir_label.TabIndex = 0;
             this.ets2mp_dir_label.Text = "ETS2MP:";
             // 
-            // Steam_container
-            // 
-            this.Steam_container.Controls.Add(this.SteamLaunchInt_label);
-            this.Steam_container.Controls.Add(this.SteamLaunchInt_num);
-            this.Steam_container.Controls.Add(this.steam_launch_chkbox);
-            this.Steam_container.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Steam_container.Location = new System.Drawing.Point(6, 136);
-            this.Steam_container.Name = "Steam_container";
-            this.Steam_container.Size = new System.Drawing.Size(257, 76);
-            this.Steam_container.TabIndex = 1;
-            this.Steam_container.TabStop = false;
-            this.Steam_container.Text = "Steam";
-            // 
-            // SteamLaunchInt_label
-            // 
-            this.SteamLaunchInt_label.AutoSize = true;
-            this.SteamLaunchInt_label.Location = new System.Drawing.Point(51, 44);
-            this.SteamLaunchInt_label.Name = "SteamLaunchInt_label";
-            this.SteamLaunchInt_label.Size = new System.Drawing.Size(200, 19);
-            this.SteamLaunchInt_label.TabIndex = 2;
-            this.SteamLaunchInt_label.Text = "Game launch delay (Seconds)\r\n";
-            // 
-            // SteamLaunchInt_num
-            // 
-            this.SteamLaunchInt_num.Location = new System.Drawing.Point(6, 42);
-            this.SteamLaunchInt_num.Maximum = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.SteamLaunchInt_num.Name = "SteamLaunchInt_num";
-            this.SteamLaunchInt_num.Size = new System.Drawing.Size(39, 27);
-            this.SteamLaunchInt_num.TabIndex = 1;
-            this.SteamLaunchInt_num.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // steam_launch_chkbox
-            // 
-            this.steam_launch_chkbox.AutoSize = true;
-            this.steam_launch_chkbox.Location = new System.Drawing.Point(6, 18);
-            this.steam_launch_chkbox.Name = "steam_launch_chkbox";
-            this.steam_launch_chkbox.Size = new System.Drawing.Size(153, 23);
-            this.steam_launch_chkbox.TabIndex = 0;
-            this.steam_launch_chkbox.Text = "Auto launch steam.";
-            this.steam_launch_chkbox.UseVisualStyleBackColor = true;
-            // 
             // Launcher_container
             // 
+            this.Launcher_container.Controls.Add(this.AutoUpdate_chkbox);
             this.Launcher_container.Controls.Add(this.LauncherClose_chkbox);
             this.Launcher_container.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Launcher_container.Location = new System.Drawing.Point(269, 136);
+            this.Launcher_container.Location = new System.Drawing.Point(6, 69);
             this.Launcher_container.Name = "Launcher_container";
-            this.Launcher_container.Size = new System.Drawing.Size(263, 76);
+            this.Launcher_container.Size = new System.Drawing.Size(526, 81);
             this.Launcher_container.TabIndex = 2;
             this.Launcher_container.TabStop = false;
             this.Launcher_container.Text = "Launcher";
@@ -213,9 +116,8 @@
             // 
             // UpdateCheck_btn
             // 
-            this.UpdateCheck_btn.Enabled = false;
             this.UpdateCheck_btn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateCheck_btn.Location = new System.Drawing.Point(4, 256);
+            this.UpdateCheck_btn.Location = new System.Drawing.Point(4, 194);
             this.UpdateCheck_btn.Name = "UpdateCheck_btn";
             this.UpdateCheck_btn.Size = new System.Drawing.Size(140, 27);
             this.UpdateCheck_btn.TabIndex = 1;
@@ -226,7 +128,7 @@
             // Done_btn
             // 
             this.Done_btn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Done_btn.Location = new System.Drawing.Point(471, 256);
+            this.Done_btn.Location = new System.Drawing.Point(471, 194);
             this.Done_btn.Name = "Done_btn";
             this.Done_btn.Size = new System.Drawing.Size(75, 27);
             this.Done_btn.TabIndex = 3;
@@ -243,19 +145,18 @@
             this.Settings_tabControl.Location = new System.Drawing.Point(0, 0);
             this.Settings_tabControl.Name = "Settings_tabControl";
             this.Settings_tabControl.SelectedIndex = 0;
-            this.Settings_tabControl.Size = new System.Drawing.Size(550, 250);
+            this.Settings_tabControl.Size = new System.Drawing.Size(550, 188);
             this.Settings_tabControl.TabIndex = 4;
             // 
             // Launcher_tab
             // 
             this.Launcher_tab.Controls.Add(this.Directories_container);
-            this.Launcher_tab.Controls.Add(this.Steam_container);
             this.Launcher_tab.Controls.Add(this.Launcher_container);
             this.Launcher_tab.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Launcher_tab.Location = new System.Drawing.Point(4, 28);
             this.Launcher_tab.Name = "Launcher_tab";
             this.Launcher_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.Launcher_tab.Size = new System.Drawing.Size(542, 218);
+            this.Launcher_tab.Size = new System.Drawing.Size(542, 156);
             this.Launcher_tab.TabIndex = 0;
             this.Launcher_tab.Text = "Launcher";
             this.Launcher_tab.UseVisualStyleBackColor = true;
@@ -267,7 +168,7 @@
             this.ets2mp_tab.Location = new System.Drawing.Point(4, 28);
             this.ets2mp_tab.Name = "ets2mp_tab";
             this.ets2mp_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.ets2mp_tab.Size = new System.Drawing.Size(542, 218);
+            this.ets2mp_tab.Size = new System.Drawing.Size(542, 156);
             this.ets2mp_tab.TabIndex = 1;
             this.ets2mp_tab.Text = "ETS2MP";
             this.ets2mp_tab.UseVisualStyleBackColor = true;
@@ -275,7 +176,7 @@
             // NotImplemented_label
             // 
             this.NotImplemented_label.AutoSize = true;
-            this.NotImplemented_label.Location = new System.Drawing.Point(121, 86);
+            this.NotImplemented_label.Location = new System.Drawing.Point(125, 67);
             this.NotImplemented_label.Name = "NotImplemented_label";
             this.NotImplemented_label.Size = new System.Drawing.Size(293, 19);
             this.NotImplemented_label.TabIndex = 0;
@@ -283,12 +184,11 @@
             // 
             // ets2_tab
             // 
-            this.ets2_tab.Controls.Add(this.groupBox2);
-            this.ets2_tab.Controls.Add(this.groupBox1);
+            this.ets2_tab.Controls.Add(this.ets2sin_chkbox);
             this.ets2_tab.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ets2_tab.Location = new System.Drawing.Point(4, 28);
             this.ets2_tab.Name = "ets2_tab";
-            this.ets2_tab.Size = new System.Drawing.Size(542, 218);
+            this.ets2_tab.Size = new System.Drawing.Size(542, 156);
             this.ets2_tab.TabIndex = 2;
             this.ets2_tab.Text = "ETS2";
             this.ets2_tab.UseVisualStyleBackColor = true;
@@ -296,88 +196,28 @@
             // ets2sin_chkbox
             // 
             this.ets2sin_chkbox.AutoSize = true;
-            this.ets2sin_chkbox.Location = new System.Drawing.Point(6, 22);
+            this.ets2sin_chkbox.Location = new System.Drawing.Point(8, 3);
             this.ets2sin_chkbox.Name = "ets2sin_chkbox";
             this.ets2sin_chkbox.Size = new System.Drawing.Size(88, 23);
             this.ets2sin_chkbox.TabIndex = 0;
             this.ets2sin_chkbox.Text = "Skip intro";
             this.ets2sin_chkbox.UseVisualStyleBackColor = true;
-            this.ets2sin_chkbox.CheckedChanged += new System.EventHandler(this.ets2sin_chkbox_CheckedChanged);
             // 
-            // profile_dir_label
+            // AutoUpdate_chkbox
             // 
-            this.profile_dir_label.AutoSize = true;
-            this.profile_dir_label.Location = new System.Drawing.Point(17, 91);
-            this.profile_dir_label.Name = "profile_dir_label";
-            this.profile_dir_label.Size = new System.Drawing.Size(54, 19);
-            this.profile_dir_label.TabIndex = 6;
-            this.profile_dir_label.Text = "Profile:";
-            // 
-            // profile_dir_txt
-            // 
-            this.profile_dir_txt.Location = new System.Drawing.Point(77, 87);
-            this.profile_dir_txt.Name = "profile_dir_txt";
-            this.profile_dir_txt.Size = new System.Drawing.Size(362, 27);
-            this.profile_dir_txt.TabIndex = 7;
-            // 
-            // profile_brw_btn
-            // 
-            this.profile_brw_btn.Location = new System.Drawing.Point(445, 87);
-            this.profile_brw_btn.Name = "profile_brw_btn";
-            this.profile_brw_btn.Size = new System.Drawing.Size(75, 27);
-            this.profile_brw_btn.TabIndex = 8;
-            this.profile_brw_btn.Text = "Browse";
-            this.profile_brw_btn.UseVisualStyleBackColor = true;
-            this.profile_brw_btn.Click += new System.EventHandler(this.profile_brw_btn_Click);
-            // 
-            // ets2re_chkbox
-            // 
-            this.ets2re_chkbox.AutoSize = true;
-            this.ets2re_chkbox.Location = new System.Drawing.Point(6, 26);
-            this.ets2re_chkbox.Name = "ets2re_chkbox";
-            this.ets2re_chkbox.Size = new System.Drawing.Size(179, 23);
-            this.ets2re_chkbox.TabIndex = 1;
-            this.ets2re_chkbox.Text = "Reset economy on load";
-            this.ets2re_chkbox.UseVisualStyleBackColor = true;
-            this.ets2re_chkbox.CheckedChanged += new System.EventHandler(this.ets2re_chkbox_CheckedChanged);
-            // 
-            // ets2ef_chkbox
-            // 
-            this.ets2ef_chkbox.AutoSize = true;
-            this.ets2ef_chkbox.Location = new System.Drawing.Point(6, 55);
-            this.ets2ef_chkbox.Name = "ets2ef_chkbox";
-            this.ets2ef_chkbox.Size = new System.Drawing.Size(110, 23);
-            this.ets2ef_chkbox.TabIndex = 2;
-            this.ets2ef_chkbox.Text = "Enable Fines";
-            this.ets2ef_chkbox.UseVisualStyleBackColor = true;
-            this.ets2ef_chkbox.CheckedChanged += new System.EventHandler(this.ets2ef_chkbox_CheckedChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.ets2re_chkbox);
-            this.groupBox1.Controls.Add(this.ets2ef_chkbox);
-            this.groupBox1.Location = new System.Drawing.Point(8, 62);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(526, 144);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Ingame Settings";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.ets2sin_chkbox);
-            this.groupBox2.Location = new System.Drawing.Point(8, 5);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(526, 51);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Game Settings";
+            this.AutoUpdate_chkbox.AutoSize = true;
+            this.AutoUpdate_chkbox.Location = new System.Drawing.Point(7, 50);
+            this.AutoUpdate_chkbox.Name = "AutoUpdate_chkbox";
+            this.AutoUpdate_chkbox.Size = new System.Drawing.Size(285, 23);
+            this.AutoUpdate_chkbox.TabIndex = 1;
+            this.AutoUpdate_chkbox.Text = "Check for launcher updates automaticly";
+            this.AutoUpdate_chkbox.UseVisualStyleBackColor = true;
             // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 295);
+            this.ClientSize = new System.Drawing.Size(550, 233);
             this.Controls.Add(this.Done_btn);
             this.Controls.Add(this.UpdateCheck_btn);
             this.Controls.Add(this.Settings_tabControl);
@@ -391,9 +231,6 @@
             this.Text = "ETS2MP Launcher - Settings";
             this.Directories_container.ResumeLayout(false);
             this.Directories_container.PerformLayout();
-            this.Steam_container.ResumeLayout(false);
-            this.Steam_container.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SteamLaunchInt_num)).EndInit();
             this.Launcher_container.ResumeLayout(false);
             this.Launcher_container.PerformLayout();
             this.Settings_tabControl.ResumeLayout(false);
@@ -401,10 +238,7 @@
             this.ets2mp_tab.ResumeLayout(false);
             this.ets2mp_tab.PerformLayout();
             this.ets2_tab.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.ets2_tab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -412,16 +246,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox Directories_container;
-        private System.Windows.Forms.Button steam_brw_btn;
         private System.Windows.Forms.Button ets2mp_brw_btn;
-        private System.Windows.Forms.TextBox steam_dir_txt;
         private System.Windows.Forms.TextBox ets2mp_dir_txt;
-        private System.Windows.Forms.Label steam_dir_label;
         private System.Windows.Forms.Label ets2mp_dir_label;
-        private System.Windows.Forms.GroupBox Steam_container;
-        private System.Windows.Forms.Label SteamLaunchInt_label;
-        private System.Windows.Forms.NumericUpDown SteamLaunchInt_num;
-        private System.Windows.Forms.CheckBox steam_launch_chkbox;
         private System.Windows.Forms.GroupBox Launcher_container;
         private System.Windows.Forms.CheckBox LauncherClose_chkbox;
         private System.Windows.Forms.Button UpdateCheck_btn;
@@ -433,12 +260,6 @@
         private System.Windows.Forms.Label NotImplemented_label;
         private System.Windows.Forms.TabPage ets2_tab;
         private System.Windows.Forms.CheckBox ets2sin_chkbox;
-        private System.Windows.Forms.Button profile_brw_btn;
-        private System.Windows.Forms.TextBox profile_dir_txt;
-        private System.Windows.Forms.Label profile_dir_label;
-        private System.Windows.Forms.CheckBox ets2re_chkbox;
-        private System.Windows.Forms.CheckBox ets2ef_chkbox;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox AutoUpdate_chkbox;
     }
 }

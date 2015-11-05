@@ -5,26 +5,17 @@
     <Setting Name="mploc" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="steamloc" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="steamlaunch" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="steamdelay" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">10</Value>
-    </Setting>
     <Setting Name="launchclose" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="LauncherVersion" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">0.04.01</Value>
     </Setting>
     <Setting Name="ets2sin" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="profileloc" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="LauncherVersion" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">0.05</Value>
+    </Setting>
+    <Setting Name="aplauncher" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

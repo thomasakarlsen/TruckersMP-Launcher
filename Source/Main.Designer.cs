@@ -1,4 +1,4 @@
-﻿namespace ets2mplauncher
+﻿namespace truckersmplauncher
 {
     partial class Main
     {
@@ -31,52 +31,24 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.link_ets2mp = new System.Windows.Forms.Label();
             this.about_launcher = new System.Windows.Forms.Label();
-            this.server_connect_btn_3 = new System.Windows.Forms.PictureBox();
-            this.server_connect_btn_2 = new System.Windows.Forms.PictureBox();
-            this.server_connect_btn_1 = new System.Windows.Forms.PictureBox();
-            this.server_loc_3 = new System.Windows.Forms.Label();
-            this.server_loc_2 = new System.Windows.Forms.Label();
-            this.server_loc_1 = new System.Windows.Forms.Label();
-            this.server_players_3 = new System.Windows.Forms.Label();
-            this.server_players_2 = new System.Windows.Forms.Label();
-            this.server_players_1 = new System.Windows.Forms.Label();
-            this.server_status_3 = new System.Windows.Forms.Label();
-            this.server_status_2 = new System.Windows.Forms.Label();
-            this.server_status_1 = new System.Windows.Forms.Label();
-            this.news_slider = new System.Windows.Forms.PictureBox();
-            this.server_background_3 = new System.Windows.Forms.PictureBox();
-            this.server_background_2 = new System.Windows.Forms.PictureBox();
-            this.server_background_1 = new System.Windows.Forms.PictureBox();
             this.subline_title = new System.Windows.Forms.Label();
-            this.headline_title = new System.Windows.Forms.Label();
-            this.Updates_btn = new System.Windows.Forms.PictureBox();
-            this.Play_btn = new System.Windows.Forms.PictureBox();
-            this.Settings_btn = new System.Windows.Forms.PictureBox();
             this.design_creator = new System.Windows.Forms.Label();
-            this.server_connect_btn_4 = new System.Windows.Forms.PictureBox();
-            this.server_loc_4 = new System.Windows.Forms.Label();
-            this.server_players_4 = new System.Windows.Forms.Label();
-            this.server_status_4 = new System.Windows.Forms.Label();
-            this.server_background_4 = new System.Windows.Forms.PictureBox();
-            this.server_connect_btn_5 = new System.Windows.Forms.PictureBox();
-            this.server_loc_5 = new System.Windows.Forms.Label();
-            this.server_players_5 = new System.Windows.Forms.Label();
-            this.server_status_5 = new System.Windows.Forms.Label();
-            this.server_background_5 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.server_connect_btn_3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_connect_btn_2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_connect_btn_1)).BeginInit();
+            this.Header_Panel = new System.Windows.Forms.Panel();
+            this.Logo = new System.Windows.Forms.PictureBox();
+            this.Footer_Panel = new System.Windows.Forms.Panel();
+            this.Footer_seperator = new System.Windows.Forms.Panel();
+            this.serverspanel = new System.Windows.Forms.Panel();
+            this.news_slider = new System.Windows.Forms.PictureBox();
+            this.Mods_btn = new System.Windows.Forms.PictureBox();
+            this.Settings_btn = new System.Windows.Forms.PictureBox();
+            this.TruckersMPUpdateProgressLabel = new System.Windows.Forms.Label();
+            this.TruckersMPUpdateProgress = new truckersmplauncher.CProgressBar();
+            this.Header_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
+            this.Footer_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.news_slider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_background_3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_background_2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_background_1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Updates_btn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Play_btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Mods_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Settings_btn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_connect_btn_4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_background_4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_connect_btn_5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_background_5)).BeginInit();
             this.SuspendLayout();
             // 
             // link_ets2mp
@@ -86,11 +58,11 @@
             this.link_ets2mp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.link_ets2mp.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.link_ets2mp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.link_ets2mp.Location = new System.Drawing.Point(135, 483);
+            this.link_ets2mp.Location = new System.Drawing.Point(135, 10);
             this.link_ets2mp.Name = "link_ets2mp";
-            this.link_ets2mp.Size = new System.Drawing.Size(174, 18);
+            this.link_ets2mp.Size = new System.Drawing.Size(204, 18);
             this.link_ets2mp.TabIndex = 48;
-            this.link_ets2mp.Text = "ETS2:MP OFFICIAL WEBSITE";
+            this.link_ets2mp.Text = "TRUCKERSMP OFFICIAL WEBSITE";
             this.link_ets2mp.Click += new System.EventHandler(this.ets2mp_site_link_Click);
             // 
             // about_launcher
@@ -100,161 +72,100 @@
             this.about_launcher.Cursor = System.Windows.Forms.Cursors.Hand;
             this.about_launcher.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.about_launcher.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.about_launcher.Location = new System.Drawing.Point(9, 483);
+            this.about_launcher.Location = new System.Drawing.Point(9, 10);
             this.about_launcher.Name = "about_launcher";
             this.about_launcher.Size = new System.Drawing.Size(120, 18);
             this.about_launcher.TabIndex = 47;
             this.about_launcher.Text = "ABOUT LAUNCHER";
             this.about_launcher.Click += new System.EventHandler(this.About_btn_Click);
             // 
-            // server_connect_btn_3
+            // subline_title
             // 
-            this.server_connect_btn_3.BackColor = System.Drawing.Color.Transparent;
-            this.server_connect_btn_3.BackgroundImage = global::ets2mplauncher.Properties.Resources.server_connect_btn;
-            this.server_connect_btn_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.server_connect_btn_3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.server_connect_btn_3.Location = new System.Drawing.Point(876, 195);
-            this.server_connect_btn_3.Name = "server_connect_btn_3";
-            this.server_connect_btn_3.Size = new System.Drawing.Size(112, 44);
-            this.server_connect_btn_3.TabIndex = 46;
-            this.server_connect_btn_3.TabStop = false;
-            this.server_connect_btn_3.Click += new System.EventHandler(this.server_connect_btn_3_Click);
+            this.subline_title.AutoSize = true;
+            this.subline_title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.subline_title.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subline_title.ForeColor = System.Drawing.Color.White;
+            this.subline_title.Location = new System.Drawing.Point(17, 39);
+            this.subline_title.Name = "subline_title";
+            this.subline_title.Size = new System.Drawing.Size(216, 18);
+            this.subline_title.TabIndex = 30;
+            this.subline_title.Text = "UNOFFICIAL LAUNCHER 0.6 ALPHA";
             // 
-            // server_connect_btn_2
+            // design_creator
             // 
-            this.server_connect_btn_2.BackColor = System.Drawing.Color.Transparent;
-            this.server_connect_btn_2.BackgroundImage = global::ets2mplauncher.Properties.Resources.server_connect_btn;
-            this.server_connect_btn_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.server_connect_btn_2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.server_connect_btn_2.Location = new System.Drawing.Point(876, 137);
-            this.server_connect_btn_2.Name = "server_connect_btn_2";
-            this.server_connect_btn_2.Size = new System.Drawing.Size(112, 44);
-            this.server_connect_btn_2.TabIndex = 45;
-            this.server_connect_btn_2.TabStop = false;
-            this.server_connect_btn_2.Click += new System.EventHandler(this.server_connect_btn_2_Click);
+            this.design_creator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.design_creator.AutoSize = true;
+            this.design_creator.BackColor = System.Drawing.Color.Transparent;
+            this.design_creator.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.design_creator.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.design_creator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.design_creator.Location = new System.Drawing.Point(873, 10);
+            this.design_creator.Name = "design_creator";
+            this.design_creator.Size = new System.Drawing.Size(114, 18);
+            this.design_creator.TabIndex = 49;
+            this.design_creator.Text = "DESIGN BY GAMA";
+            this.design_creator.Click += new System.EventHandler(this.design_creator_Click);
             // 
-            // server_connect_btn_1
+            // Header_Panel
             // 
-            this.server_connect_btn_1.BackColor = System.Drawing.Color.Transparent;
-            this.server_connect_btn_1.BackgroundImage = global::ets2mplauncher.Properties.Resources.server_connect_btn;
-            this.server_connect_btn_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.server_connect_btn_1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.server_connect_btn_1.Location = new System.Drawing.Point(876, 78);
-            this.server_connect_btn_1.Name = "server_connect_btn_1";
-            this.server_connect_btn_1.Size = new System.Drawing.Size(112, 44);
-            this.server_connect_btn_1.TabIndex = 44;
-            this.server_connect_btn_1.TabStop = false;
-            this.server_connect_btn_1.Click += new System.EventHandler(this.server_connect_btn_1_Click);
+            this.Header_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Header_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.Header_Panel.Controls.Add(this.Logo);
+            this.Header_Panel.Location = new System.Drawing.Point(0, 0);
+            this.Header_Panel.Name = "Header_Panel";
+            this.Header_Panel.Size = new System.Drawing.Size(1000, 66);
+            this.Header_Panel.TabIndex = 60;
             // 
-            // server_loc_3
+            // Logo
             // 
-            this.server_loc_3.AutoSize = true;
-            this.server_loc_3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.server_loc_3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_loc_3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.server_loc_3.Location = new System.Drawing.Point(339, 208);
-            this.server_loc_3.Name = "server_loc_3";
-            this.server_loc_3.Size = new System.Drawing.Size(125, 19);
-            this.server_loc_3.TabIndex = 43;
-            this.server_loc_3.Text = "NORTH AMERICA";
+            this.Logo.BackgroundImage = global::truckersmplauncher.Properties.Resources.logo;
+            this.Logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Logo.Location = new System.Drawing.Point(17, -3);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(213, 57);
+            this.Logo.TabIndex = 0;
+            this.Logo.TabStop = false;
             // 
-            // server_loc_2
+            // Footer_Panel
             // 
-            this.server_loc_2.AutoSize = true;
-            this.server_loc_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.server_loc_2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_loc_2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.server_loc_2.Location = new System.Drawing.Point(339, 150);
-            this.server_loc_2.Name = "server_loc_2";
-            this.server_loc_2.Size = new System.Drawing.Size(64, 19);
-            this.server_loc_2.TabIndex = 42;
-            this.server_loc_2.Text = "EUROPE";
+            this.Footer_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Footer_Panel.Controls.Add(this.TruckersMPUpdateProgressLabel);
+            this.Footer_Panel.Controls.Add(this.TruckersMPUpdateProgress);
+            this.Footer_Panel.Controls.Add(this.Footer_seperator);
+            this.Footer_Panel.Controls.Add(this.about_launcher);
+            this.Footer_Panel.Controls.Add(this.link_ets2mp);
+            this.Footer_Panel.Controls.Add(this.design_creator);
+            this.Footer_Panel.Location = new System.Drawing.Point(0, 473);
+            this.Footer_Panel.Name = "Footer_Panel";
+            this.Footer_Panel.Size = new System.Drawing.Size(1000, 37);
+            this.Footer_Panel.TabIndex = 61;
             // 
-            // server_loc_1
+            // Footer_seperator
             // 
-            this.server_loc_1.AutoSize = true;
-            this.server_loc_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.server_loc_1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_loc_1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.server_loc_1.Location = new System.Drawing.Point(339, 91);
-            this.server_loc_1.Name = "server_loc_1";
-            this.server_loc_1.Size = new System.Drawing.Size(64, 19);
-            this.server_loc_1.TabIndex = 41;
-            this.server_loc_1.Text = "EUROPE";
+            this.Footer_seperator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.Footer_seperator.Location = new System.Drawing.Point(0, 0);
+            this.Footer_seperator.Name = "Footer_seperator";
+            this.Footer_seperator.Size = new System.Drawing.Size(1000, 1);
+            this.Footer_seperator.TabIndex = 50;
             // 
-            // server_players_3
+            // serverspanel
             // 
-            this.server_players_3.AutoSize = true;
-            this.server_players_3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.server_players_3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_players_3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.server_players_3.Location = new System.Drawing.Point(117, 208);
-            this.server_players_3.Name = "server_players_3";
-            this.server_players_3.Size = new System.Drawing.Size(185, 19);
-            this.server_players_3.TabIndex = 40;
-            this.server_players_3.Text = "PLAYERS 2000 out of 2000";
-            // 
-            // server_players_2
-            // 
-            this.server_players_2.AutoSize = true;
-            this.server_players_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.server_players_2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_players_2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.server_players_2.Location = new System.Drawing.Point(117, 150);
-            this.server_players_2.Name = "server_players_2";
-            this.server_players_2.Size = new System.Drawing.Size(185, 19);
-            this.server_players_2.TabIndex = 39;
-            this.server_players_2.Text = "PLAYERS 2000 out of 2000";
-            // 
-            // server_players_1
-            // 
-            this.server_players_1.AutoSize = true;
-            this.server_players_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.server_players_1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_players_1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.server_players_1.Location = new System.Drawing.Point(117, 91);
-            this.server_players_1.Name = "server_players_1";
-            this.server_players_1.Size = new System.Drawing.Size(185, 19);
-            this.server_players_1.TabIndex = 38;
-            this.server_players_1.Text = "PLAYERS 2000 out of 2000";
-            // 
-            // server_status_3
-            // 
-            this.server_status_3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(94)))), ((int)(((byte)(94)))));
-            this.server_status_3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_status_3.Location = new System.Drawing.Point(12, 195);
-            this.server_status_3.Name = "server_status_3";
-            this.server_status_3.Size = new System.Drawing.Size(71, 44);
-            this.server_status_3.TabIndex = 37;
-            this.server_status_3.Text = "US #1";
-            this.server_status_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // server_status_2
-            // 
-            this.server_status_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(94)))), ((int)(((byte)(94)))));
-            this.server_status_2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_status_2.Location = new System.Drawing.Point(12, 137);
-            this.server_status_2.Name = "server_status_2";
-            this.server_status_2.Size = new System.Drawing.Size(71, 44);
-            this.server_status_2.TabIndex = 36;
-            this.server_status_2.Text = "EU #2";
-            this.server_status_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // server_status_1
-            // 
-            this.server_status_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(94)))), ((int)(((byte)(94)))));
-            this.server_status_1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_status_1.Location = new System.Drawing.Point(12, 78);
-            this.server_status_1.Name = "server_status_1";
-            this.server_status_1.Size = new System.Drawing.Size(71, 44);
-            this.server_status_1.TabIndex = 35;
-            this.server_status_1.Text = "EU #1";
-            this.server_status_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.serverspanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.serverspanel.AutoScroll = true;
+            this.serverspanel.AutoScrollMargin = new System.Drawing.Size(0, 15);
+            this.serverspanel.Location = new System.Drawing.Point(0, 66);
+            this.serverspanel.Name = "serverspanel";
+            this.serverspanel.Size = new System.Drawing.Size(1000, 407);
+            this.serverspanel.TabIndex = 62;
             // 
             // news_slider
             // 
             this.news_slider.BackColor = System.Drawing.Color.Transparent;
-            this.news_slider.BackgroundImage = global::ets2mplauncher.Properties.Resources.news_blank;
+            this.news_slider.BackgroundImage = global::truckersmplauncher.Properties.Resources.news_blank;
             this.news_slider.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.news_slider.Location = new System.Drawing.Point(12, 372);
             this.news_slider.Name = "news_slider";
@@ -263,289 +174,89 @@
             this.news_slider.TabStop = false;
             this.news_slider.Visible = false;
             // 
-            // server_background_3
+            // Mods_btn
             // 
-            this.server_background_3.BackColor = System.Drawing.Color.Transparent;
-            this.server_background_3.BackgroundImage = global::ets2mplauncher.Properties.Resources.server_bar;
-            this.server_background_3.Location = new System.Drawing.Point(12, 195);
-            this.server_background_3.Name = "server_background_3";
-            this.server_background_3.Size = new System.Drawing.Size(976, 44);
-            this.server_background_3.TabIndex = 33;
-            this.server_background_3.TabStop = false;
-            // 
-            // server_background_2
-            // 
-            this.server_background_2.BackColor = System.Drawing.Color.Transparent;
-            this.server_background_2.BackgroundImage = global::ets2mplauncher.Properties.Resources.server_bar;
-            this.server_background_2.Location = new System.Drawing.Point(12, 137);
-            this.server_background_2.Name = "server_background_2";
-            this.server_background_2.Size = new System.Drawing.Size(976, 44);
-            this.server_background_2.TabIndex = 32;
-            this.server_background_2.TabStop = false;
-            // 
-            // server_background_1
-            // 
-            this.server_background_1.BackColor = System.Drawing.Color.Transparent;
-            this.server_background_1.BackgroundImage = global::ets2mplauncher.Properties.Resources.server_bar;
-            this.server_background_1.Location = new System.Drawing.Point(12, 78);
-            this.server_background_1.Name = "server_background_1";
-            this.server_background_1.Size = new System.Drawing.Size(976, 44);
-            this.server_background_1.TabIndex = 31;
-            this.server_background_1.TabStop = false;
-            // 
-            // subline_title
-            // 
-            this.subline_title.AutoSize = true;
-            this.subline_title.BackColor = System.Drawing.Color.Transparent;
-            this.subline_title.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subline_title.ForeColor = System.Drawing.Color.White;
-            this.subline_title.Location = new System.Drawing.Point(14, 35);
-            this.subline_title.Name = "subline_title";
-            this.subline_title.Size = new System.Drawing.Size(216, 18);
-            this.subline_title.TabIndex = 30;
-            this.subline_title.Text = "UNOFFICIAL LAUNCHER 0.5 ALPHA";
-            // 
-            // headline_title
-            // 
-            this.headline_title.AutoSize = true;
-            this.headline_title.BackColor = System.Drawing.Color.Transparent;
-            this.headline_title.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.headline_title.ForeColor = System.Drawing.Color.White;
-            this.headline_title.Location = new System.Drawing.Point(12, 9);
-            this.headline_title.Name = "headline_title";
-            this.headline_title.Size = new System.Drawing.Size(347, 26);
-            this.headline_title.TabIndex = 29;
-            this.headline_title.Text = "EURO TRUCK SIMLATOR 2 MULTIPLAYER\r\n";
-            // 
-            // Updates_btn
-            // 
-            this.Updates_btn.BackColor = System.Drawing.Color.Transparent;
-            this.Updates_btn.BackgroundImage = global::ets2mplauncher.Properties.Resources.updates_btn;
-            this.Updates_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Updates_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Updates_btn.Location = new System.Drawing.Point(871, 16);
-            this.Updates_btn.Name = "Updates_btn";
-            this.Updates_btn.Size = new System.Drawing.Size(117, 31);
-            this.Updates_btn.TabIndex = 28;
-            this.Updates_btn.TabStop = false;
-            this.Updates_btn.Click += new System.EventHandler(this.Updates_btn_Click);
-            // 
-            // Play_btn
-            // 
-            this.Play_btn.BackColor = System.Drawing.Color.Transparent;
-            this.Play_btn.BackgroundImage = global::ets2mplauncher.Properties.Resources.play_btn;
-            this.Play_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Play_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Play_btn.Location = new System.Drawing.Point(653, 16);
-            this.Play_btn.Name = "Play_btn";
-            this.Play_btn.Size = new System.Drawing.Size(81, 31);
-            this.Play_btn.TabIndex = 26;
-            this.Play_btn.TabStop = false;
-            this.Play_btn.Click += new System.EventHandler(this.Play_btn_Click);
+            this.Mods_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Mods_btn.BackColor = System.Drawing.Color.Transparent;
+            this.Mods_btn.BackgroundImage = global::truckersmplauncher.Properties.Resources.mods_btn;
+            this.Mods_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Mods_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Mods_btn.Location = new System.Drawing.Point(895, 16);
+            this.Mods_btn.Name = "Mods_btn";
+            this.Mods_btn.Size = new System.Drawing.Size(93, 31);
+            this.Mods_btn.TabIndex = 28;
+            this.Mods_btn.TabStop = false;
+            this.Mods_btn.Click += new System.EventHandler(this.Updates_btn_Click);
             // 
             // Settings_btn
             // 
+            this.Settings_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Settings_btn.BackColor = System.Drawing.Color.Transparent;
-            this.Settings_btn.BackgroundImage = global::ets2mplauncher.Properties.Resources.settings_btn;
+            this.Settings_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Settings_btn.BackgroundImage")));
             this.Settings_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Settings_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Settings_btn.Location = new System.Drawing.Point(743, 16);
+            this.Settings_btn.Location = new System.Drawing.Point(767, 16);
             this.Settings_btn.Name = "Settings_btn";
             this.Settings_btn.Size = new System.Drawing.Size(119, 31);
             this.Settings_btn.TabIndex = 27;
             this.Settings_btn.TabStop = false;
-            this.Settings_btn.Click += new System.EventHandler(this.Settings_btn_Click);
+            this.Settings_btn.Click += new System.EventHandler(this.Mods_btn_Click);
             // 
-            // design_creator
+            // TruckersMPUpdateProgressLabel
             // 
-            this.design_creator.AutoSize = true;
-            this.design_creator.BackColor = System.Drawing.Color.Transparent;
-            this.design_creator.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.design_creator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.design_creator.Location = new System.Drawing.Point(873, 483);
-            this.design_creator.Name = "design_creator";
-            this.design_creator.Size = new System.Drawing.Size(114, 18);
-            this.design_creator.TabIndex = 49;
-            this.design_creator.Text = "DESIGN BY GAMA";
-            this.design_creator.Click += new System.EventHandler(this.design_creator_Click);
+            this.TruckersMPUpdateProgressLabel.AutoSize = true;
+            this.TruckersMPUpdateProgressLabel.BackColor = System.Drawing.Color.Transparent;
+            this.TruckersMPUpdateProgressLabel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TruckersMPUpdateProgressLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.TruckersMPUpdateProgressLabel.Location = new System.Drawing.Point(713, 12);
+            this.TruckersMPUpdateProgressLabel.Name = "TruckersMPUpdateProgressLabel";
+            this.TruckersMPUpdateProgressLabel.Size = new System.Drawing.Size(154, 15);
+            this.TruckersMPUpdateProgressLabel.TabIndex = 52;
+            this.TruckersMPUpdateProgressLabel.Text = "Downloading TruckersMP...";
+            this.TruckersMPUpdateProgressLabel.Visible = false;
             // 
-            // server_connect_btn_4
+            // TruckersMPUpdateProgress
             // 
-            this.server_connect_btn_4.BackColor = System.Drawing.Color.Transparent;
-            this.server_connect_btn_4.BackgroundImage = global::ets2mplauncher.Properties.Resources.server_connect_btn;
-            this.server_connect_btn_4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.server_connect_btn_4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.server_connect_btn_4.Location = new System.Drawing.Point(876, 254);
-            this.server_connect_btn_4.Name = "server_connect_btn_4";
-            this.server_connect_btn_4.Size = new System.Drawing.Size(112, 44);
-            this.server_connect_btn_4.TabIndex = 54;
-            this.server_connect_btn_4.TabStop = false;
-            // 
-            // server_loc_4
-            // 
-            this.server_loc_4.AutoSize = true;
-            this.server_loc_4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.server_loc_4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_loc_4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.server_loc_4.Location = new System.Drawing.Point(339, 267);
-            this.server_loc_4.Name = "server_loc_4";
-            this.server_loc_4.Size = new System.Drawing.Size(41, 19);
-            this.server_loc_4.TabIndex = 53;
-            this.server_loc_4.Text = "ASIA";
-            // 
-            // server_players_4
-            // 
-            this.server_players_4.AutoSize = true;
-            this.server_players_4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.server_players_4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_players_4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.server_players_4.Location = new System.Drawing.Point(117, 267);
-            this.server_players_4.Name = "server_players_4";
-            this.server_players_4.Size = new System.Drawing.Size(185, 19);
-            this.server_players_4.TabIndex = 52;
-            this.server_players_4.Text = "PLAYERS 2000 out of 2000";
-            // 
-            // server_status_4
-            // 
-            this.server_status_4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(94)))), ((int)(((byte)(94)))));
-            this.server_status_4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_status_4.Location = new System.Drawing.Point(12, 254);
-            this.server_status_4.Name = "server_status_4";
-            this.server_status_4.Size = new System.Drawing.Size(71, 44);
-            this.server_status_4.TabIndex = 51;
-            this.server_status_4.Text = "AS #1";
-            this.server_status_4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // server_background_4
-            // 
-            this.server_background_4.BackColor = System.Drawing.Color.Transparent;
-            this.server_background_4.BackgroundImage = global::ets2mplauncher.Properties.Resources.server_bar;
-            this.server_background_4.Location = new System.Drawing.Point(12, 254);
-            this.server_background_4.Name = "server_background_4";
-            this.server_background_4.Size = new System.Drawing.Size(976, 44);
-            this.server_background_4.TabIndex = 50;
-            this.server_background_4.TabStop = false;
-            // 
-            // server_connect_btn_5
-            // 
-            this.server_connect_btn_5.BackColor = System.Drawing.Color.Transparent;
-            this.server_connect_btn_5.BackgroundImage = global::ets2mplauncher.Properties.Resources.server_connect_btn;
-            this.server_connect_btn_5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.server_connect_btn_5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.server_connect_btn_5.Location = new System.Drawing.Point(876, 313);
-            this.server_connect_btn_5.Name = "server_connect_btn_5";
-            this.server_connect_btn_5.Size = new System.Drawing.Size(112, 44);
-            this.server_connect_btn_5.TabIndex = 59;
-            this.server_connect_btn_5.TabStop = false;
-            // 
-            // server_loc_5
-            // 
-            this.server_loc_5.AutoSize = true;
-            this.server_loc_5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.server_loc_5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_loc_5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.server_loc_5.Location = new System.Drawing.Point(339, 326);
-            this.server_loc_5.Name = "server_loc_5";
-            this.server_loc_5.Size = new System.Drawing.Size(123, 19);
-            this.server_loc_5.TabIndex = 58;
-            this.server_loc_5.Text = "SOUTH AMERICA";
-            // 
-            // server_players_5
-            // 
-            this.server_players_5.AutoSize = true;
-            this.server_players_5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.server_players_5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_players_5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.server_players_5.Location = new System.Drawing.Point(117, 326);
-            this.server_players_5.Name = "server_players_5";
-            this.server_players_5.Size = new System.Drawing.Size(185, 19);
-            this.server_players_5.TabIndex = 57;
-            this.server_players_5.Text = "PLAYERS 2000 out of 2000";
-            // 
-            // server_status_5
-            // 
-            this.server_status_5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(94)))), ((int)(((byte)(94)))));
-            this.server_status_5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.server_status_5.Location = new System.Drawing.Point(12, 313);
-            this.server_status_5.Name = "server_status_5";
-            this.server_status_5.Size = new System.Drawing.Size(71, 44);
-            this.server_status_5.TabIndex = 56;
-            this.server_status_5.Text = "SA #1";
-            this.server_status_5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // server_background_5
-            // 
-            this.server_background_5.BackColor = System.Drawing.Color.Transparent;
-            this.server_background_5.BackgroundImage = global::ets2mplauncher.Properties.Resources.server_bar;
-            this.server_background_5.Location = new System.Drawing.Point(12, 313);
-            this.server_background_5.Name = "server_background_5";
-            this.server_background_5.Size = new System.Drawing.Size(976, 44);
-            this.server_background_5.TabIndex = 55;
-            this.server_background_5.TabStop = false;
+            this.TruckersMPUpdateProgress.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.TruckersMPUpdateProgress.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.TruckersMPUpdateProgress.FillStyle = truckersmplauncher.CProgressBar.FillStyles.Solid;
+            this.TruckersMPUpdateProgress.Location = new System.Drawing.Point(558, 8);
+            this.TruckersMPUpdateProgress.Maximum = 100;
+            this.TruckersMPUpdateProgress.Minimum = 0;
+            this.TruckersMPUpdateProgress.Name = "TruckersMPUpdateProgress";
+            this.TruckersMPUpdateProgress.Size = new System.Drawing.Size(150, 22);
+            this.TruckersMPUpdateProgress.Step = 10;
+            this.TruckersMPUpdateProgress.TabIndex = 53;
+            this.TruckersMPUpdateProgress.Value = 0;
+            this.TruckersMPUpdateProgress.Visible = false;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ets2mplauncher.Properties.Resources.bg;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1000, 510);
-            this.Controls.Add(this.server_connect_btn_5);
-            this.Controls.Add(this.server_loc_5);
-            this.Controls.Add(this.server_players_5);
-            this.Controls.Add(this.server_status_5);
-            this.Controls.Add(this.server_background_5);
-            this.Controls.Add(this.server_connect_btn_4);
-            this.Controls.Add(this.server_loc_4);
-            this.Controls.Add(this.server_players_4);
-            this.Controls.Add(this.server_status_4);
-            this.Controls.Add(this.server_background_4);
-            this.Controls.Add(this.design_creator);
-            this.Controls.Add(this.link_ets2mp);
-            this.Controls.Add(this.about_launcher);
-            this.Controls.Add(this.server_connect_btn_3);
-            this.Controls.Add(this.server_connect_btn_2);
-            this.Controls.Add(this.server_connect_btn_1);
-            this.Controls.Add(this.server_loc_3);
-            this.Controls.Add(this.server_loc_2);
-            this.Controls.Add(this.server_loc_1);
-            this.Controls.Add(this.server_players_3);
-            this.Controls.Add(this.server_players_2);
-            this.Controls.Add(this.server_players_1);
-            this.Controls.Add(this.server_status_3);
-            this.Controls.Add(this.server_status_2);
-            this.Controls.Add(this.server_status_1);
-            this.Controls.Add(this.news_slider);
-            this.Controls.Add(this.server_background_3);
-            this.Controls.Add(this.server_background_2);
-            this.Controls.Add(this.server_background_1);
             this.Controls.Add(this.subline_title);
-            this.Controls.Add(this.headline_title);
-            this.Controls.Add(this.Updates_btn);
-            this.Controls.Add(this.Play_btn);
+            this.Controls.Add(this.Mods_btn);
             this.Controls.Add(this.Settings_btn);
+            this.Controls.Add(this.Header_Panel);
+            this.Controls.Add(this.Footer_Panel);
+            this.Controls.Add(this.news_slider);
+            this.Controls.Add(this.serverspanel);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1016, 549);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ETS2MP Launcher";
-            ((System.ComponentModel.ISupportInitialize)(this.server_connect_btn_3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_connect_btn_2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_connect_btn_1)).EndInit();
+            this.Text = "TruckersMP Launcher";
+            this.Header_Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
+            this.Footer_Panel.ResumeLayout(false);
+            this.Footer_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.news_slider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_background_3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_background_2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_background_1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Updates_btn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Play_btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Mods_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Settings_btn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_connect_btn_4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_background_4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_connect_btn_5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.server_background_5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -555,38 +266,18 @@
 
         internal System.Windows.Forms.Label link_ets2mp;
         internal System.Windows.Forms.Label about_launcher;
-        internal System.Windows.Forms.PictureBox server_connect_btn_3;
-        internal System.Windows.Forms.PictureBox server_connect_btn_2;
-        internal System.Windows.Forms.PictureBox server_connect_btn_1;
-        internal System.Windows.Forms.Label server_loc_3;
-        internal System.Windows.Forms.Label server_loc_2;
-        internal System.Windows.Forms.Label server_loc_1;
-        internal System.Windows.Forms.Label server_players_3;
-        internal System.Windows.Forms.Label server_players_2;
-        internal System.Windows.Forms.Label server_players_1;
-        internal System.Windows.Forms.Label server_status_3;
-        internal System.Windows.Forms.Label server_status_2;
-        internal System.Windows.Forms.Label server_status_1;
         internal System.Windows.Forms.PictureBox news_slider;
-        internal System.Windows.Forms.PictureBox server_background_3;
-        internal System.Windows.Forms.PictureBox server_background_2;
-        internal System.Windows.Forms.PictureBox server_background_1;
         internal System.Windows.Forms.Label subline_title;
-        internal System.Windows.Forms.Label headline_title;
-        internal System.Windows.Forms.PictureBox Updates_btn;
-        internal System.Windows.Forms.PictureBox Play_btn;
+        internal System.Windows.Forms.PictureBox Mods_btn;
         internal System.Windows.Forms.PictureBox Settings_btn;
         internal System.Windows.Forms.Label design_creator;
-        internal System.Windows.Forms.PictureBox server_connect_btn_4;
-        internal System.Windows.Forms.Label server_loc_4;
-        internal System.Windows.Forms.Label server_players_4;
-        internal System.Windows.Forms.Label server_status_4;
-        internal System.Windows.Forms.PictureBox server_background_4;
-        internal System.Windows.Forms.PictureBox server_connect_btn_5;
-        internal System.Windows.Forms.Label server_loc_5;
-        internal System.Windows.Forms.Label server_players_5;
-        internal System.Windows.Forms.Label server_status_5;
-        internal System.Windows.Forms.PictureBox server_background_5;
+        private System.Windows.Forms.Panel Header_Panel;
+        private System.Windows.Forms.Panel Footer_Panel;
+        private System.Windows.Forms.Panel serverspanel;
+        private System.Windows.Forms.Panel Footer_seperator;
+        private System.Windows.Forms.PictureBox Logo;
+        private System.Windows.Forms.Label TruckersMPUpdateProgressLabel;
+        private CProgressBar TruckersMPUpdateProgress;
     }
 }
 

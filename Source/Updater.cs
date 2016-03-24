@@ -10,7 +10,7 @@ using System.Net;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 
-namespace ets2mplauncher
+namespace truckersmplauncher
 {
     public partial class Updater : Form
     {
@@ -21,9 +21,6 @@ namespace ets2mplauncher
 
         public void Update(String Location)
         {
-            String workdir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/ets2mplauncher";
-            String self = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
-
             using (WebClient downloadClient = new WebClient())
             {
                 downloadClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(delegate(object sender, DownloadProgressChangedEventArgs e)
@@ -46,6 +43,7 @@ namespace ets2mplauncher
                             Application.Restart();
                         }
                     });
+
                 downloadClient.DownloadFileAsync(new Uri(Location), System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName + ".new");
             }
         }

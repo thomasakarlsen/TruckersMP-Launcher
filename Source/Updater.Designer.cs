@@ -1,4 +1,4 @@
-﻿namespace ets2mplauncher
+﻿namespace truckersmplauncher
 {
     partial class Updater
     {
@@ -63,7 +63,7 @@
             this.MinimizeBox = false;
             this.Name = "Updater";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ETS2MP Launcher";
+            this.Text = "TruckersMP Launcher";
             this.ResumeLayout(false);
             this.PerformLayout();
 

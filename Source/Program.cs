@@ -6,7 +6,7 @@ using System.Net;
 using Newtonsoft.Json.Linq;
 using System.Reflection;
 
-namespace ets2mplauncher
+namespace truckersmplauncher
 {
     static class Program
     {
@@ -52,7 +52,7 @@ namespace ets2mplauncher
             }
 
             //Autoupdate if enabled
-            if (Properties.Settings.Default.aplauncher == true)
+            if (Properties.Settings.Default.AutoUpdateLauncher == true)
             {
                 checkForUpdates();
             }
@@ -73,13 +73,30 @@ namespace ets2mplauncher
 
         private void checkForUpdates()
         {
-            WebClient webClient = new WebClient();
-            JObject latestver = JObject.Parse(webClient.DownloadString("http://theunknownkiller.tk/ets2mplauncher/api/latest.php"));
+            JObject latestver = new JObject() ;
+            using (WebClient client = new WebClient())
+            {
+                try
+                {
+                    latestver = JObject.Parse(client.DownloadString("http://thomasakarlsen.com/truckersmplauncher/api/latest.php"));
+                }
+                catch (WebException)
+                {
+                    Console.WriteLine("Unable to connect to launcher API. Cannot check for new version");
+                    Main main = new Main();
+                    main.Show();
+                    return;
+                }
+            }
+            
             Console.WriteLine(latestver);
             Console.WriteLine(Properties.Settings.Default.LauncherVersion);
-            if (!Properties.Settings.Default.LauncherVersion.Equals((string)latestver["Version"]))
+            string gotVer = (string)latestver["Version"];
+            string localVer = Properties.Settings.Default.LauncherVersion;
+
+            if (String.Compare(gotVer, localVer, true) > 0)
             {
-                DialogResult dialogResult = MessageBox.Show("Current version is: " + Properties.Settings.Default.LauncherVersion + "\nLatest version is: " + (string)latestver["Version"] + "\n\nThere is an update available!\nDo you want to update now?", "ETS2MP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show("Current version is: " + Properties.Settings.Default.LauncherVersion + "\nLatest version is: " + (string)latestver["Version"] + "\n\nThere is an update available!\nDo you want to update now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Updater updater = new Updater();

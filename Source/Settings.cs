@@ -9,36 +9,33 @@ using System.Windows.Forms;
 using System.Net;
 using Newtonsoft.Json.Linq;
 
-namespace ets2mplauncher
+namespace truckersmplauncher
 {
     public partial class Settings : Form
     {
         public Settings()
         {
             InitializeComponent();
+            this.FormClosed += new FormClosedEventHandler(Done_btn_Click);
 
-            //Directory
-            ets2mp_dir_txt.Text = Properties.Settings.Default.mploc;
 
             //Launcher
-            LauncherClose_chkbox.Checked = Properties.Settings.Default.launchclose;
-            AutoUpdate_chkbox.Checked = Properties.Settings.Default.aplauncher;
+            LauncherClose_chkbox.Checked = Properties.Settings.Default.KeepLauncherOpen;
+            AutoUpdate_chkbox.Checked = Properties.Settings.Default.AutoUpdateLauncher;
+            AutoUpdate_TMP_chkbox.Checked = Properties.Settings.Default.AutoUpdateTMP;
 
             //ETS2
-            ets2sin_chkbox.Checked = Properties.Settings.Default.ets2sin;
+            ets2sin_chkbox.Checked = Properties.Settings.Default.ETS2NoIntro;
+            ets2_launchargs.Text = Properties.Settings.Default.ETS2LaunchArguments;
+
+            //ATS
+            atssin_chkbox.Checked = Properties.Settings.Default.ATSNoIntro;
+            ats_launchargs.Text = Properties.Settings.Default.ATSLaunchArguments;
         }
 
         //
         // Buttons
         //
-
-        private void ets2mp_brw_btn_Click(object sender, EventArgs e)
-        {
-            if (Browse_Dialog.ShowDialog() == DialogResult.OK)
-            {
-                ets2mp_dir_txt.Text = Browse_Dialog.SelectedPath;
-            }
-        }
 
         private void UpdateCheck_btn_Click(object sender, EventArgs e)
         {
@@ -47,15 +44,19 @@ namespace ets2mplauncher
 
         private void Done_btn_Click(object sender, EventArgs e)
         {
-            //Directory
-            Properties.Settings.Default.mploc = ets2mp_dir_txt.Text;
 
             //Launcher
-            Properties.Settings.Default.launchclose = LauncherClose_chkbox.Checked;
-            Properties.Settings.Default.aplauncher = AutoUpdate_chkbox.Checked;
+            Properties.Settings.Default.KeepLauncherOpen = LauncherClose_chkbox.Checked;
+            Properties.Settings.Default.AutoUpdateLauncher = AutoUpdate_chkbox.Checked;
+            Properties.Settings.Default.AutoUpdateTMP = AutoUpdate_TMP_chkbox.Checked;
 
             //ETS2
-            Properties.Settings.Default.ets2sin = ets2sin_chkbox.Checked;
+            Properties.Settings.Default.ETS2NoIntro = ets2sin_chkbox.Checked;
+            Properties.Settings.Default.ETS2LaunchArguments = ets2_launchargs.Text;
+
+            //ATS
+            Properties.Settings.Default.ATSNoIntro = atssin_chkbox.Checked;
+            Properties.Settings.Default.ATSLaunchArguments = ats_launchargs.Text;
 
             Properties.Settings.Default.Save();
             this.Close();
@@ -67,17 +68,33 @@ namespace ets2mplauncher
 
         private void checkForUpdates()
         {
-            WebClient verClient = new WebClient();
-            JObject latestver = JObject.Parse(verClient.DownloadString("http://theunknownkiller.tk/ets2mplauncher/api/latest.php"));
+            JObject latestver = new JObject();
+            using (WebClient client = new WebClient())
+            {
+                try
+                {
+                    latestver = JObject.Parse(client.DownloadString("http://thomasakarlsen.com/truckersmplauncher/api/latest.php"));
+                }
+                catch (WebException)
+                {
+                    Console.WriteLine("Unable to connect to launcher API. Cannot check for new version");
+                    MessageBox.Show("Unable to connect to launcher API.\nUpdate cancelled.", "TruckersMP Launcher", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
             Console.WriteLine(latestver);
             Console.WriteLine(Properties.Settings.Default.LauncherVersion);
-            if (Properties.Settings.Default.LauncherVersion.Equals((string)latestver["Version"]))
+
+            string gotVer = (string)latestver["Version"];
+            string localVer = Properties.Settings.Default.LauncherVersion;
+
+            if ( String.Compare(gotVer, localVer, true) < 0)
             {
-                MessageBox.Show("Current version is: " + Properties.Settings.Default.LauncherVersion + "\nLatest version is: " + (string)latestver["Version"] + "\n\nYou already have the newest version!\nThere is no need for you to update!", "ETS2MP Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Current version is: " + Properties.Settings.Default.LauncherVersion + "\nLatest version is: " + (string)latestver["Version"] + "\n\nYou already have the newest version!\nThere is no need for you to update!", "TruckersMP Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else 
             {
-                DialogResult dialogResult = MessageBox.Show("Current version is: " + Properties.Settings.Default.LauncherVersion + "\nLatest version is: " + (string)latestver["Version"] + "\n\nThere is an update available!\nDo you want to update now?", "ETS2MP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show("Current version is: " + Properties.Settings.Default.LauncherVersion + "\nLatest version is: " + (string)latestver["Version"] + "\n\nThere is an update available!\nDo you want to update now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Updater updater = new Updater();

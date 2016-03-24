@@ -7,8 +7,8 @@
     <ProjectGuid>{F42CA4FA-DA32-4C72-807E-5E20CA916F35}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ets2mplauncher</RootNamespace>
-    <AssemblyName>ets2mplauncher</AssemblyName>
+    <RootNamespace>truckersmplauncher</RootNamespace>
+    <AssemblyName>truckersmplauncher</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -47,7 +47,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logohd.ico</ApplicationIcon>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -68,7 +68,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ets2mplauncher.Program</StartupObject>
+    <StartupObject>truckersmplauncher.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -94,17 +94,14 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="CProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FirstTime.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FirstTime.Designer.cs">
-      <DependentUpon>FirstTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,9 +122,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FirstTime.resx">
-      <DependentUpon>FirstTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -159,24 +153,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ServerStatusModule.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Button_About.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Button_Play.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ServerStatusHeader.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\logohd.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
@@ -199,22 +175,20 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\updates_btn.png" />
+    <None Include="Resources\play_btn_hover.png" />
+    <None Include="Resources\mods_btn.png" />
     <None Include="Resources\settings_btn.png" />
-    <None Include="Resources\server_connect_btn.png" />
-    <None Include="Resources\server_bar.png" />
+    <None Include="Resources\limit.png" />
     <None Include="Resources\play_btn.png" />
+    <None Include="Resources\favicon.png" />
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\game.png" />
+    <None Include="Resources\players.png" />
+    <None Include="Resources\server_connect_btn.png" />
     <None Include="Resources\news_blank.png" />
-    <None Include="Resources\bg.png" />
-    <None Include="Resources\Button_Refresh.png" />
     <None Include="bin\Release\Newtonsoft.Json.dll" />
     <EmbeddedResource Include="lib\Newtonsoft.Json.dll" />
-    <Content Include="logohd.ico" />
-    <None Include="Resources\Button_Play_Clicked.png" />
-    <None Include="Resources\Button_Settings.png" />
-    <None Include="Resources\Banner_Telemetry.png" />
-    <None Include="Resources\Button_UpdateMods.png" />
-    <None Include="Resources\banner.png" />
+    <Content Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

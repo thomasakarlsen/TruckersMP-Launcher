@@ -1,2 +1,2 @@
-# Unofficial Euro Truck 2 Multiplayer Mod Launcher
-Made by TheUnknownKiller
+# Unofficial TruckersMP Mod Launcher
+Made by TheUnknownNO

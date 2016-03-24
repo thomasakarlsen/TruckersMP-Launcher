@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace ets2mplauncher
+namespace truckersmplauncher
 {
     public partial class About : Form
     {
@@ -18,7 +18,7 @@ namespace ets2mplauncher
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://forum.ets2mp.com/index.php?/user/20457-theunknownkiller/");
+            System.Diagnostics.Process.Start("http://forum.truckersmp.com/index.php?/user/20457-theunknownkiller/");
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

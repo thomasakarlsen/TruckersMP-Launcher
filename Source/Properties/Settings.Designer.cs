@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ets2mplauncher.Properties {
+namespace truckersmplauncher.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,43 +25,31 @@ namespace ets2mplauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string mploc {
-            get {
-                return ((string)(this["mploc"]));
-            }
-            set {
-                this["mploc"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool launchclose {
+        public bool KeepLauncherOpen {
             get {
-                return ((bool)(this["launchclose"]));
+                return ((bool)(this["KeepLauncherOpen"]));
             }
             set {
-                this["launchclose"] = value;
+                this["KeepLauncherOpen"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ets2sin {
+        public bool ETS2NoIntro {
             get {
-                return ((bool)(this["ets2sin"]));
+                return ((bool)(this["ETS2NoIntro"]));
             }
             set {
-                this["ets2sin"] = value;
+                this["ETS2NoIntro"] = value;
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.05")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.06")]
         public string LauncherVersion {
             get {
                 return ((string)(this["LauncherVersion"]));
@@ -71,12 +59,72 @@ namespace ets2mplauncher.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool aplauncher {
+        public bool AutoUpdateLauncher {
             get {
-                return ((bool)(this["aplauncher"]));
+                return ((bool)(this["AutoUpdateLauncher"]));
             }
             set {
-                this["aplauncher"] = value;
+                this["AutoUpdateLauncher"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ETS2LaunchArguments {
+            get {
+                return ((string)(this["ETS2LaunchArguments"]));
+            }
+            set {
+                this["ETS2LaunchArguments"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ATSNoIntro {
+            get {
+                return ((bool)(this["ATSNoIntro"]));
+            }
+            set {
+                this["ATSNoIntro"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ATSLaunchArguments {
+            get {
+                return ((string)(this["ATSLaunchArguments"]));
+            }
+            set {
+                this["ATSLaunchArguments"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoUpdateTMP {
+            get {
+                return ((bool)(this["AutoUpdateTMP"]));
+            }
+            set {
+                this["AutoUpdateTMP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UpdateServers {
+            get {
+                return ((bool)(this["UpdateServers"]));
+            }
+            set {
+                this["UpdateServers"] = value;
             }
         }
     }

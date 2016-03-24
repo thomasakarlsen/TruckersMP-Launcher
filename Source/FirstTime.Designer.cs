@@ -1,4 +1,4 @@
-﻿namespace ets2mplauncher
+﻿namespace truckersmplauncher
 {
     partial class FirstTime
     {
@@ -37,9 +37,9 @@
             this.ets2mp_dir_txt = new System.Windows.Forms.TextBox();
             this.ets2mp_dir_label = new System.Windows.Forms.Label();
             this.Launcher_container = new System.Windows.Forms.GroupBox();
+            this.AutoUpdate_chkbox = new System.Windows.Forms.CheckBox();
             this.LauncherClose_chkbox = new System.Windows.Forms.CheckBox();
             this.Done_btn = new System.Windows.Forms.Button();
-            this.AutoUpdate_chkbox = new System.Windows.Forms.CheckBox();
             this.Directories_container.SuspendLayout();
             this.Launcher_container.SuspendLayout();
             this.SuspendLayout();
@@ -50,9 +50,9 @@
             this.Title_Label.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Title_Label.Location = new System.Drawing.Point(93, 8);
             this.Title_Label.Name = "Title_Label";
-            this.Title_Label.Size = new System.Drawing.Size(348, 23);
+            this.Title_Label.Size = new System.Drawing.Size(376, 23);
             this.Title_Label.TabIndex = 0;
-            this.Title_Label.Text = "Welcome to the unoffical ETS2MP Launcher!";
+            this.Title_Label.Text = "Welcome to the unoffical TruckersMP Launcher!";
             // 
             // Title_Desc
             // 
@@ -89,9 +89,9 @@
             // 
             // ets2mp_dir_txt
             // 
-            this.ets2mp_dir_txt.Location = new System.Drawing.Point(77, 20);
+            this.ets2mp_dir_txt.Location = new System.Drawing.Point(99, 20);
             this.ets2mp_dir_txt.Name = "ets2mp_dir_txt";
-            this.ets2mp_dir_txt.Size = new System.Drawing.Size(362, 27);
+            this.ets2mp_dir_txt.Size = new System.Drawing.Size(340, 27);
             this.ets2mp_dir_txt.TabIndex = 2;
             // 
             // ets2mp_dir_label
@@ -99,9 +99,9 @@
             this.ets2mp_dir_label.AutoSize = true;
             this.ets2mp_dir_label.Location = new System.Drawing.Point(6, 23);
             this.ets2mp_dir_label.Name = "ets2mp_dir_label";
-            this.ets2mp_dir_label.Size = new System.Drawing.Size(65, 19);
+            this.ets2mp_dir_label.Size = new System.Drawing.Size(87, 19);
             this.ets2mp_dir_label.TabIndex = 0;
-            this.ets2mp_dir_label.Text = "ETS2MP:";
+            this.ets2mp_dir_label.Text = "TruckersMP:";
             // 
             // Launcher_container
             // 
@@ -114,6 +114,18 @@
             this.Launcher_container.TabIndex = 12;
             this.Launcher_container.TabStop = false;
             this.Launcher_container.Text = "Launcher";
+            // 
+            // AutoUpdate_chkbox
+            // 
+            this.AutoUpdate_chkbox.AutoSize = true;
+            this.AutoUpdate_chkbox.Checked = true;
+            this.AutoUpdate_chkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.AutoUpdate_chkbox.Location = new System.Drawing.Point(7, 50);
+            this.AutoUpdate_chkbox.Name = "AutoUpdate_chkbox";
+            this.AutoUpdate_chkbox.Size = new System.Drawing.Size(285, 23);
+            this.AutoUpdate_chkbox.TabIndex = 1;
+            this.AutoUpdate_chkbox.Text = "Check for launcher updates automaticly";
+            this.AutoUpdate_chkbox.UseVisualStyleBackColor = true;
             // 
             // LauncherClose_chkbox
             // 
@@ -136,18 +148,6 @@
             this.Done_btn.UseVisualStyleBackColor = true;
             this.Done_btn.Click += new System.EventHandler(this.Done_btn_Click);
             // 
-            // AutoUpdate_chkbox
-            // 
-            this.AutoUpdate_chkbox.AutoSize = true;
-            this.AutoUpdate_chkbox.Checked = true;
-            this.AutoUpdate_chkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.AutoUpdate_chkbox.Location = new System.Drawing.Point(7, 50);
-            this.AutoUpdate_chkbox.Name = "AutoUpdate_chkbox";
-            this.AutoUpdate_chkbox.Size = new System.Drawing.Size(285, 23);
-            this.AutoUpdate_chkbox.TabIndex = 1;
-            this.AutoUpdate_chkbox.Text = "Check for launcher updates automaticly";
-            this.AutoUpdate_chkbox.UseVisualStyleBackColor = true;
-            // 
             // FirstTime
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,7 +164,7 @@
             this.MinimizeBox = false;
             this.Name = "FirstTime";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ETS2MP Launcher - First time setup";
+            this.Text = "TruckersMP Launcher - First time setup";
             this.Load += new System.EventHandler(this.FirstTime_Load);
             this.Directories_container.ResumeLayout(false);
             this.Directories_container.PerformLayout();

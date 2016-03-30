@@ -49,7 +49,7 @@ namespace truckersmplauncher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.06")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.07")]
         public string LauncherVersion {
             get {
                 return ((string)(this["LauncherVersion"]));
@@ -106,7 +106,7 @@ namespace truckersmplauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool AutoUpdateTMP {
             get {
                 return ((bool)(this["AutoUpdateTMP"]));
@@ -119,12 +119,12 @@ namespace truckersmplauncher.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool UpdateServers {
+        public bool SendStatistics {
             get {
-                return ((bool)(this["UpdateServers"]));
+                return ((bool)(this["SendStatistics"]));
             }
             set {
-                this["UpdateServers"] = value;
+                this["SendStatistics"] = value;
             }
         }
     }

@@ -36,13 +36,13 @@
             this.Header_Panel = new System.Windows.Forms.Panel();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.Footer_Panel = new System.Windows.Forms.Panel();
+            this.TruckersMPUpdateProgressLabel = new System.Windows.Forms.Label();
+            this.TruckersMPUpdateProgress = new truckersmplauncher.CProgressBar();
             this.Footer_seperator = new System.Windows.Forms.Panel();
             this.serverspanel = new System.Windows.Forms.Panel();
             this.news_slider = new System.Windows.Forms.PictureBox();
             this.Mods_btn = new System.Windows.Forms.PictureBox();
             this.Settings_btn = new System.Windows.Forms.PictureBox();
-            this.TruckersMPUpdateProgressLabel = new System.Windows.Forms.Label();
-            this.TruckersMPUpdateProgress = new truckersmplauncher.CProgressBar();
             this.Header_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.Footer_Panel.SuspendLayout();
@@ -87,9 +87,9 @@
             this.subline_title.ForeColor = System.Drawing.Color.White;
             this.subline_title.Location = new System.Drawing.Point(17, 39);
             this.subline_title.Name = "subline_title";
-            this.subline_title.Size = new System.Drawing.Size(216, 18);
+            this.subline_title.Size = new System.Drawing.Size(223, 18);
             this.subline_title.TabIndex = 30;
-            this.subline_title.Text = "UNOFFICIAL LAUNCHER 0.6 ALPHA";
+            this.subline_title.Text = "UNOFFICIAL LAUNCHER 0.07 ALPHA";
             // 
             // design_creator
             // 
@@ -141,6 +141,34 @@
             this.Footer_Panel.Name = "Footer_Panel";
             this.Footer_Panel.Size = new System.Drawing.Size(1000, 37);
             this.Footer_Panel.TabIndex = 61;
+            // 
+            // TruckersMPUpdateProgressLabel
+            // 
+            this.TruckersMPUpdateProgressLabel.AutoSize = true;
+            this.TruckersMPUpdateProgressLabel.BackColor = System.Drawing.Color.Transparent;
+            this.TruckersMPUpdateProgressLabel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TruckersMPUpdateProgressLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.TruckersMPUpdateProgressLabel.Location = new System.Drawing.Point(713, 12);
+            this.TruckersMPUpdateProgressLabel.Name = "TruckersMPUpdateProgressLabel";
+            this.TruckersMPUpdateProgressLabel.Size = new System.Drawing.Size(154, 15);
+            this.TruckersMPUpdateProgressLabel.TabIndex = 52;
+            this.TruckersMPUpdateProgressLabel.Text = "Downloading TruckersMP...";
+            this.TruckersMPUpdateProgressLabel.Visible = false;
+            // 
+            // TruckersMPUpdateProgress
+            // 
+            this.TruckersMPUpdateProgress.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.TruckersMPUpdateProgress.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.TruckersMPUpdateProgress.FillStyle = truckersmplauncher.CProgressBar.FillStyles.Solid;
+            this.TruckersMPUpdateProgress.Location = new System.Drawing.Point(558, 8);
+            this.TruckersMPUpdateProgress.Maximum = 100;
+            this.TruckersMPUpdateProgress.Minimum = 0;
+            this.TruckersMPUpdateProgress.Name = "TruckersMPUpdateProgress";
+            this.TruckersMPUpdateProgress.Size = new System.Drawing.Size(150, 22);
+            this.TruckersMPUpdateProgress.Step = 10;
+            this.TruckersMPUpdateProgress.TabIndex = 53;
+            this.TruckersMPUpdateProgress.Value = 0;
+            this.TruckersMPUpdateProgress.Visible = false;
             // 
             // Footer_seperator
             // 
@@ -201,34 +229,6 @@
             this.Settings_btn.TabIndex = 27;
             this.Settings_btn.TabStop = false;
             this.Settings_btn.Click += new System.EventHandler(this.Mods_btn_Click);
-            // 
-            // TruckersMPUpdateProgressLabel
-            // 
-            this.TruckersMPUpdateProgressLabel.AutoSize = true;
-            this.TruckersMPUpdateProgressLabel.BackColor = System.Drawing.Color.Transparent;
-            this.TruckersMPUpdateProgressLabel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TruckersMPUpdateProgressLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.TruckersMPUpdateProgressLabel.Location = new System.Drawing.Point(713, 12);
-            this.TruckersMPUpdateProgressLabel.Name = "TruckersMPUpdateProgressLabel";
-            this.TruckersMPUpdateProgressLabel.Size = new System.Drawing.Size(154, 15);
-            this.TruckersMPUpdateProgressLabel.TabIndex = 52;
-            this.TruckersMPUpdateProgressLabel.Text = "Downloading TruckersMP...";
-            this.TruckersMPUpdateProgressLabel.Visible = false;
-            // 
-            // TruckersMPUpdateProgress
-            // 
-            this.TruckersMPUpdateProgress.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.TruckersMPUpdateProgress.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.TruckersMPUpdateProgress.FillStyle = truckersmplauncher.CProgressBar.FillStyles.Solid;
-            this.TruckersMPUpdateProgress.Location = new System.Drawing.Point(558, 8);
-            this.TruckersMPUpdateProgress.Maximum = 100;
-            this.TruckersMPUpdateProgress.Minimum = 0;
-            this.TruckersMPUpdateProgress.Name = "TruckersMPUpdateProgress";
-            this.TruckersMPUpdateProgress.Size = new System.Drawing.Size(150, 22);
-            this.TruckersMPUpdateProgress.Step = 10;
-            this.TruckersMPUpdateProgress.TabIndex = 53;
-            this.TruckersMPUpdateProgress.Value = 0;
-            this.TruckersMPUpdateProgress.Visible = false;
             // 
             // Main
             // 

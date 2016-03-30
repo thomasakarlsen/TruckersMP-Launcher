@@ -63,6 +63,26 @@ namespace truckersmplauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap checkbox_checked {
+            get {
+                object obj = ResourceManager.GetObject("checkbox_checked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap checkbox_unchecked {
+            get {
+                object obj = ResourceManager.GetObject("checkbox_unchecked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap favicon {
             get {
                 object obj = ResourceManager.GetObject("favicon", resourceCulture);
@@ -133,9 +153,9 @@ namespace truckersmplauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap play_btn {
+        internal static System.Drawing.Bitmap play_mp_btn {
             get {
-                object obj = ResourceManager.GetObject("play_btn", resourceCulture);
+                object obj = ResourceManager.GetObject("play_mp_btn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +163,29 @@ namespace truckersmplauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap play_btn_hover {
+        internal static System.Drawing.Bitmap play_mp_btn_hover {
             get {
-                object obj = ResourceManager.GetObject("play_btn_hover", resourceCulture);
+                object obj = ResourceManager.GetObject("play_mp_btn_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play_sp_btn {
+            get {
+                object obj = ResourceManager.GetObject("play_sp_btn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play_sp_btn_hover {
+            get {
+                object obj = ResourceManager.GetObject("play_sp_btn_hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +216,16 @@ namespace truckersmplauncher.Properties {
         internal static System.Drawing.Bitmap settings_btn {
             get {
                 object obj = ResourceManager.GetObject("settings_btn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap version {
+            get {
+                object obj = ResourceManager.GetObject("version", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

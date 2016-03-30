@@ -73,7 +73,7 @@ namespace truckersmplauncher
             {
                 try
                 {
-                    latestver = JObject.Parse(client.DownloadString("http://thomasakarlsen.com/truckersmplauncher/api/latest.php"));
+                    latestver = JObject.Parse(client.DownloadString("http://api.thomasakarlsen.com/truckersmplauncher/version/latest"));
                 }
                 catch (WebException)
                 {

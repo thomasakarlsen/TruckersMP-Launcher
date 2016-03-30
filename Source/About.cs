@@ -23,12 +23,12 @@ namespace truckersmplauncher
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/TheUnknownKiller/ETS2MPLauncher");
+            System.Diagnostics.Process.Start("https://github.com/TheUnknownNO/TruckersMP-Launcher");
         }
 
         private void CopyrightNotice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/TheUnknownKiller/ETS2MPLauncher/blob/master/LICENSE");
+            System.Diagnostics.Process.Start("https://github.com/TheUnknownNO/TruckersMP-Launcher/blob/master/LICENSE");
         }
 
     }

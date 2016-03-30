@@ -22,8 +22,8 @@ namespace truckersmplauncher
 
         private JArray Servers = new JArray();
         public String TruckersMPLocation = "";
-        public String ETS2MPLocation = "";
-        public String ATSMPLocation = "";
+        public String ETS2Location = "";
+        public String ATSLocation = "";
         public Boolean ETS2Installed = false;
         public Boolean ATSInstalled = false;
         private Boolean runGame = false;
@@ -39,8 +39,8 @@ namespace truckersmplauncher
             if (readKey != null)
             {
                 TruckersMPLocation = (string)readKey.GetValue("InstallDir");
-                ETS2MPLocation = (string)readKey.GetValue("InstallLocationETS2");
-                ETS2MPLocation = (string)readKey.GetValue("InstallLocationATS");
+                ETS2Location = (string)readKey.GetValue("InstallLocationETS2");
+                ATSLocation = (string)readKey.GetValue("InstallLocationATS");
 
                 if (!System.IO.Directory.Exists(TruckersMPLocation)) {
                     DialogResult dialogResult = MessageBox.Show("Unable to locate TruckersMP.\n\nDo you want to install it now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -119,26 +119,26 @@ namespace truckersmplauncher
         private void Button_Hover(object sender, System.EventArgs e)
         {
             var button = ((PictureBox)sender);
-            if (button.Name == "ETS2MP")
+            if (button.Name.Contains("MP"))
             {
-                button.BackgroundImage = Properties.Resources.play_btn_hover;
+                button.BackgroundImage = Properties.Resources.play_mp_btn_hover;
             }
-            else if (button.Name == "ATSMP")
+            else
             {
-                button.BackgroundImage = Properties.Resources.play_btn_hover;
+                button.BackgroundImage = Properties.Resources.play_sp_btn_hover;
             }
         }
 
         private void Button_HoverLeave(object sender, System.EventArgs e)
         {
             var button = ((PictureBox)sender);
-            if (button.Name == "ETS2MP")
+            if (button.Name.Contains("MP"))
             {
-                button.BackgroundImage = Properties.Resources.play_btn;
+                button.BackgroundImage = Properties.Resources.play_mp_btn;
             }
-            else if (button.Name == "ATSMP")
+            else
             {
-                button.BackgroundImage = Properties.Resources.play_btn;
+                button.BackgroundImage = Properties.Resources.play_sp_btn;
             }
         }
 
@@ -149,7 +149,9 @@ namespace truckersmplauncher
 
         private void Updates_btn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This feature has not been implemented", "TruckersMP - Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult dialogResult = MessageBox.Show("This feature is not implemented yet!", "TruckersMP Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //Mods mods = new Mods(this);
+            //mods.ShowDialog();
         }
 
         private void Settings_btn_Hover(object sender, System.EventArgs e)
@@ -254,7 +256,7 @@ namespace truckersmplauncher
             {
                 try
                 {
-                    releasedata = JObject.Parse(client.DownloadString("https://thomasakarlsen.com/truckersmplauncher/api/releases.php"));
+                    releasedata = JObject.Parse(client.DownloadString("http://api.thomasakarlsen.com/truckersmplauncher/releases/latest"));
                     Console.WriteLine(releasedata);
                 }
                 catch (WebException)
@@ -307,8 +309,6 @@ namespace truckersmplauncher
                                     startInfo.Arguments = "/verysilent";
                                     try
                                     {
-                                        // Start the process with the info we specified.
-                                        // Call WaitForExit and then the using-statement will close.
                                         using (Process exeProcess = Process.Start(startInfo))
                                         {
                                             exeProcess.WaitForExit();
@@ -333,7 +333,7 @@ namespace truckersmplauncher
                             }
                         });
 
-                    downloadClient.DownloadFileAsync(new Uri("http://thomasakarlsen.com/truckersmplauncher/releases/truckersmp/client_" + version + ".exe"), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Update TruckersMP.exe");
+                    downloadClient.DownloadFileAsync(new Uri((String)releasedata["Location"]), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Update TruckersMP.exe");
                 }
             }
         }
@@ -344,7 +344,13 @@ namespace truckersmplauncher
 
             game = ((PictureBox)sender).Name;
 
-            if (Properties.Settings.Default.AutoUpdateTMP)
+            if (game.Contains("MP") && !Environment.Is64BitOperatingSystem)
+            {
+                MessageBox.Show("The TruckersMP Mod does not support 32-Bit operating systems.\nPlease upgrade your system to 64-Bit.", "TruckersMP Launcher - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Properties.Settings.Default.AutoUpdateTMP && game.Contains("MP"))
             {
                 var result = checkTMPUpdate();
                 if (!(result == 0))
@@ -355,7 +361,32 @@ namespace truckersmplauncher
                 } 
             }
 
-            if (game == "ETS2MP")
+            if (game == "ETS2")
+            {
+                if (Process.GetProcessesByName("eurotrucks2").Length == 0)
+                {
+                    var binPath = "\\bin\\win_x86";
+
+                    if (Environment.Is64BitOperatingSystem) {
+                        binPath = "\\bin\\win_x64";
+                    }
+
+                    if (Properties.Settings.Default.ETS2NoIntro)
+                    {
+                        Process.Start(ETS2Location + binPath + "\\eurotrucks2.exe ", "-nointro " + Properties.Settings.Default.ETS2LaunchArguments);
+                    }
+                    else
+                    {
+                        Process.Start(ETS2Location + binPath + "\\eurotrucks2.exe ", Properties.Settings.Default.ETS2LaunchArguments);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Euro Truck Simulator 2 is already running!", "TruckersMP Launcher - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else if (game == "ETS2MP")
             {
                 if (Process.GetProcessesByName("eurotrucks2").Length == 0)
                 {
@@ -365,12 +396,38 @@ namespace truckersmplauncher
                     }
                     else
                     {
-                        Process.Start(TruckersMPLocation + "\\launcher_ets2mp.exe", Properties.Settings.Default.ETS2LaunchArguments);
+                        Process.Start(TruckersMPLocation + "\\launcher_ets2mp.exe ", Properties.Settings.Default.ETS2LaunchArguments);
                     }
                 }
                 else
                 {
                     MessageBox.Show("Euro Truck Simulator 2 (Multiplayer) is already running!", "TruckersMP Launcher - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else if (game == "ATS")
+            {
+                if (Process.GetProcessesByName("amtrucks").Length == 0)
+                {
+                    var binPath = "\\bin\\win_x86";
+
+                    if (Environment.Is64BitOperatingSystem)
+                    {
+                        binPath = "\\bin\\win_x64";
+                    }
+
+                    if (Properties.Settings.Default.ATSNoIntro)
+                    {
+                        Process.Start(ATSLocation + binPath + "\\amtrucks.exe ", "-nointro " + Properties.Settings.Default.ATSLaunchArguments);
+                    }
+                    else
+                    {
+                        Process.Start(ATSLocation + binPath + "\\amtrucks.exe ", Properties.Settings.Default.ATSLaunchArguments);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("American Truck Simulator is already running!", "TruckersMP Launcher - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -384,7 +441,7 @@ namespace truckersmplauncher
                     }
                     else
                     {
-                        Process.Start(TruckersMPLocation + "\\launcher_atsmp.exe", Properties.Settings.Default.ATSLaunchArguments);
+                        Process.Start(TruckersMPLocation + "\\launcher_atsmp.exe ", Properties.Settings.Default.ATSLaunchArguments);
                     }
                 }
                 else
@@ -440,7 +497,7 @@ namespace truckersmplauncher
             serverspanel.Controls.Clear(); //Clear the panel, in case of refresh
 
             //
-            // Generate ETS2MP Section
+            // Generate ETS2 Section
             //
             if (ETS2Installed)
             { 
@@ -456,12 +513,23 @@ namespace truckersmplauncher
                 ets2mptitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
                 ets2mptitle.Location = new System.Drawing.Point(13, 8);
                 ets2mptitle.AutoSize = true;
-                ets2mptitle.Text = "Euro Truck Simulator 2 Multiplayer";
+                ets2mptitle.Text = "Euro Truck Simulator 2 (Multiplayer)";
+
+                PictureBox ets2spplay = new PictureBox();
+                ets2spplay.Location = new Point(745, 6);
+                ets2spplay.Size = new Size(102, 31);
+                ets2spplay.BackgroundImage = Properties.Resources.play_sp_btn;
+                ets2spplay.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+                ets2spplay.Name = "ETS2";
+                ets2spplay.Cursor = System.Windows.Forms.Cursors.Hand;
+                ets2spplay.Click += new System.EventHandler(this.launchGame);
+                ets2spplay.MouseHover += new System.EventHandler(this.Button_Hover);
+                ets2spplay.MouseLeave += new System.EventHandler(this.Button_HoverLeave);
 
                 PictureBox ets2mpplay = new PictureBox();
-                ets2mpplay.Location = new Point(882, 6);
-                ets2mpplay.Size = new Size(81, 31);
-                ets2mpplay.BackgroundImage = Properties.Resources.play_btn;
+                ets2mpplay.Location = new Point(853, 6);
+                ets2mpplay.Size = new Size(110, 31);
+                ets2mpplay.BackgroundImage = Properties.Resources.play_mp_btn;
                 ets2mpplay.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
                 ets2mpplay.Name = "ETS2MP";
                 ets2mpplay.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -471,6 +539,7 @@ namespace truckersmplauncher
 
                 serverspanel.Controls.Add(ets2mppanel);
                 ets2mppanel.Controls.Add(ets2mptitle);
+                ets2mppanel.Controls.Add(ets2spplay);
                 ets2mppanel.Controls.Add(ets2mpplay);
 
                 loc = loc + 59;
@@ -492,7 +561,7 @@ namespace truckersmplauncher
             }
 
             //
-            // Generate ATSMP Section
+            // Generate ATS Section
             //
             if (ATSInstalled)
             { 
@@ -508,12 +577,23 @@ namespace truckersmplauncher
                 atsmptitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
                 atsmptitle.Location = new System.Drawing.Point(13, 8);
                 atsmptitle.AutoSize = true;
-                atsmptitle.Text = "American Truck Simulator Multiplayer";
+                atsmptitle.Text = "American Truck Simulator (Multiplayer)";
+
+                PictureBox atsspplay = new PictureBox();
+                atsspplay.Location = new Point(745, 6);
+                atsspplay.Size = new Size(102, 31);
+                atsspplay.BackgroundImage = Properties.Resources.play_sp_btn;
+                atsspplay.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+                atsspplay.Name = "ATS";
+                atsspplay.Cursor = System.Windows.Forms.Cursors.Hand;
+                atsspplay.Click += new System.EventHandler(this.launchGame);
+                atsspplay.MouseHover += new System.EventHandler(this.Button_Hover);
+                atsspplay.MouseLeave += new System.EventHandler(this.Button_HoverLeave);
 
                 PictureBox atsmpplay = new PictureBox();
-                atsmpplay.Location = new Point(882, 6);
-                atsmpplay.Size = new Size(81, 31);
-                atsmpplay.BackgroundImage = Properties.Resources.play_btn;
+                atsmpplay.Location = new Point(853, 6);
+                atsmpplay.Size = new Size(110, 31);
+                atsmpplay.BackgroundImage = Properties.Resources.play_mp_btn;
                 atsmpplay.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
                 atsmpplay.Name = "ATSMP";
                 atsmpplay.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -523,6 +603,7 @@ namespace truckersmplauncher
 
                 serverspanel.Controls.Add(atsmppanel);
                 atsmppanel.Controls.Add(atsmptitle);
+                atsmppanel.Controls.Add(atsspplay);
                 atsmppanel.Controls.Add(atsmpplay);
 
                 loc = loc + 59;

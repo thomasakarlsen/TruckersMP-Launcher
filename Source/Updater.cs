@@ -17,35 +17,41 @@ namespace truckersmplauncher
         public Updater()
         {
             InitializeComponent();
+            subline_title.Text = "UNOFFICIAL LAUNCHER " + Properties.Settings.Default.LauncherVersion + " ALPHA";
         }
 
         public void Update(String Location)
         {
-            using (WebClient downloadClient = new WebClient())
+            System.Threading.ThreadPool.QueueUserWorkItem(delegate
             {
-                downloadClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(delegate(object sender, DownloadProgressChangedEventArgs e)
+                using (WebClient downloadClient = new WebClient())
                 {
-                    Console.WriteLine("Downloaded:" + e.ProgressPercentage.ToString());
-                    updater_action.Text = "Downloading update...";
-                    updater_progress.Value = e.ProgressPercentage;
-                });
-
-                downloadClient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler
-                    (delegate(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+                    downloadClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(delegate (object sender, DownloadProgressChangedEventArgs e)
                     {
-                        if (e.Error == null && !e.Cancelled)
-                        {
-                            Console.WriteLine("Download completed!");
-                            updater_action.Text = "Patching update...";
-
-                            System.IO.File.Replace(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName + ".new", System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName, System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName + ".old", true);
-                            updater_action.Text = "Patch complete! Restarting.";
-                            Application.Restart();
-                        }
+                        Console.WriteLine("Downloaded:" + e.ProgressPercentage.ToString());
+                        updater_action.Invoke((MethodInvoker)(() => updater_action.Text = "Downloading update..."));
+                        updater_progress.Value = e.ProgressPercentage;
                     });
 
-                downloadClient.DownloadFileAsync(new Uri(Location), System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName + ".new");
-            }
+                    downloadClient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler
+                        (delegate (object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+                        {
+                            if (e.Error == null && !e.Cancelled)
+                            {
+                                Console.WriteLine("Download completed!");
+                                updater_action.Invoke((MethodInvoker)(() => updater_action.Text = "Patching update..."));
+                                System.Threading.Thread.Sleep(1000);
+
+                                System.IO.File.Replace(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName + ".new", System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName, System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName + ".old", true);
+                                updater_action.Invoke((MethodInvoker)(() => updater_action.Text = "Patch complete! Restarting launcher"));
+                                System.Threading.Thread.Sleep(1000);
+                                Application.Restart();
+                            }
+                        });
+
+                    downloadClient.DownloadFileAsync(new Uri(Location), System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName + ".new");
+                }
+            });
         }
     }
 }

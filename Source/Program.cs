@@ -94,7 +94,7 @@ namespace truckersmplauncher
             string gotVer = (string)latestver["Version"];
             string localVer = Properties.Settings.Default.LauncherVersion;
 
-            if (String.Compare(gotVer, localVer, true) > 0)
+            if (string.Compare(gotVer, localVer, true) > 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Current version is: " + Properties.Settings.Default.LauncherVersion + "\nLatest version is: " + (string)latestver["Version"] + "\n\nThere is an update available!\nDo you want to update now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)

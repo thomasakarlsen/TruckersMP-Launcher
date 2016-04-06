@@ -14,22 +14,22 @@ namespace truckersmplauncher
         public About()
         {
             InitializeComponent();
+            subline_title.Text = "UNOFFICIAL LAUNCHER " + Properties.Settings.Default.LauncherVersion + " ALPHA";
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void devLink_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("http://forum.truckersmp.com/index.php?/user/20457-theunknownkiller/");
         }
 
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/TheUnknownNO/TruckersMP-Launcher");
-        }
-
-        private void CopyrightNotice_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void legalLink_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/TheUnknownNO/TruckersMP-Launcher/blob/master/LICENSE");
         }
 
+        private void githubLink_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/TheUnknownNO/TruckersMP-Launcher");
+        }
     }
 }

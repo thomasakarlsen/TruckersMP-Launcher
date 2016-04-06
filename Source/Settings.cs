@@ -17,7 +17,7 @@ namespace truckersmplauncher
         {
             InitializeComponent();
             this.FormClosed += new FormClosedEventHandler(Done_btn_Click);
-
+            subline_title.Text = "UNOFFICIAL LAUNCHER " + Properties.Settings.Default.LauncherVersion + " ALPHA";
 
             //Launcher
             LauncherClose_chkbox.Checked = Properties.Settings.Default.KeepLauncherOpen;
@@ -88,7 +88,7 @@ namespace truckersmplauncher
             string gotVer = (string)latestver["Version"];
             string localVer = Properties.Settings.Default.LauncherVersion;
 
-            if ( String.Compare(gotVer, localVer, true) < 0)
+            if ( string.Compare(gotVer, localVer, true) > 0)
             {
                 MessageBox.Show("Current version is: " + Properties.Settings.Default.LauncherVersion + "\nLatest version is: " + (string)latestver["Version"] + "\n\nYou already have the newest version!\nThere is no need for you to update!", "TruckersMP Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

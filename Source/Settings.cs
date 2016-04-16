@@ -17,12 +17,12 @@ namespace truckersmplauncher
         {
             InitializeComponent();
             this.FormClosed += new FormClosedEventHandler(Done_btn_Click);
-            subline_title.Text = "UNOFFICIAL LAUNCHER " + Properties.Settings.Default.LauncherVersion + " ALPHA";
 
             //Launcher
             LauncherClose_chkbox.Checked = Properties.Settings.Default.KeepLauncherOpen;
             AutoUpdate_chkbox.Checked = Properties.Settings.Default.AutoUpdateLauncher;
             AutoUpdate_TMP_chkbox.Checked = Properties.Settings.Default.AutoUpdateTMP;
+            StartSteam_chkbox.Checked = Properties.Settings.Default.StartSteam;
 
             //ETS2
             ets2sin_chkbox.Checked = Properties.Settings.Default.ETS2NoIntro;
@@ -49,6 +49,7 @@ namespace truckersmplauncher
             Properties.Settings.Default.KeepLauncherOpen = LauncherClose_chkbox.Checked;
             Properties.Settings.Default.AutoUpdateLauncher = AutoUpdate_chkbox.Checked;
             Properties.Settings.Default.AutoUpdateTMP = AutoUpdate_TMP_chkbox.Checked;
+            Properties.Settings.Default.StartSteam = StartSteam_chkbox.Checked;
 
             //ETS2
             Properties.Settings.Default.ETS2NoIntro = ets2sin_chkbox.Checked;

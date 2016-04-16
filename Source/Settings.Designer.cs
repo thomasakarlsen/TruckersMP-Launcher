@@ -47,11 +47,11 @@
             this.ats_launchargs = new System.Windows.Forms.TextBox();
             this.atssin_chkbox = new System.Windows.Forms.CheckBox();
             this.ats_launchargs_label = new System.Windows.Forms.Label();
-            this.subline_title = new System.Windows.Forms.Label();
             this.Header_Panel = new System.Windows.Forms.Panel();
+            this.Logo = new System.Windows.Forms.PictureBox();
             this.Footer_Panel = new System.Windows.Forms.Panel();
             this.Footer_seperator = new System.Windows.Forms.Panel();
-            this.Logo = new System.Windows.Forms.PictureBox();
+            this.StartSteam_chkbox = new System.Windows.Forms.CheckBox();
             this.Settings_tabControl.SuspendLayout();
             this.Launcher_tab.SuspendLayout();
             this.ets2_tab.SuspendLayout();
@@ -59,14 +59,14 @@
             this.ats_tab.SuspendLayout();
             this.ats_launchoptions.SuspendLayout();
             this.Header_Panel.SuspendLayout();
-            this.Footer_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
+            this.Footer_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // AutoUpdate_chkbox
             // 
             this.AutoUpdate_chkbox.AutoSize = true;
-            this.AutoUpdate_chkbox.Location = new System.Drawing.Point(8, 35);
+            this.AutoUpdate_chkbox.Location = new System.Drawing.Point(8, 64);
             this.AutoUpdate_chkbox.Name = "AutoUpdate_chkbox";
             this.AutoUpdate_chkbox.Size = new System.Drawing.Size(285, 23);
             this.AutoUpdate_chkbox.TabIndex = 1;
@@ -78,9 +78,9 @@
             this.LauncherClose_chkbox.AutoSize = true;
             this.LauncherClose_chkbox.Location = new System.Drawing.Point(8, 6);
             this.LauncherClose_chkbox.Name = "LauncherClose_chkbox";
-            this.LauncherClose_chkbox.Size = new System.Drawing.Size(291, 23);
+            this.LauncherClose_chkbox.Size = new System.Drawing.Size(156, 23);
             this.LauncherClose_chkbox.TabIndex = 0;
-            this.LauncherClose_chkbox.Text = "Do not close launcher after game launch";
+            this.LauncherClose_chkbox.Text = "Keep launcher open";
             this.LauncherClose_chkbox.UseVisualStyleBackColor = true;
             // 
             // UpdateCheck_btn
@@ -124,6 +124,7 @@
             // 
             // Launcher_tab
             // 
+            this.Launcher_tab.Controls.Add(this.StartSteam_chkbox);
             this.Launcher_tab.Controls.Add(this.AutoUpdate_TMP_chkbox);
             this.Launcher_tab.Controls.Add(this.LauncherClose_chkbox);
             this.Launcher_tab.Controls.Add(this.AutoUpdate_chkbox);
@@ -139,7 +140,7 @@
             // AutoUpdate_TMP_chkbox
             // 
             this.AutoUpdate_TMP_chkbox.AutoSize = true;
-            this.AutoUpdate_TMP_chkbox.Location = new System.Drawing.Point(8, 64);
+            this.AutoUpdate_TMP_chkbox.Location = new System.Drawing.Point(8, 93);
             this.AutoUpdate_TMP_chkbox.Name = "AutoUpdate_TMP_chkbox";
             this.AutoUpdate_TMP_chkbox.Size = new System.Drawing.Size(303, 23);
             this.AutoUpdate_TMP_chkbox.TabIndex = 2;
@@ -255,18 +256,6 @@
             this.ats_launchargs_label.TabIndex = 0;
             this.ats_launchargs_label.Text = "Command line:";
             // 
-            // subline_title
-            // 
-            this.subline_title.AutoSize = true;
-            this.subline_title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.subline_title.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subline_title.ForeColor = System.Drawing.Color.White;
-            this.subline_title.Location = new System.Drawing.Point(14, 40);
-            this.subline_title.Name = "subline_title";
-            this.subline_title.Size = new System.Drawing.Size(226, 18);
-            this.subline_title.TabIndex = 61;
-            this.subline_title.Text = "UNOFFICIAL LAUNCHER X.XX ALPHA";
-            // 
             // Header_Panel
             // 
             this.Header_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -274,12 +263,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Header_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
             this.Header_Panel.Controls.Add(this.Settings_tabControl);
-            this.Header_Panel.Controls.Add(this.subline_title);
             this.Header_Panel.Controls.Add(this.Logo);
             this.Header_Panel.Location = new System.Drawing.Point(0, 0);
             this.Header_Panel.Name = "Header_Panel";
             this.Header_Panel.Size = new System.Drawing.Size(564, 306);
             this.Header_Panel.TabIndex = 63;
+            // 
+            // Logo
+            // 
+            this.Logo.BackgroundImage = global::truckersmplauncher.Properties.Resources.launcherlogo_white;
+            this.Logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Logo.Location = new System.Drawing.Point(0, -14);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(289, 98);
+            this.Logo.TabIndex = 4;
+            this.Logo.TabStop = false;
             // 
             // Footer_Panel
             // 
@@ -303,15 +301,15 @@
             this.Footer_seperator.Size = new System.Drawing.Size(564, 1);
             this.Footer_seperator.TabIndex = 50;
             // 
-            // Logo
+            // StartSteam_chkbox
             // 
-            this.Logo.BackgroundImage = global::truckersmplauncher.Properties.Resources.logo;
-            this.Logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Logo.Location = new System.Drawing.Point(17, -3);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(213, 57);
-            this.Logo.TabIndex = 0;
-            this.Logo.TabStop = false;
+            this.StartSteam_chkbox.AutoSize = true;
+            this.StartSteam_chkbox.Location = new System.Drawing.Point(8, 35);
+            this.StartSteam_chkbox.Name = "StartSteam_chkbox";
+            this.StartSteam_chkbox.Size = new System.Drawing.Size(194, 23);
+            this.StartSteam_chkbox.TabIndex = 3;
+            this.StartSteam_chkbox.Text = "Start steam with launcher";
+            this.StartSteam_chkbox.UseVisualStyleBackColor = true;
             // 
             // Settings
             // 
@@ -340,9 +338,8 @@
             this.ats_launchoptions.ResumeLayout(false);
             this.ats_launchoptions.PerformLayout();
             this.Header_Panel.ResumeLayout(false);
-            this.Header_Panel.PerformLayout();
-            this.Footer_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
+            this.Footer_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -367,10 +364,10 @@
         private System.Windows.Forms.TextBox ats_launchargs;
         private System.Windows.Forms.CheckBox atssin_chkbox;
         private System.Windows.Forms.Label ats_launchargs_label;
-        internal System.Windows.Forms.Label subline_title;
-        private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.Panel Header_Panel;
         private System.Windows.Forms.Panel Footer_Panel;
         private System.Windows.Forms.Panel Footer_seperator;
+        private System.Windows.Forms.PictureBox Logo;
+        private System.Windows.Forms.CheckBox StartSteam_chkbox;
     }
 }

@@ -14,7 +14,7 @@ namespace truckersmplauncher
         public About()
         {
             InitializeComponent();
-            subline_title.Text = "UNOFFICIAL LAUNCHER " + Properties.Settings.Default.LauncherVersion + " ALPHA";
+            versionLabel.Text = "Launcher version: ALPHA " + Properties.Settings.Default.LauncherVersion;
         }
 
         private void devLink_Click(object sender, EventArgs e)

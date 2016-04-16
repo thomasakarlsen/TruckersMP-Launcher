@@ -93,12 +93,27 @@ namespace truckersmplauncher
                     Environment.Exit(1);
                 }
             }
+
+            if (Properties.Settings.Default.StartSteam)
+            {
+                if (Process.GetProcessesByName("Steam").Length == 0)
+                {
+                    Microsoft.Win32.RegistryKey steamKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Valve\\Steam");
+                    if (steamKey != null)
+                    {
+                        string SteamExe = (string)steamKey.GetValue("SteamExe");
+                        if (SteamExe != null)
+                        {
+                            Process.Start(SteamExe);
+                        }
+                    }
+                }
+            }
             Main_Load();
         }
 
         private void Main_Load()
         {
-            subline_title.Text = "UNOFFICIAL LAUNCHER " + Properties.Settings.Default.LauncherVersion + " ALPHA";
             //Add hover events
             this.Settings_btn.MouseHover += new System.EventHandler(this.Settings_btn_Hover);
             this.Mods_btn.MouseHover += new System.EventHandler(this.Updates_btn_Hover);
@@ -372,6 +387,7 @@ namespace truckersmplauncher
 
                     if (Environment.Is64BitOperatingSystem) {
                         binPath = "\\bin\\win_x64";
+                        Properties.Settings.Default.ETS2LaunchArguments += " -64bit";
                     }
 
                     if (Properties.Settings.Default.ETS2NoIntro)
@@ -412,20 +428,13 @@ namespace truckersmplauncher
             {
                 if (Process.GetProcessesByName("amtrucks").Length == 0)
                 {
-                    var binPath = "\\bin\\win_x86";
-
-                    if (Environment.Is64BitOperatingSystem)
-                    {
-                        binPath = "\\bin\\win_x64";
-                    }
-
                     if (Properties.Settings.Default.ATSNoIntro)
                     {
-                        Process.Start(ATSLocation + binPath + "\\amtrucks.exe ", "-nointro " + Properties.Settings.Default.ATSLaunchArguments);
+                        Process.Start(ATSLocation + "\\bin\\win_x64\\amtrucks.exe ", "-nointro " + Properties.Settings.Default.ATSLaunchArguments);
                     }
                     else
                     {
-                        Process.Start(ATSLocation + binPath + "\\amtrucks.exe ", Properties.Settings.Default.ATSLaunchArguments);
+                        Process.Start(ATSLocation + "\\bin\\win_x64\\amtrucks.exe ", Properties.Settings.Default.ATSLaunchArguments);
                     }
                 }
                 else
@@ -452,6 +461,15 @@ namespace truckersmplauncher
                     MessageBox.Show("American Truck Simulator (Multiplayer) is already running!", "TruckersMP Launcher - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+            }
+
+            if (!Properties.Settings.Default.KeepLauncherOpen)
+            {
+                System.Threading.ThreadPool.QueueUserWorkItem(delegate
+                {
+                    System.Threading.Thread.Sleep(5000);
+                    Application.Exit();
+                });
             }
         }
 

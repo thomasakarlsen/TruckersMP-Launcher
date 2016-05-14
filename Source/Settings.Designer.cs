@@ -36,6 +36,7 @@
             this.Browse_Dialog = new System.Windows.Forms.FolderBrowserDialog();
             this.Settings_tabControl = new System.Windows.Forms.TabControl();
             this.Launcher_tab = new System.Windows.Forms.TabPage();
+            this.StartSteam_chkbox = new System.Windows.Forms.CheckBox();
             this.AutoUpdate_TMP_chkbox = new System.Windows.Forms.CheckBox();
             this.ets2_tab = new System.Windows.Forms.TabPage();
             this.ets2_launchoptions = new System.Windows.Forms.GroupBox();
@@ -51,7 +52,7 @@
             this.Logo = new System.Windows.Forms.PictureBox();
             this.Footer_Panel = new System.Windows.Forms.Panel();
             this.Footer_seperator = new System.Windows.Forms.Panel();
-            this.StartSteam_chkbox = new System.Windows.Forms.CheckBox();
+            this.closeDelay_numeric = new System.Windows.Forms.NumericUpDown();
             this.Settings_tabControl.SuspendLayout();
             this.Launcher_tab.SuspendLayout();
             this.ets2_tab.SuspendLayout();
@@ -61,6 +62,7 @@
             this.Header_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.Footer_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.closeDelay_numeric)).BeginInit();
             this.SuspendLayout();
             // 
             // AutoUpdate_chkbox
@@ -78,9 +80,9 @@
             this.LauncherClose_chkbox.AutoSize = true;
             this.LauncherClose_chkbox.Location = new System.Drawing.Point(8, 6);
             this.LauncherClose_chkbox.Name = "LauncherClose_chkbox";
-            this.LauncherClose_chkbox.Size = new System.Drawing.Size(156, 23);
+            this.LauncherClose_chkbox.Size = new System.Drawing.Size(260, 23);
             this.LauncherClose_chkbox.TabIndex = 0;
-            this.LauncherClose_chkbox.Text = "Keep launcher open";
+            this.LauncherClose_chkbox.Text = "Close launcher after            seconds";
             this.LauncherClose_chkbox.UseVisualStyleBackColor = true;
             // 
             // UpdateCheck_btn
@@ -124,6 +126,7 @@
             // 
             // Launcher_tab
             // 
+            this.Launcher_tab.Controls.Add(this.closeDelay_numeric);
             this.Launcher_tab.Controls.Add(this.StartSteam_chkbox);
             this.Launcher_tab.Controls.Add(this.AutoUpdate_TMP_chkbox);
             this.Launcher_tab.Controls.Add(this.LauncherClose_chkbox);
@@ -136,6 +139,16 @@
             this.Launcher_tab.TabIndex = 0;
             this.Launcher_tab.Text = "Launcher";
             this.Launcher_tab.UseVisualStyleBackColor = true;
+            // 
+            // StartSteam_chkbox
+            // 
+            this.StartSteam_chkbox.AutoSize = true;
+            this.StartSteam_chkbox.Location = new System.Drawing.Point(8, 35);
+            this.StartSteam_chkbox.Name = "StartSteam_chkbox";
+            this.StartSteam_chkbox.Size = new System.Drawing.Size(194, 23);
+            this.StartSteam_chkbox.TabIndex = 3;
+            this.StartSteam_chkbox.Text = "Start steam with launcher";
+            this.StartSteam_chkbox.UseVisualStyleBackColor = true;
             // 
             // AutoUpdate_TMP_chkbox
             // 
@@ -301,15 +314,20 @@
             this.Footer_seperator.Size = new System.Drawing.Size(564, 1);
             this.Footer_seperator.TabIndex = 50;
             // 
-            // StartSteam_chkbox
+            // closeDelay_numeric
             // 
-            this.StartSteam_chkbox.AutoSize = true;
-            this.StartSteam_chkbox.Location = new System.Drawing.Point(8, 35);
-            this.StartSteam_chkbox.Name = "StartSteam_chkbox";
-            this.StartSteam_chkbox.Size = new System.Drawing.Size(194, 23);
-            this.StartSteam_chkbox.TabIndex = 3;
-            this.StartSteam_chkbox.Text = "Start steam with launcher";
-            this.StartSteam_chkbox.UseVisualStyleBackColor = true;
+            this.closeDelay_numeric.BackColor = System.Drawing.Color.White;
+            this.closeDelay_numeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.closeDelay_numeric.Location = new System.Drawing.Point(165, 8);
+            this.closeDelay_numeric.Name = "closeDelay_numeric";
+            this.closeDelay_numeric.ReadOnly = true;
+            this.closeDelay_numeric.Size = new System.Drawing.Size(37, 23);
+            this.closeDelay_numeric.TabIndex = 4;
+            this.closeDelay_numeric.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // Settings
             // 
@@ -340,6 +358,7 @@
             this.Header_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.Footer_Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.closeDelay_numeric)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -369,5 +388,6 @@
         private System.Windows.Forms.Panel Footer_seperator;
         private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.CheckBox StartSteam_chkbox;
+        private System.Windows.Forms.NumericUpDown closeDelay_numeric;
     }
 }

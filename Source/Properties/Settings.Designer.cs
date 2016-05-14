@@ -25,13 +25,13 @@ namespace truckersmplauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool KeepLauncherOpen {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool closeLauncher {
             get {
-                return ((bool)(this["KeepLauncherOpen"]));
+                return ((bool)(this["closeLauncher"]));
             }
             set {
-                this["KeepLauncherOpen"] = value;
+                this["closeLauncher"] = value;
             }
         }
         
@@ -137,6 +137,18 @@ namespace truckersmplauncher.Properties {
             }
             set {
                 this["StartSteam"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public decimal closeDelay {
+            get {
+                return ((decimal)(this["closeDelay"]));
+            }
+            set {
+                this["closeDelay"] = value;
             }
         }
     }

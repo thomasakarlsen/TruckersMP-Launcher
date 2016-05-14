@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="truckersmplauncher.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="KeepLauncherOpen" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="closeLauncher" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ETS2NoIntro" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -31,6 +31,9 @@
     </Setting>
     <Setting Name="StartSteam" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="closeDelay" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">5</Value>
     </Setting>
   </Settings>
 </SettingsFile>

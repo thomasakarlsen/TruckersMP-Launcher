@@ -19,7 +19,8 @@ namespace truckersmplauncher
             this.FormClosed += new FormClosedEventHandler(Done_btn_Click);
 
             //Launcher
-            LauncherClose_chkbox.Checked = Properties.Settings.Default.KeepLauncherOpen;
+            LauncherClose_chkbox.Checked = Properties.Settings.Default.closeLauncher;
+            closeDelay_numeric.Value = Properties.Settings.Default.closeDelay;
             AutoUpdate_chkbox.Checked = Properties.Settings.Default.AutoUpdateLauncher;
             AutoUpdate_TMP_chkbox.Checked = Properties.Settings.Default.AutoUpdateTMP;
             StartSteam_chkbox.Checked = Properties.Settings.Default.StartSteam;
@@ -46,7 +47,8 @@ namespace truckersmplauncher
         {
 
             //Launcher
-            Properties.Settings.Default.KeepLauncherOpen = LauncherClose_chkbox.Checked;
+            Properties.Settings.Default.closeLauncher = LauncherClose_chkbox.Checked;
+            Properties.Settings.Default.closeDelay = closeDelay_numeric.Value;
             Properties.Settings.Default.AutoUpdateLauncher = AutoUpdate_chkbox.Checked;
             Properties.Settings.Default.AutoUpdateTMP = AutoUpdate_TMP_chkbox.Checked;
             Properties.Settings.Default.StartSteam = StartSteam_chkbox.Checked;

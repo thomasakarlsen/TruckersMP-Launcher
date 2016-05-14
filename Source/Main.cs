@@ -30,6 +30,7 @@ namespace truckersmplauncher
         private Boolean runGame = false;
         private String game = "";
         public JArray mods = new JArray();
+        Panel newspanel = new Panel();
 
         public Main()
         {
@@ -286,7 +287,6 @@ namespace truckersmplauncher
 
             Int32 gotVer = (Int32)releasedata["Version"];
 
-
             if (gotVer < version)
             {
                 DialogResult dialogNoAuto = MessageBox.Show("Your version of TruckersMP is outdated.\nAutomatic update is not yet available for this release.\n\nDo you want to install manually?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -463,14 +463,21 @@ namespace truckersmplauncher
                 }
             }
 
-            if (!Properties.Settings.Default.KeepLauncherOpen)
+            if (Properties.Settings.Default.closeLauncher)
             {
                 System.Threading.ThreadPool.QueueUserWorkItem(delegate
                 {
-                    System.Threading.Thread.Sleep(5000);
+                    System.Threading.Thread.Sleep((int)Properties.Settings.Default.closeDelay * 1000);
                     Application.Exit();
                 });
             }
+        }
+
+        private void Main_Resize(object sender, System.EventArgs e)
+        {
+            Control control = (Control)sender;
+            newspanel.Location = new Point(((control.Width/2)-(976/2)), 12);
+
         }
 
         //
@@ -479,8 +486,9 @@ namespace truckersmplauncher
 
         private void ServerStatus()
         {
-            int loc = 15;
+            int loc = 12;
             Servers.Clear();
+            serverspanel.Controls.Clear();
             JObject results = new JObject();
             using (WebClient client = new WebClient())
             {
@@ -514,8 +522,6 @@ namespace truckersmplauncher
             //
             // Lets generate the visuals!
             // 
-
-            serverspanel.Controls.Clear(); //Clear the panel, in case of refresh
 
             //
             // Generate ETS2 Section
@@ -746,6 +752,7 @@ namespace truckersmplauncher
         {
             int loc = 15;
             mods.Clear();
+            modspanel.Controls.Clear();
             JObject results = new JObject();
             using (WebClient client = new WebClient())
             {
@@ -781,8 +788,6 @@ namespace truckersmplauncher
             //
             // Lets generate the visuals!
             // 
-
-            modspanel.Controls.Clear(); //Clear the panel, in case of refresh
 
             //
             // Generate ETS2MP Section

@@ -36,12 +36,12 @@
             this.Logo = new System.Windows.Forms.PictureBox();
             this.Footer_Panel = new System.Windows.Forms.Panel();
             this.TruckersMPUpdateProgressLabel = new System.Windows.Forms.Label();
+            this.TruckersMPUpdateProgress = new truckersmplauncher.CProgressBar();
             this.Footer_seperator = new System.Windows.Forms.Panel();
             this.modspanel = new System.Windows.Forms.Panel();
             this.serverspanel = new System.Windows.Forms.Panel();
             this.Mods_btn = new System.Windows.Forms.PictureBox();
             this.Settings_btn = new System.Windows.Forms.PictureBox();
-            this.TruckersMPUpdateProgress = new truckersmplauncher.CProgressBar();
             this.Header_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.Footer_Panel.SuspendLayout();
@@ -141,6 +141,21 @@
             this.TruckersMPUpdateProgressLabel.Text = "Downloading TruckersMP...";
             this.TruckersMPUpdateProgressLabel.Visible = false;
             // 
+            // TruckersMPUpdateProgress
+            // 
+            this.TruckersMPUpdateProgress.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.TruckersMPUpdateProgress.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.TruckersMPUpdateProgress.FillStyle = truckersmplauncher.CProgressBar.FillStyles.Solid;
+            this.TruckersMPUpdateProgress.Location = new System.Drawing.Point(558, 8);
+            this.TruckersMPUpdateProgress.Maximum = 100;
+            this.TruckersMPUpdateProgress.Minimum = 0;
+            this.TruckersMPUpdateProgress.Name = "TruckersMPUpdateProgress";
+            this.TruckersMPUpdateProgress.Size = new System.Drawing.Size(150, 22);
+            this.TruckersMPUpdateProgress.Step = 10;
+            this.TruckersMPUpdateProgress.TabIndex = 53;
+            this.TruckersMPUpdateProgress.Value = 0;
+            this.TruckersMPUpdateProgress.Visible = false;
+            // 
             // Footer_seperator
             // 
             this.Footer_seperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -204,21 +219,6 @@
             this.Settings_btn.TabStop = false;
             this.Settings_btn.Click += new System.EventHandler(this.Mods_btn_Click);
             // 
-            // TruckersMPUpdateProgress
-            // 
-            this.TruckersMPUpdateProgress.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.TruckersMPUpdateProgress.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.TruckersMPUpdateProgress.FillStyle = truckersmplauncher.CProgressBar.FillStyles.Solid;
-            this.TruckersMPUpdateProgress.Location = new System.Drawing.Point(558, 8);
-            this.TruckersMPUpdateProgress.Maximum = 100;
-            this.TruckersMPUpdateProgress.Minimum = 0;
-            this.TruckersMPUpdateProgress.Name = "TruckersMPUpdateProgress";
-            this.TruckersMPUpdateProgress.Size = new System.Drawing.Size(150, 22);
-            this.TruckersMPUpdateProgress.Step = 10;
-            this.TruckersMPUpdateProgress.TabIndex = 53;
-            this.TruckersMPUpdateProgress.Value = 0;
-            this.TruckersMPUpdateProgress.Visible = false;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,8 +230,8 @@
             this.Controls.Add(this.Settings_btn);
             this.Controls.Add(this.Header_Panel);
             this.Controls.Add(this.Footer_Panel);
-            this.Controls.Add(this.modspanel);
             this.Controls.Add(this.serverspanel);
+            this.Controls.Add(this.modspanel);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1016, 549);

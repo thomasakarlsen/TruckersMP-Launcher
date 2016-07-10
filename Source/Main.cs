@@ -14,6 +14,8 @@ using System.Net.Configuration;
 using Newtonsoft.Json.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
+using ICSharpCode.SharpZipLib.Core;
+using ICSharpCode.SharpZipLib.Zip;
 
 
 namespace truckersmplauncher
@@ -27,7 +29,6 @@ namespace truckersmplauncher
         public String ATSLocation = "";
         public Boolean ETS2Installed = false;
         public Boolean ATSInstalled = false;
-        private Boolean runGame = false;
         private String game = "";
         public JArray mods = new JArray();
         Panel newspanel = new Panel();
@@ -77,12 +78,13 @@ namespace truckersmplauncher
 
                 if (!System.IO.Directory.Exists(TruckersMPLocation))
                 {
-                    DialogResult dialogResult = MessageBox.Show("Unable to locate TruckersMP.\n\nDo you want to install it now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult dialogResult = MessageBox.Show("Unable to locate the TruckersMP.\n\nDo you want to install it now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
                         ETS2Installed = true;
                         ATSInstalled = true;
-                        installTMP();
+
+                        TruckersMP.install(TruckersMPUpdateProgress,TruckersMPUpdateProgressLabel);
                     }
                     else
                     {
@@ -119,12 +121,13 @@ namespace truckersmplauncher
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Unable to locate the TruckersMP Mod.\n\nDo you want to install it now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Unable to locate the TruckersMP.\n\nDo you want to install it now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     ETS2Installed = true;
                     ATSInstalled = true;
-                    installTMP();
+
+                    TruckersMP.install(TruckersMPUpdateProgress, TruckersMPUpdateProgressLabel);
                 }
                 else
                 {
@@ -135,7 +138,15 @@ namespace truckersmplauncher
 
             if (Properties.Settings.Default.AutoUpdateTMP)
             {
-                var result = checkTMPUpdate(); if (!(result == 0)){updateTMP(result);}
+                var result = TruckersMP.checkUpdate(TruckersMPLocation);
+                if (!(result == 0)){
+                    DialogResult dialogResult = MessageBox.Show("Your version of TruckersMP is outdated!\n\nDo you want to update it?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        TruckersMP.update(TruckersMPUpdateProgress, TruckersMPUpdateProgressLabel, result);
+                    }
+                    
+                }
             }    
         }
 
@@ -219,247 +230,8 @@ namespace truckersmplauncher
         // Functions
         //
 
-        protected string GetMD5HashFromFile(string fileName)
-        {
-            FileStream file = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] retVal = md5.ComputeHash(file);
-            file.Close();
-
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < retVal.Length; i++)
-            {
-                sb.Append(retVal[i].ToString("x2"));
-            }
-            return sb.ToString();
-        }
-
-        private void installTMP() {
-            JObject versiondata = new JObject();
-            using (WebClient client = new WebClient())
-            {
-                try
-                {
-                    versiondata = JObject.Parse(client.DownloadString("https://api.truckersmp.com/v2/version/"));
-                }
-                catch (WebException)
-                {
-                    Console.WriteLine("Unable to connect to TruckersMP. Cannot check for TMP version");
-                }
-            }
-
-            JObject releasedata = new JObject();
-            using (WebClient client = new WebClient())
-            {
-                try
-                {
-                    releasedata = JObject.Parse(client.DownloadString("http://api.thomasakarlsen.com/truckersmplauncher/releases/latest"));
-                    Console.WriteLine(releasedata);
-                }
-                catch (WebException)
-                {
-                    Console.WriteLine("Unable to connect to Launcher API. Cannot check for available releases");
-                    return;
-                }
-            }
-
-            Int32 gotVer = (Int32)releasedata["Version"];
-            Int32 version = (Int32)versiondata["numeric"];
-
-            if (gotVer < version)
-            {
-                DialogResult dialogNoAuto = MessageBox.Show("The latest release of TruckersMP is not available for automatic download yet.\n\nDo you want to download it manually?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogNoAuto == DialogResult.Yes)
-                {
-                    System.Diagnostics.Process.Start("http://truckersmp.com/en_US/download");
-                    return;
-                }
-                else
-                {
-                    Environment.Exit(1);
-                }
-            }
-
-            TruckersMPUpdateProgress.Visible = true;
-            TruckersMPUpdateProgressLabel.Visible = true;
-            TruckersMPUpdateProgressLabel.Text = "Downloading TruckersMP...";
-
-            using (WebClient downloadClient = new WebClient())
-            {
-                downloadClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(delegate (object sendera, DownloadProgressChangedEventArgs ea)
-                {
-                    TruckersMPUpdateProgress.Value = ea.ProgressPercentage;
-                });
-
-                downloadClient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler
-                    (delegate (object sendera, System.ComponentModel.AsyncCompletedEventArgs ea)
-                    {
-                        if (ea.Error == null && !ea.Cancelled)
-                        {
-                            TruckersMPUpdateProgressLabel.Text = "Installing TruckersMP...";
-                            System.Threading.ThreadPool.QueueUserWorkItem(delegate
-                            {
-                                ProcessStartInfo startInfo = new ProcessStartInfo();
-                                startInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Install TruckersMP.exe";
-
-                                try
-                                {
-                                    using (Process exeProcess = Process.Start(startInfo))
-                                    {
-                                        exeProcess.WaitForExit();
-                                    }
-                                }
-                                catch
-                                {
-                                            // Log error.
-                                        }
-                                TruckersMPUpdateProgress.Invoke((MethodInvoker)(() => TruckersMPUpdateProgress.Visible = false));
-                                TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "TruckersMP Installed!"));
-                                this.Invoke((MethodInvoker)(() => Main_Loaded(this, EventArgs.Empty)));
-                                System.Threading.Thread.Sleep(6000);
-                                TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Visible = false));
-                            });
-
-                        }
-                    });
-
-                downloadClient.DownloadFileAsync(new Uri((String)releasedata["Location"]), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Install TruckersMP.exe");
-            }
-        }
-
-        private Int32 checkTMPUpdate()
-        {
-            JObject versiondata = new JObject();
-            using (WebClient client = new WebClient())
-            {
-                try
-                {
-                    versiondata = JObject.Parse(client.DownloadString("https://api.truckersmp.com/v2/version/"));
-                }
-                catch (WebException)
-                {
-                    Console.WriteLine("Unable to connect to TruckersMP. Cannot check for new TMP version");
-                    return 0;
-                }
-            }
-
-            if (System.IO.File.Exists(TruckersMPLocation + "\\core_ets2mp.dll"))
-            {
-                var localchecksum = GetMD5HashFromFile(TruckersMPLocation + "\\core_ets2mp.dll");
-                var gotchecksum = (string)versiondata["ets2mp_checksum"]["dll"];
-
-                if (String.Compare(gotchecksum, localchecksum, true) != 0)
-                {
-
-                    return (Int32)versiondata["numeric"];
-                }
-            }
-
-            if (System.IO.File.Exists(TruckersMPLocation + "\\core_atsmp.dll"))
-            {
-                var localchecksum = GetMD5HashFromFile(TruckersMPLocation + "\\core_atsmp.dll");
-                var gotchecksum = (string)versiondata["atsmp_checksum"]["dll"];
-
-                if (String.Compare(gotchecksum, localchecksum, true) != 0)
-                {
-                    return (Int32)versiondata["numeric"];
-                }
-            }
-
-            return 0;
-        }
-
-        private void updateTMP(Int32 version)
-        {
-            JObject releasedata = new JObject();
-            using (WebClient client = new WebClient())
-            {
-                try
-                {
-                    releasedata = JObject.Parse(client.DownloadString("http://api.thomasakarlsen.com/truckersmplauncher/releases/latest"));
-                    Console.WriteLine(releasedata);
-                }
-                catch (WebException)
-                {
-                    Console.WriteLine("Unable to connect to Launcher API. Cannot check for available releases");
-                    return;
-                }
-            }
-
-            Int32 gotVer = (Int32)releasedata["Version"];
-
-            if (gotVer < version)
-            {
-                DialogResult dialogNoAuto = MessageBox.Show("Your version of TruckersMP is outdated.\nAutomatic update is not yet available for this release.\n\nDo you want to install manually?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogNoAuto == DialogResult.Yes)
-                {
-                    System.Diagnostics.Process.Start("http://truckersmp.com/en_US/download");
-                    return;
-                }
-                else
-                {
-                    return;
-                }
-            }
-
-            DialogResult dialogResult = MessageBox.Show("Your version of TruckersMP is outdated.\nDo you want to update?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
-            {
-                TruckersMPUpdateProgress.Visible = true;
-                TruckersMPUpdateProgressLabel.Visible = true;
-
-                using (WebClient downloadClient = new WebClient())
-                {
-                    downloadClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(delegate(object sender, DownloadProgressChangedEventArgs e)
-                    {
-                        TruckersMPUpdateProgress.Value = e.ProgressPercentage;
-                    });
-
-                    downloadClient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler
-                        (delegate(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-                        {
-                            if (e.Error == null && !e.Cancelled)
-                            {
-                                TruckersMPUpdateProgressLabel.Text = "Updating TruckersMP...";
-                                System.Threading.ThreadPool.QueueUserWorkItem(delegate
-                                {
-                                    ProcessStartInfo startInfo = new ProcessStartInfo();
-                                    startInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Update TruckersMP.exe";
-                                    startInfo.Arguments = "/verysilent";
-                                    try
-                                    {
-                                        using (Process exeProcess = Process.Start(startInfo))
-                                        {
-                                            exeProcess.WaitForExit();
-                                        }
-                                    }
-                                    catch
-                                    {
-                                        // Log error.
-                                    }
-                                    TruckersMPUpdateProgress.Invoke((MethodInvoker)(() => TruckersMPUpdateProgress.Visible = false));
-                                    TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "TruckersMP Updated!"));
-                                    if (runGame)
-                                    {
-                                        var senderObject = new PictureBox();
-                                        senderObject.Name = game;
-                                        launchGame(senderObject, new EventArgs());
-                                    }
-                                    System.Threading.Thread.Sleep(6000);
-                                    TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Visible = false));
-                                });
-                                
-                            }
-                        });
-
-                    downloadClient.DownloadFileAsync(new Uri((String)releasedata["Location"]), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Update TruckersMP.exe");
-                }
-            }
-        }
-
         private void launchGame(object sender, EventArgs e)
         {
-            runGame = false;
 
             game = ((PictureBox)sender).Name;
 
@@ -471,114 +243,39 @@ namespace truckersmplauncher
 
             if (Properties.Settings.Default.AutoUpdateTMP && game.Contains("MP"))
             {
-                var result = checkTMPUpdate();
+                var result = TruckersMP.checkUpdate(TruckersMPLocation);
                 if (!(result == 0))
                 {
-                    runGame = true;
-                    updateTMP(result);
-                    return;
-                } 
+                    DialogResult dialogResult = MessageBox.Show("Your version of TruckersMP is outdated!\nIt is required to update TruckersMP to play!\n\nDo you want to update it?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        TruckersMP.update(TruckersMPUpdateProgress, TruckersMPUpdateProgressLabel, result, true, game, TruckersMPLocation);
+                        return;
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                }
             }
 
             if (game == "ETS2")
             {
-                if (Process.GetProcessesByName("eurotrucks2").Length == 0)
-                {
-                    var binPath = "\\bin\\win_x86";
-
-                    if (Environment.Is64BitOperatingSystem) {
-                        binPath = "\\bin\\win_x64";
-                        Properties.Settings.Default.ETS2LaunchArguments += " -64bit";
-                    }
-
-                    if (Properties.Settings.Default.ETS2NoIntro)
-                    {
-                        Process.Start(ETS2Location + binPath + "\\eurotrucks2.exe ", "-nointro " + Properties.Settings.Default.ETS2LaunchArguments);
-                    }
-                    else
-                    {
-                        Process.Start(ETS2Location + binPath + "\\eurotrucks2.exe ", Properties.Settings.Default.ETS2LaunchArguments);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Euro Truck Simulator 2 is already running!", "TruckersMP Launcher - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                Game.runETS2(ETS2Location);
             }
             else if (game == "ETS2MP")
             {
-                if (Process.GetProcessesByName("eurotrucks2").Length == 0)
-                {
-                    if (Properties.Settings.Default.ETS2NoIntro)
-                    {
-                        Process.Start(TruckersMPLocation + "\\launcher_ets2mp.exe ", "-nointro " + Properties.Settings.Default.ETS2LaunchArguments);
-                    }
-                    else
-                    {
-                        Process.Start(TruckersMPLocation + "\\launcher_ets2mp.exe ", Properties.Settings.Default.ETS2LaunchArguments);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Euro Truck Simulator 2 (Multiplayer) is already running!", "TruckersMP Launcher - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                Game.runETS2MP(TruckersMPLocation);
             }
             else if (game == "ATS")
             {
-                if (Process.GetProcessesByName("amtrucks").Length == 0)
-                {
-                    if (Properties.Settings.Default.ATSNoIntro)
-                    {
-                        Process.Start(ATSLocation + "\\bin\\win_x64\\amtrucks.exe ", "-nointro " + Properties.Settings.Default.ATSLaunchArguments);
-                    }
-                    else
-                    {
-                        Process.Start(ATSLocation + "\\bin\\win_x64\\amtrucks.exe ", Properties.Settings.Default.ATSLaunchArguments);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("American Truck Simulator is already running!", "TruckersMP Launcher - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                Game.runATS(ATSLocation);
             }
             else if (game == "ATSMP")
             {
-                if (Process.GetProcessesByName("amtrucks").Length == 0)
-                {
-                    if (Properties.Settings.Default.ATSNoIntro)
-                    {
-                        Process.Start(TruckersMPLocation + "\\launcher_atsmp.exe ", "-nointro " + Properties.Settings.Default.ATSLaunchArguments);
-                    }
-                    else
-                    {
-                        Process.Start(TruckersMPLocation + "\\launcher_atsmp.exe ", Properties.Settings.Default.ATSLaunchArguments);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("American Truck Simulator (Multiplayer) is already running!", "TruckersMP Launcher - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                Game.runATSMP(TruckersMPLocation);
             }
-
-            if (Properties.Settings.Default.closeLauncher)
-            {
-                System.Threading.ThreadPool.QueueUserWorkItem(delegate
-                {
-                    System.Threading.Thread.Sleep((int)Properties.Settings.Default.closeDelay * 1000);
-                    Application.Exit();
-                });
-            }
-        }
-
-        private void Main_Resize(object sender, System.EventArgs e)
-        {
-            Control control = (Control)sender;
-            newspanel.Location = new Point(((control.Width/2)-(976/2)), 12);
-
         }
 
         //
@@ -587,7 +284,6 @@ namespace truckersmplauncher
 
         private void ServerStatus()
         {
-            Console.WriteLine("HI!");
             int loc = 12;
             Servers.Clear();
             serverspanel.Controls.Clear();
@@ -623,16 +319,20 @@ namespace truckersmplauncher
 
             //
             // Lets generate the visuals!
-            // 
+            //
+            
+            /* NEW CODE; Not ready for release, prep for community ads (vtcs, etc)
 
-            /*Panel adspanel = new Panel();
-            adspanel.BackColor = Color.FromArgb(62, 65, 71);
-            adspanel.Location = new Point(12, loc);
-            adspanel.Size = new Size(976, 94);
-            adspanel.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
+            Panel adspanel1 = new Panel();
+            adspanel1.BackColor = Color.FromArgb(62, 65, 71);
+
+            adspanel1.Size = new Size(958, 94);
+            adspanel1.Anchor = (AnchorStyles.Top);
+            adspanel1.Location = new Point(12, loc);
+            adspanel1.Left = (this.ClientSize.Width - adspanel1.Width) / 2;
             loc = loc + 109;
 
-            serverspanel.Controls.Add(adspanel);*/
+            serverspanel.Controls.Add(adspanel1);*/
 
 
             //

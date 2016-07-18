@@ -19,12 +19,12 @@ namespace truckersmplauncher
            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MyContext());
+            Application.Run(new TruckersMPLauncher());
         }
     }
-    public class MyContext : ApplicationContext
+    public class TruckersMPLauncher : ApplicationContext
     {
-        public MyContext()
+        public TruckersMPLauncher()
         {
             Application.Idle += new EventHandler(Application_Idle);
             AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
@@ -67,6 +67,11 @@ namespace truckersmplauncher
                 if (string.Compare(latest, local, true) > 0)
                 {
                     Launcher.update();
+                }
+                else
+                {
+                    Main main = new Main();
+                    main.Show();
                 }
             }
             else

@@ -1,26 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace truckersmplauncher
 {
     class Game
     {
-        public static void runETS2MP(String TruckersMPLocation)
+        public static void runETS2MP()
         {
             if (Process.GetProcessesByName("eurotrucks2").Length == 0)
             {
                 if (Properties.Settings.Default.ETS2NoIntro)
                 {
-                    Process.Start(TruckersMPLocation + "\\launcher_ets2mp.exe ", "-nointro " + Properties.Settings.Default.ETS2LaunchArguments);
+                    Process.Start(Launcher.TruckersMPLocation + "\\launcher_ets2mp.exe ", "-nointro " + Properties.Settings.Default.ETS2LaunchArguments);
                 }
                 else
                 {
-                    Process.Start(TruckersMPLocation + "\\launcher_ets2mp.exe ", Properties.Settings.Default.ETS2LaunchArguments);
+                    Process.Start(Launcher.TruckersMPLocation + "\\launcher_ets2mp.exe ", Properties.Settings.Default.ETS2LaunchArguments);
                 }
 
                 if (Properties.Settings.Default.closeLauncher)
@@ -39,17 +35,17 @@ namespace truckersmplauncher
             }
         }
 
-        public static void runATSMP(String TruckersMPLocation)
+        public static void runATSMP()
         {
             if (Process.GetProcessesByName("amtrucks").Length == 0)
             {
                 if (Properties.Settings.Default.ATSNoIntro)
                 {
-                    Process.Start(TruckersMPLocation + "\\launcher_atsmp.exe ", "-nointro " + Properties.Settings.Default.ATSLaunchArguments);
+                    Process.Start(Launcher.TruckersMPLocation + "\\launcher_atsmp.exe ", "-nointro " + Properties.Settings.Default.ATSLaunchArguments);
                 }
                 else
                 {
-                    Process.Start(TruckersMPLocation + "\\launcher_atsmp.exe ", Properties.Settings.Default.ATSLaunchArguments);
+                    Process.Start(Launcher.TruckersMPLocation + "\\launcher_atsmp.exe ", Properties.Settings.Default.ATSLaunchArguments);
                 }
 
                 if (Properties.Settings.Default.closeLauncher)
@@ -68,7 +64,7 @@ namespace truckersmplauncher
             }
         }
 
-        public static void runETS2(String ETS2Location)
+        public static void runETS2()
         {
             if (Process.GetProcessesByName("eurotrucks2").Length == 0)
             {
@@ -82,11 +78,11 @@ namespace truckersmplauncher
 
                 if (Properties.Settings.Default.ETS2NoIntro)
                 {
-                    Process.Start(ETS2Location + binPath + "\\eurotrucks2.exe ", "-nointro " + Properties.Settings.Default.ETS2LaunchArguments);
+                    Process.Start(Launcher.ETS2Location + binPath + "\\eurotrucks2.exe ", "-nointro " + Properties.Settings.Default.ETS2LaunchArguments);
                 }
                 else
                 {
-                    Process.Start(ETS2Location + binPath + "\\eurotrucks2.exe ", Properties.Settings.Default.ETS2LaunchArguments);
+                    Process.Start(Launcher.ETS2Location + binPath + "\\eurotrucks2.exe ", Properties.Settings.Default.ETS2LaunchArguments);
                 }
 
                 if (Properties.Settings.Default.closeLauncher)
@@ -105,17 +101,17 @@ namespace truckersmplauncher
             }
         }
 
-        public static void runATS(String ATSLocation)
+        public static void runATS()
         {
             if (Process.GetProcessesByName("amtrucks").Length == 0)
             {
                 if (Properties.Settings.Default.ATSNoIntro)
                 {
-                    Process.Start(ATSLocation + "\\bin\\win_x64\\amtrucks.exe ", "-nointro " + Properties.Settings.Default.ATSLaunchArguments);
+                    Process.Start(Launcher.ATSLocation + "\\bin\\win_x64\\amtrucks.exe ", "-nointro " + Properties.Settings.Default.ATSLaunchArguments);
                 }
                 else
                 {
-                    Process.Start(ATSLocation + "\\bin\\win_x64\\amtrucks.exe ", Properties.Settings.Default.ATSLaunchArguments);
+                    Process.Start(Launcher.ATSLocation + "\\bin\\win_x64\\amtrucks.exe ", Properties.Settings.Default.ATSLaunchArguments);
                 }
 
                 if (Properties.Settings.Default.closeLauncher)

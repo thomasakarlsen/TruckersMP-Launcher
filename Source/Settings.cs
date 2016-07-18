@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Net;
-using Newtonsoft.Json.Linq;
 
 namespace truckersmplauncher
 {
@@ -71,39 +63,22 @@ namespace truckersmplauncher
 
         private void checkForUpdates()
         {
-            JObject latestver = new JObject();
-            using (WebClient client = new WebClient())
-            {
-                try
-                {
-                    latestver = JObject.Parse(client.DownloadString("http://api.thomasakarlsen.com/truckersmplauncher/version/latest"));
-                }
-                catch (WebException)
-                {
-                    Console.WriteLine("Unable to connect to launcher API. Cannot check for new version");
-                    MessageBox.Show("Unable to connect to launcher API.\nUpdate cancelled.", "TruckersMP Launcher", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+
+            string latest = Launcher.latestVersion();
+            string local = Properties.Settings.Default.LauncherVersion;
+
+            if (latest == "0") {
+                MessageBox.Show("Unable to connect to API.\n\nPlease check your internet connection and try again.", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                return;
             }
-            Console.WriteLine(latestver);
-            Console.WriteLine(Properties.Settings.Default.LauncherVersion);
 
-            string gotVer = (string)latestver["Version"];
-            string localVer = Properties.Settings.Default.LauncherVersion;
-
-            if ( !(string.Compare(gotVer, localVer, true) > 0))
+            if ( !(string.Compare(latest, local, true) > 0))
             {
-                MessageBox.Show("Current version is: " + Properties.Settings.Default.LauncherVersion + "\nLatest version is: " + (string)latestver["Version"] + "\n\nYou already have the newest version!\nThere is no need for you to update!", "TruckersMP Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Current version is: " + local + "\nLatest version is: " + latest + "\n\nYou already have the newest version!\nThere is no need for you to update!", "TruckersMP Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else 
             {
-                DialogResult dialogResult = MessageBox.Show("Current version is: " + Properties.Settings.Default.LauncherVersion + "\nLatest version is: " + (string)latestver["Version"] + "\n\nThere is an update available!\nDo you want to update now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    Updater updater = new Updater();
-                    updater.Show();
-                    updater.Update((string)latestver["Location"]);
-                }
+                Launcher.update();
             }
         }
 

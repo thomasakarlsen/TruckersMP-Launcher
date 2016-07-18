@@ -54,7 +54,20 @@ namespace truckersmplauncher
             //Autoupdate if enabled
             if (Properties.Settings.Default.AutoUpdateLauncher == true)
             {
-                checkForUpdates();
+                string latest = Launcher.latestVersion();
+                string local = Properties.Settings.Default.LauncherVersion;
+
+                if (latest == "0")
+                {
+                    Main main = new Main();
+                    main.Show();
+                    return;
+                }
+
+                if (string.Compare(latest, local, true) > 0)
+                {
+                    Launcher.update();
+                }
             }
             else
             {
@@ -70,51 +83,5 @@ namespace truckersmplauncher
             if (Application.OpenForms.Count == 0)
                 Application.Exit();
         }
-
-        private void checkForUpdates()
-        {
-            JObject latestver = new JObject() ;
-            using (WebClient client = new WebClient())
-            {
-                try
-                {
-                    latestver = JObject.Parse(client.DownloadString("http://api.thomasakarlsen.com/truckersmplauncher/version/latest"));
-                }
-                catch (WebException)
-                {
-                    Console.WriteLine("Unable to connect to launcher API. Cannot check for new version");
-                    Main main = new Main();
-                    main.Show();
-                    return;
-                }
-            }
-            
-            Console.WriteLine(latestver);
-            Console.WriteLine(Properties.Settings.Default.LauncherVersion);
-            string gotVer = (string)latestver["Version"];
-            string localVer = Properties.Settings.Default.LauncherVersion;
-
-            if (string.Compare(gotVer, localVer, true) > 0)
-            {
-                DialogResult dialogResult = MessageBox.Show("Current version is: " + Properties.Settings.Default.LauncherVersion + "\nLatest version is: " + (string)latestver["Version"] + "\n\nThere is an update available!\nDo you want to update now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    Updater updater = new Updater();
-                    updater.Show();
-                    updater.Update((string)latestver["Location"]);
-                }
-                else
-                {
-                    Main main = new Main();
-                    main.Show();
-                }
-            }
-            else
-            {
-                Main main = new Main();
-                main.Show();
-            }
-        }
-
     }
 }

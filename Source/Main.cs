@@ -1,21 +1,9 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Net;
-using System.Configuration;
-using System.Net.Configuration;
 using Newtonsoft.Json.Linq;
-using System.Reflection;
-using System.Security.Cryptography;
-using ICSharpCode.SharpZipLib.Core;
-using ICSharpCode.SharpZipLib.Zip;
 
 
 namespace truckersmplauncher
@@ -24,11 +12,7 @@ namespace truckersmplauncher
     {
 
         private JArray Servers = new JArray();
-        public String TruckersMPLocation = "";
-        public String ETS2Location = "";
-        public String ATSLocation = "";
-        public Boolean ETS2Installed = false;
-        public Boolean ATSInstalled = false;
+        
         private String game = "";
         public JArray mods = new JArray();
         Panel newspanel = new Panel();
@@ -67,22 +51,22 @@ namespace truckersmplauncher
 
         private void Main_Loaded(object sender, System.EventArgs e)
         {
-            ETS2Installed = false;
-            ATSInstalled = false;
+            Launcher.ETS2Installed = false;
+            Launcher.ATSInstalled = false;
             Microsoft.Win32.RegistryKey readKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\TruckersMP");
             if (readKey != null)
             {
-                TruckersMPLocation = (string)readKey.GetValue("InstallDir");
-                ETS2Location = (string)readKey.GetValue("InstallLocationETS2");
-                ATSLocation = (string)readKey.GetValue("InstallLocationATS");
+                Launcher.TruckersMPLocation = (string)readKey.GetValue("InstallDir");
+                Launcher.ETS2Location = (string)readKey.GetValue("InstallLocationETS2");
+                Launcher.ATSLocation = (string)readKey.GetValue("InstallLocationATS");
 
-                if (!System.IO.Directory.Exists(TruckersMPLocation))
+                if (!System.IO.Directory.Exists(Launcher.TruckersMPLocation))
                 {
-                    DialogResult dialogResult = MessageBox.Show("Unable to locate the TruckersMP.\n\nDo you want to install it now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult dialogResult = MessageBox.Show("Unable to locate TruckersMP.\n\nDo you want to install it now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        ETS2Installed = true;
-                        ATSInstalled = true;
+                        Launcher.ETS2Installed = true;
+                        Launcher.ATSInstalled = true;
 
                         TruckersMP.install(TruckersMPUpdateProgress,TruckersMPUpdateProgressLabel);
                     }
@@ -94,17 +78,17 @@ namespace truckersmplauncher
                 else
                 { 
 
-                    if (System.IO.File.Exists(TruckersMPLocation + "\\core_ets2mp.dll"))
+                    if (System.IO.File.Exists(Launcher.TruckersMPLocation + "\\core_ets2mp.dll"))
                     {
-                        ETS2Installed = true;
+                        Launcher.ETS2Installed = true;
                     }
 
-                    if (System.IO.File.Exists(TruckersMPLocation + "\\core_atsmp.dll"))
+                    if (System.IO.File.Exists(Launcher.TruckersMPLocation + "\\core_atsmp.dll"))
                     {
-                        ATSInstalled = true;
+                        Launcher.ATSInstalled = true;
                     }
 
-                    if (!(ETS2Installed || ATSInstalled))
+                    if (!(Launcher.ETS2Installed || Launcher.ATSInstalled))
                     {
                         DialogResult dialogResult = MessageBox.Show("There seems to be a problem with your TruckersMP install.\n\nPlease reinstall TruckersMP. ", "TruckersMP Launcher", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         if (dialogResult == DialogResult.Yes)
@@ -121,11 +105,11 @@ namespace truckersmplauncher
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Unable to locate the TruckersMP.\n\nDo you want to install it now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Unable to locate TruckersMP.\n\nDo you want to install it now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    ETS2Installed = true;
-                    ATSInstalled = true;
+                    Launcher.ETS2Installed = true;
+                    Launcher.ATSInstalled = true;
 
                     TruckersMP.install(TruckersMPUpdateProgress, TruckersMPUpdateProgressLabel);
                 }
@@ -138,7 +122,7 @@ namespace truckersmplauncher
 
             if (Properties.Settings.Default.AutoUpdateTMP)
             {
-                var result = TruckersMP.checkUpdate(TruckersMPLocation);
+                var result = TruckersMP.checkUpdate();
                 if (!(result == 0)){
                     DialogResult dialogResult = MessageBox.Show("Your version of TruckersMP is outdated!\n\nDo you want to update it?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
@@ -243,13 +227,13 @@ namespace truckersmplauncher
 
             if (Properties.Settings.Default.AutoUpdateTMP && game.Contains("MP"))
             {
-                var result = TruckersMP.checkUpdate(TruckersMPLocation);
+                var result = TruckersMP.checkUpdate();
                 if (!(result == 0))
                 {
                     DialogResult dialogResult = MessageBox.Show("Your version of TruckersMP is outdated!\nIt is required to update TruckersMP to play!\n\nDo you want to update it?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        TruckersMP.update(TruckersMPUpdateProgress, TruckersMPUpdateProgressLabel, result, true, game, TruckersMPLocation);
+                        TruckersMP.update(TruckersMPUpdateProgress, TruckersMPUpdateProgressLabel, result, true, game);
                         return;
                     }
                     else
@@ -262,19 +246,19 @@ namespace truckersmplauncher
 
             if (game == "ETS2")
             {
-                Game.runETS2(ETS2Location);
+                Game.runETS2();
             }
             else if (game == "ETS2MP")
             {
-                Game.runETS2MP(TruckersMPLocation);
+                Game.runETS2MP();
             }
             else if (game == "ATS")
             {
-                Game.runATS(ATSLocation);
+                Game.runATS();
             }
             else if (game == "ATSMP")
             {
-                Game.runATSMP(TruckersMPLocation);
+                Game.runATSMP();
             }
         }
 
@@ -338,7 +322,7 @@ namespace truckersmplauncher
             //
             // Generate ETS2 Section
             //
-            if (ETS2Installed)
+            if (Launcher.ETS2Installed)
             { 
                 Panel ets2mppanel = new Panel();
 
@@ -402,7 +386,7 @@ namespace truckersmplauncher
             //
             // Generate ATS Section
             //
-            if (ATSInstalled)
+            if (Launcher.ATSInstalled)
             { 
                 Panel atsmppanel = new Panel();
 
@@ -622,7 +606,7 @@ namespace truckersmplauncher
             //
             // Generate ETS2MP Section
             //
-            if (ETS2Installed)
+            if (Launcher.ETS2Installed)
             {
                 Panel ets2mppanel = new Panel();
 
@@ -662,7 +646,7 @@ namespace truckersmplauncher
             //
             // Generate ATSMP Section
             //
-            if (ATSInstalled)
+            if (Launcher.ATSInstalled)
             {
                 Panel atsmppanel = new Panel();
 

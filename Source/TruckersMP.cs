@@ -1,21 +1,11 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Net;
-using System.Configuration;
-using System.Net.Configuration;
 using Newtonsoft.Json.Linq;
-using System.Reflection;
 using System.Security.Cryptography;
-using ICSharpCode.SharpZipLib.Core;
-using ICSharpCode.SharpZipLib.Zip;
 
 namespace truckersmplauncher
 {
@@ -38,7 +28,7 @@ namespace truckersmplauncher
             return (Int32)versiondata["numeric"];
         }
 
-        public static Int32 checkUpdate(String TruckersMPLocation) {
+        public static Int32 checkUpdate() {
             JObject versiondata = new JObject();
             using (WebClient client = new WebClient())
             {
@@ -53,9 +43,9 @@ namespace truckersmplauncher
                 }
             }
 
-            if (System.IO.File.Exists(TruckersMPLocation + "\\core_ets2mp.dll"))
+            if (System.IO.File.Exists(Launcher.TruckersMPLocation + "\\core_ets2mp.dll"))
             {
-                var localchecksum = GetMD5HashFromFile(TruckersMPLocation + "\\core_ets2mp.dll");
+                var localchecksum = MD5(Launcher.TruckersMPLocation + "\\core_ets2mp.dll");
                 var gotchecksum = (string)versiondata["ets2mp_checksum"]["dll"];
 
                 if (String.Compare(gotchecksum, localchecksum, true) != 0)
@@ -65,9 +55,9 @@ namespace truckersmplauncher
                 }
             }
 
-            if (System.IO.File.Exists(TruckersMPLocation + "\\core_atsmp.dll"))
+            if (System.IO.File.Exists(Launcher.TruckersMPLocation + "\\core_atsmp.dll"))
             {
-                var localchecksum = GetMD5HashFromFile(TruckersMPLocation + "\\core_atsmp.dll");
+                var localchecksum = MD5(Launcher.TruckersMPLocation + "\\core_atsmp.dll");
                 var gotchecksum = (string)versiondata["atsmp_checksum"]["dll"];
 
                 if (String.Compare(gotchecksum, localchecksum, true) != 0)
@@ -155,7 +145,7 @@ namespace truckersmplauncher
             }
         }
 
-        public static void update(CProgressBar TruckersMPUpdateProgress, Label TruckersMPUpdateProgressLabel, Int32 version, bool runGame = false, String game = "", String TruckersMPLocation = "")
+        public static void update(CProgressBar TruckersMPUpdateProgress, Label TruckersMPUpdateProgressLabel, Int32 version, bool runGame = false, String game = "")
         {
 
             TruckersMPUpdateProgress.Visible = true;
@@ -224,11 +214,11 @@ namespace truckersmplauncher
                                 {
                                     if (game == "ETS2MP")
                                     {
-                                        Game.runETS2MP(TruckersMPLocation);
+                                        Game.runETS2MP();
                                     }
                                     else if (game == "ATSMP")
                                     {
-                                        Game.runATSMP(TruckersMPLocation);
+                                        Game.runATSMP();
                                     }
                                 }
                                 System.Threading.Thread.Sleep(6000);
@@ -242,7 +232,7 @@ namespace truckersmplauncher
             }
         }
 
-        protected static string GetMD5HashFromFile(string fileName)
+        protected static string MD5(string fileName)
         {
             FileStream file = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             MD5 md5 = new MD5CryptoServiceProvider();

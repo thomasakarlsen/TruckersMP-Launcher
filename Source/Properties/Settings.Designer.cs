@@ -49,7 +49,7 @@ namespace truckersmplauncher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.13")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.14")]
         public string LauncherVersion {
             get {
                 return ((string)(this["LauncherVersion"]));

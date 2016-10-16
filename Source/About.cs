@@ -19,7 +19,7 @@ namespace truckersmplauncher
 
         private void devLink_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://forum.truckersmp.com/index.php?/user/20457-theunknownkiller/");
+            System.Diagnostics.Process.Start("https://forum.truckersmp.com/index.php?/profile/20457-theunknownno/");
         }
 
         private void legalLink_Click(object sender, EventArgs e)

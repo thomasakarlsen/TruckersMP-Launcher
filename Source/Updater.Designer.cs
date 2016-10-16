@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Updater));
             this.updater_action = new System.Windows.Forms.Label();
             this.Header_Panel = new System.Windows.Forms.Panel();
-            this.updater_progress = new truckersmplauncher.CProgressBar();
             this.Logo = new System.Windows.Forms.PictureBox();
+            this.updater_progress = new truckersmplauncher.CProgressBar();
             this.Header_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +57,16 @@
             this.Header_Panel.Size = new System.Drawing.Size(608, 66);
             this.Header_Panel.TabIndex = 63;
             // 
+            // Logo
+            // 
+            this.Logo.BackgroundImage = global::truckersmplauncher.Properties.Resources.launcherlogo;
+            this.Logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Logo.Location = new System.Drawing.Point(0, -9);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(289, 84);
+            this.Logo.TabIndex = 1;
+            this.Logo.TabStop = false;
+            // 
             // updater_progress
             // 
             this.updater_progress.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
@@ -70,16 +80,6 @@
             this.updater_progress.Step = 10;
             this.updater_progress.TabIndex = 64;
             this.updater_progress.Value = 0;
-            // 
-            // Logo
-            // 
-            this.Logo.BackgroundImage = global::truckersmplauncher.Properties.Resources.launcherlogo_white;
-            this.Logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Logo.Location = new System.Drawing.Point(0, -14);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(289, 98);
-            this.Logo.TabIndex = 1;
-            this.Logo.TabStop = false;
             // 
             // Updater
             // 

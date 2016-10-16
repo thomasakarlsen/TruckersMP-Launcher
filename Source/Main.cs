@@ -23,6 +23,8 @@ namespace truckersmplauncher
 
             this.Shown += new EventHandler(this.Main_Loaded);
 
+            this.FormClosed += new FormClosedEventHandler(Main_Close);
+
             if (Properties.Settings.Default.StartSteam)
             {
                 if (Process.GetProcessesByName("Steam").Length == 0)
@@ -44,9 +46,21 @@ namespace truckersmplauncher
         private void Main_Load()
         {
             //Add hover events
-            this.Settings_btn.MouseHover += new System.EventHandler(this.Settings_btn_Hover);
+            
             this.Mods_btn.MouseHover += new System.EventHandler(this.Updates_btn_Hover);
 
+        }
+
+        private void Main_Close(object sender, EventArgs e)
+        {
+            if (Launcher.TFMRadioPlaying)
+            {
+                Launcher.tfm.open_launcher.Visible = true;
+            }
+            else
+            {
+                Launcher.tfm.Close();
+            }
         }
 
         private void Main_Loaded(object sender, System.EventArgs e)
@@ -169,23 +183,44 @@ namespace truckersmplauncher
 
         }
 
-        private void Updates_btn_Click(object sender, EventArgs e)
+        private void Mods_btn_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("This feature is not implemented yet!", "TruckersMP Launcher", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //serverspanel.Visible = false;
-            //modspanel.Visible = true;
-            //loadMods();
+            /*serverspanel.Visible = false;
+            modspanel.Visible = true;
+            loadMods();*/
         }
 
         private void Settings_btn_Hover(object sender, System.EventArgs e)
         {
-
+            Settings_btn.BackgroundImage = Properties.Resources.settings_hover_btn;
+        }
+        private void Settings_btn_HoverLeave(object sender, System.EventArgs e)
+        {
+            Settings_btn.BackgroundImage = Properties.Resources.settings_btn;
         }
 
-        private void Mods_btn_Click(object sender, EventArgs e)
+        private void Settings_btn_Click(object sender, EventArgs e)
         {
             Settings settings = new Settings();
             settings.ShowDialog();
+        }
+
+        private void Radio_btn_Click(object sender, EventArgs e)
+        {
+            if (Launcher.tfm.IsDisposed)
+                Launcher.tfm = new truckersfm();
+            Launcher.tfm.Show();
+        }
+
+        private void Radio_btn_Hover(object sender, System.EventArgs e)
+        {
+            radio_btn.BackgroundImage = Properties.Resources.radio_hover_btn;
+        }
+
+        private void Radio_btn_HoverLeave(object sender, System.EventArgs e)
+        {
+            radio_btn.BackgroundImage = Properties.Resources.radio_btn;
         }
 
         private void About_btn_Click(object sender, EventArgs e)
@@ -376,7 +411,7 @@ namespace truckersmplauncher
                     {
                         if ((string)server["game"] == "ETS2")
                         {
-                            addServer((bool)server["online"], (string)server["name"], (string)server["players"], (string)server["maxplayers"], (string)server["game"], (int)server["speedlimiter"], loc);
+                            addServer((bool)server["online"], (string)server["name"], (string)server["players"], (string)server["maxplayers"], (string)server["game"], (int)server["speedlimiter"], (int)server["queue"], loc);
                             loc = loc + 59;
                         }
                     }
@@ -440,7 +475,7 @@ namespace truckersmplauncher
                     {
                         if ((string)server["game"] == "ATS")
                         {
-                            addServer((bool)server["online"], (string)server["name"], (string)server["players"], (string)server["maxplayers"], (string)server["game"], (int)server["speedlimiter"], loc);
+                            addServer((bool)server["online"], (string)server["name"], (string)server["players"], (string)server["maxplayers"], (string)server["game"], (int)server["speedlimiter"], (int)server["queue"] ,loc);
                             loc = loc + 59;
                         }
                     }
@@ -448,14 +483,15 @@ namespace truckersmplauncher
             }
         }
 
-        private void addServer(bool online, string shortname, string players, string maxplayers, string game, int limit, int loc) {
+        private void addServer(bool online, string shortname, string players, string maxplayers, string game, int limit, int queue, int loc) {
             
             Panel serverpanel = new Panel();
 
             serverpanel.BackColor = Color.FromArgb(222, 222, 222);
             serverpanel.Location = new Point(12, loc);
-            serverpanel.Size = new Size(976, 44);
+            serverpanel.Size = new Size(976, 44); //976
             serverpanel.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
+            serverpanel.Name = "serverpanel" + shortname;
 
             Label serverid = new Label();
 
@@ -466,11 +502,13 @@ namespace truckersmplauncher
             serverid.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             serverid.Text = shortname;
             serverid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            serverid.Name = "serverid" + shortname;
 
             PictureBox playericon = new PictureBox();
             playericon.Location = new Point(95, 13);
             playericon.Size = new Size(15, 17);
             playericon.BackgroundImage = Properties.Resources.players;
+            playericon.Name = "playericon" + shortname;
 
             Label playerslbl = new Label();
             playerslbl.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
@@ -478,18 +516,37 @@ namespace truckersmplauncher
             playerslbl.Location = new System.Drawing.Point(115, 13);
             playerslbl.AutoSize = true;
             playerslbl.Text = players + " out of " + maxplayers + " players";
+            playerslbl.Name = "playerslbl" + shortname;
+
+            PictureBox queueicon = new PictureBox();
+            queueicon.Location = new Point(playerslbl.Location.X + playerslbl.PreferredWidth + 18, 13);
+            queueicon.Size = new Size(16, 17);
+            queueicon.BackgroundImage = Properties.Resources.queue;
+            queueicon.Name = "queueicon" + shortname;
+
+            Label queuelbl = new Label();
+            queuelbl.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            queuelbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            queuelbl.Location = new System.Drawing.Point(queueicon.Location.X + queueicon.Width + 6, 12);
+            queuelbl.AutoSize = true;
+            queuelbl.Text = queue + " players in queue";
+            if (queue == 1)
+                queuelbl.Text = queue + " player in queue";
+            queuelbl.Name = "queuelbl" + shortname;
 
             PictureBox gameicon = new PictureBox();
-            gameicon.Location = new Point(306, 13);
+            gameicon.Location = new Point(queuelbl.Location.X + queuelbl.PreferredWidth + 18, 13);
             gameicon.Size = new Size(16, 17);
             gameicon.BackgroundImage = Properties.Resources.game;
+            gameicon.Name = "gameicon" + shortname;
 
             Label gamelbl = new Label();
             gamelbl.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             gamelbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            gamelbl.Location = new System.Drawing.Point(329, 12);
+            gamelbl.Location = new System.Drawing.Point(gameicon.Location.X + gameicon.Width + 6, 12);
             gamelbl.AutoSize = true;
             gamelbl.Text = game;
+            gamelbl.Name = "gamelbl" + shortname;
 
             Label limitlbl = new Label();
 
@@ -499,12 +556,14 @@ namespace truckersmplauncher
                 limiticon.Location = new Point(gamelbl.Location.X + gamelbl.PreferredWidth + 18, 13);
                 limiticon.Size = new Size(16, 17);
                 limiticon.BackgroundImage = Properties.Resources.limit;
+                limiticon.Name = "limiticon" + shortname;
 
                 limitlbl.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
                 limitlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
                 limitlbl.Location = new System.Drawing.Point(limiticon.Location.X + limiticon.Width + 6, 12);
                 limitlbl.AutoSize = true;
                 limitlbl.Text = "Speed limiter";
+                limitlbl.Name = "limitlbl" + shortname;
 
                 serverpanel.Controls.Add(limiticon);
                 serverpanel.Controls.Add(limitlbl);
@@ -515,6 +574,7 @@ namespace truckersmplauncher
                 carsicon.Location = new Point(gamelbl.Location.X + gamelbl.PreferredWidth + 18, 13);
                 carsicon.Size = new Size(16, 17);
                 carsicon.BackgroundImage = Properties.Resources.car;
+                carsicon.Name = "carsicon" + shortname;
 
                 Label carslbl = new Label();
                 carslbl.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
@@ -522,6 +582,7 @@ namespace truckersmplauncher
                 carslbl.Location = new System.Drawing.Point(carsicon.Location.X + carsicon.Width + 6, 12);
                 carslbl.AutoSize = true;
                 carslbl.Text = "Cars enabled";
+                carslbl.Name = "carslbl" + shortname;
 
                 serverpanel.Controls.Add(carsicon);
                 serverpanel.Controls.Add(carslbl);
@@ -532,12 +593,15 @@ namespace truckersmplauncher
             playbutton.Size = new Size(112, 44);
             playbutton.BackgroundImage = Properties.Resources.server_connect_btn;
             playbutton.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            playbutton.Name = "playbutton" + shortname;
 
 
             serverspanel.Controls.Add(serverpanel);
             serverpanel.Controls.Add(serverid);
             serverpanel.Controls.Add(playericon);
             serverpanel.Controls.Add(playerslbl);
+            serverpanel.Controls.Add(queueicon);
+            serverpanel.Controls.Add(queuelbl);
             serverpanel.Controls.Add(gameicon);
             serverpanel.Controls.Add(gamelbl);
             //serverpanel.Controls.Add(playbutton);
@@ -637,7 +701,7 @@ namespace truckersmplauncher
                         if ((string)mod["game"] == "ETS2")
                         {
                             addMod((string)mod["name"], (string)mod["description"], (string)mod["creator"], (string)mod["version"], (string)mod["website"], (string)mod["game"], (string)mod["location"], loc);
-                            loc = loc + 59;
+                            loc = loc + 147;
                         }
                     }
                 }
@@ -677,7 +741,7 @@ namespace truckersmplauncher
                         if ((string)mod["game"] == "ATS")
                         {
                             addMod((string)mod["name"], (string)mod["description"], (string)mod["creator"], (string)mod["version"], (string)mod["website"], (string)mod["game"], (string)mod["location"], loc);
-                            loc = loc + 59;
+                            loc = loc + 147;
                         }
                     }
                 }
@@ -743,6 +807,23 @@ namespace truckersmplauncher
             installcheckbox.Name = name + "_unchecked";
             installcheckbox.BackgroundImage = Properties.Resources.checkbox_unchecked;
             installcheckbox.Click += new System.EventHandler(this.toggleCheckbox);
+            installcheckbox.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+
+            //Description
+
+            Panel descriptionpanel = new Panel();
+            descriptionpanel.BackColor = Color.FromArgb(216, 216, 216);
+            descriptionpanel.Location = new Point(12, (loc + 44));
+            descriptionpanel.Size = new Size(976, 88);
+            descriptionpanel.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
+
+            Label descriptionlabel = new Label();
+            descriptionlabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            descriptionlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            descriptionlabel.Location = new System.Drawing.Point(6, 6);
+            descriptionlabel.AutoSize = false;
+            descriptionlabel.Size = new Size(960, 70);
+            descriptionlabel.Text = description;
 
             modspanel.Controls.Add(modpanel);
             modpanel.Controls.Add(namelabel);
@@ -753,7 +834,9 @@ namespace truckersmplauncher
             modpanel.Controls.Add(gameicon);
             modpanel.Controls.Add(gamelbl);
             modpanel.Controls.Add(installcheckbox);
-        }
 
+            modspanel.Controls.Add(descriptionpanel);
+            descriptionpanel.Controls.Add(descriptionlabel);
+        }
     }
 }

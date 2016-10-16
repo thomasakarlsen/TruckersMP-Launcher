@@ -19,7 +19,7 @@ namespace truckersmplauncher
                     Process.Start(Launcher.TruckersMPLocation + "\\launcher_ets2mp.exe ", Properties.Settings.Default.ETS2LaunchArguments);
                 }
 
-                if (Properties.Settings.Default.closeLauncher)
+                if (Properties.Settings.Default.closeLauncher && !Launcher.TFMRadioPlaying)
                 {
                     System.Threading.ThreadPool.QueueUserWorkItem(delegate
                     {
@@ -48,7 +48,7 @@ namespace truckersmplauncher
                     Process.Start(Launcher.TruckersMPLocation + "\\launcher_atsmp.exe ", Properties.Settings.Default.ATSLaunchArguments);
                 }
 
-                if (Properties.Settings.Default.closeLauncher)
+                if (Properties.Settings.Default.closeLauncher && !Launcher.TFMRadioPlaying)
                 {
                     System.Threading.ThreadPool.QueueUserWorkItem(delegate
                     {
@@ -85,7 +85,7 @@ namespace truckersmplauncher
                     Process.Start(Launcher.ETS2Location + binPath + "\\eurotrucks2.exe ", Properties.Settings.Default.ETS2LaunchArguments);
                 }
 
-                if (Properties.Settings.Default.closeLauncher)
+                if (Properties.Settings.Default.closeLauncher && !Launcher.TFMRadioPlaying)
                 {
                     System.Threading.ThreadPool.QueueUserWorkItem(delegate
                     {
@@ -114,7 +114,7 @@ namespace truckersmplauncher
                     Process.Start(Launcher.ATSLocation + "\\bin\\win_x64\\amtrucks.exe ", Properties.Settings.Default.ATSLaunchArguments);
                 }
 
-                if (Properties.Settings.Default.closeLauncher)
+                if (Properties.Settings.Default.closeLauncher && !Launcher.TFMRadioPlaying)
                 {
                     System.Threading.ThreadPool.QueueUserWorkItem(delegate
                     {

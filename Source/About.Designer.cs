@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.aboutLabel = new System.Windows.Forms.Label();
             this.Header_Panel = new System.Windows.Forms.Panel();
-            this.versionLabel = new System.Windows.Forms.Label();
             this.Logo = new System.Windows.Forms.PictureBox();
+            this.versionLabel = new System.Windows.Forms.Label();
             this.Footer_Panel = new System.Windows.Forms.Panel();
             this.githubLink = new System.Windows.Forms.Label();
             this.legalLink = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@
             this.aboutLabel.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aboutLabel.Location = new System.Drawing.Point(15, 81);
             this.aboutLabel.Name = "aboutLabel";
-            this.aboutLabel.Size = new System.Drawing.Size(521, 220);
+            this.aboutLabel.Size = new System.Drawing.Size(521, 226);
             this.aboutLabel.TabIndex = 0;
             this.aboutLabel.Text = resources.GetString("aboutLabel.Text");
             // 
@@ -57,12 +57,22 @@
             this.Header_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Header_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.Header_Panel.Controls.Add(this.versionLabel);
             this.Header_Panel.Controls.Add(this.Logo);
+            this.Header_Panel.Controls.Add(this.versionLabel);
             this.Header_Panel.Location = new System.Drawing.Point(0, 0);
             this.Header_Panel.Name = "Header_Panel";
             this.Header_Panel.Size = new System.Drawing.Size(548, 66);
             this.Header_Panel.TabIndex = 62;
+            // 
+            // Logo
+            // 
+            this.Logo.BackgroundImage = global::truckersmplauncher.Properties.Resources.launcherlogo;
+            this.Logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Logo.Location = new System.Drawing.Point(0, -9);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(289, 84);
+            this.Logo.TabIndex = 3;
+            this.Logo.TabStop = false;
             // 
             // versionLabel
             // 
@@ -72,18 +82,8 @@
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(262, 66);
             this.versionLabel.TabIndex = 2;
-            this.versionLabel.Text = "Launcher version: ALPHA 0.08";
+            this.versionLabel.Text = "Launcher version: UNKNOWN";
             this.versionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Logo
-            // 
-            this.Logo.BackgroundImage = global::truckersmplauncher.Properties.Resources.launcherlogo_white;
-            this.Logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Logo.Location = new System.Drawing.Point(0, -14);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(289, 98);
-            this.Logo.TabIndex = 1;
-            this.Logo.TabStop = false;
             // 
             // Footer_Panel
             // 
@@ -93,7 +93,7 @@
             this.Footer_Panel.Controls.Add(this.legalLink);
             this.Footer_Panel.Controls.Add(this.devLink);
             this.Footer_Panel.Controls.Add(this.Footer_seperator);
-            this.Footer_Panel.Location = new System.Drawing.Point(0, 310);
+            this.Footer_Panel.Location = new System.Drawing.Point(0, 319);
             this.Footer_Panel.Name = "Footer_Panel";
             this.Footer_Panel.Size = new System.Drawing.Size(548, 37);
             this.Footer_Panel.TabIndex = 63;
@@ -152,7 +152,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.ClientSize = new System.Drawing.Size(548, 347);
+            this.ClientSize = new System.Drawing.Size(548, 356);
             this.Controls.Add(this.Footer_Panel);
             this.Controls.Add(this.Header_Panel);
             this.Controls.Add(this.aboutLabel);
@@ -180,7 +180,7 @@
         private System.Windows.Forms.Label devLink;
         private System.Windows.Forms.Label githubLink;
         private System.Windows.Forms.Label legalLink;
-        private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.Label versionLabel;
+        private System.Windows.Forms.PictureBox Logo;
     }
 }

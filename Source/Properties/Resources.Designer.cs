@@ -123,16 +123,6 @@ namespace truckersmplauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap launcherlogo_white {
-            get {
-                object obj = ResourceManager.GetObject("launcherlogo_white", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap limit {
             get {
                 object obj = ResourceManager.GetObject("limit", resourceCulture);
@@ -143,9 +133,9 @@ namespace truckersmplauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo {
+        internal static System.Drawing.Bitmap mods__disabled_btn {
             get {
-                object obj = ResourceManager.GetObject("logo", resourceCulture);
+                object obj = ResourceManager.GetObject("mods__disabled_btn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -157,6 +147,16 @@ namespace truckersmplauncher.Properties {
             get {
                 object obj = ResourceManager.GetObject("mods_btn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NAudio {
+            get {
+                object obj = ResourceManager.GetObject("NAudio", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -223,6 +223,36 @@ namespace truckersmplauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap queue {
+            get {
+                object obj = ResourceManager.GetObject("queue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap radio_btn {
+            get {
+                object obj = ResourceManager.GetObject("radio_btn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap radio_hover_btn {
+            get {
+                object obj = ResourceManager.GetObject("radio_hover_btn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap server_connect_btn {
             get {
                 object obj = ResourceManager.GetObject("server_connect_btn", resourceCulture);
@@ -236,6 +266,46 @@ namespace truckersmplauncher.Properties {
         internal static System.Drawing.Bitmap settings_btn {
             get {
                 object obj = ResourceManager.GetObject("settings_btn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings_hover_btn {
+            get {
+                object obj = ResourceManager.GetObject("settings_hover_btn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tfm {
+            get {
+                object obj = ResourceManager.GetObject("tfm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tfm_play {
+            get {
+                object obj = ResourceManager.GetObject("tfm_play", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tfm_stop {
+            get {
+                object obj = ResourceManager.GetObject("tfm_stop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

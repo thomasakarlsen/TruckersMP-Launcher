@@ -9,7 +9,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="LauncherVersion" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">0.13</Value>
+      <Value Profile="(Default)">0.14</Value>
     </Setting>
     <Setting Name="AutoUpdateLauncher" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

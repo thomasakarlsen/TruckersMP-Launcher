@@ -12,6 +12,9 @@ namespace truckersmplauncher
         public static String ATSLocation = "";
         public static Boolean ETS2Installed = false;
         public static Boolean ATSInstalled = false;
+        public static Boolean TFMRadioPlaying = false;
+
+        public static truckersfm tfm = new truckersfm();
 
         public static string latestVersion()
         {

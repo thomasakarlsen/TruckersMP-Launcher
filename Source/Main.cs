@@ -21,6 +21,9 @@ namespace truckersmplauncher
         {
             InitializeComponent();
 
+            Properties.Settings.Default.AutoUpdateTMP = false;
+            Properties.Settings.Default.Save();
+
             this.Shown += new EventHandler(this.Main_Loaded);
 
             this.FormClosed += new FormClosedEventHandler(Main_Close);
@@ -70,19 +73,29 @@ namespace truckersmplauncher
             Microsoft.Win32.RegistryKey readKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\TruckersMP");
             if (readKey != null)
             {
-                Launcher.TruckersMPLocation = (string)readKey.GetValue("InstallDir");
+                Launcher.TruckersMPLocation = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\TruckersMP";
                 Launcher.ETS2Location = (string)readKey.GetValue("InstallLocationETS2");
                 Launcher.ATSLocation = (string)readKey.GetValue("InstallLocationATS");
 
                 if (!System.IO.Directory.Exists(Launcher.TruckersMPLocation))
                 {
-                    DialogResult dialogResult = MessageBox.Show("Unable to locate TruckersMP.\n\nDo you want to install it now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    /*DialogResult dialogResult = MessageBox.Show("Unable to locate TruckersMP.\n\nDo you want to install it now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
                         Launcher.ETS2Installed = true;
                         Launcher.ATSInstalled = true;
 
                         TruckersMP.install(TruckersMPUpdateProgress,TruckersMPUpdateProgressLabel);
+                    }
+                    else
+                    {
+                        Environment.Exit(1);
+                    }*/
+                    DialogResult dialogResult = MessageBox.Show("Unable to locate TruckersMP!\n\nPlease install TruckersMP. ", "TruckersMP Launcher", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        System.Diagnostics.Process.Start("http://truckersmp.com/en_US/download");
+                        Environment.Exit(1);
                     }
                     else
                     {
@@ -119,13 +132,23 @@ namespace truckersmplauncher
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Unable to locate TruckersMP.\n\nDo you want to install it now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                /*DialogResult dialogResult = MessageBox.Show("Unable to locate TruckersMP.\n\nDo you want to install it now?", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        Launcher.ETS2Installed = true;
+                        Launcher.ATSInstalled = true;
+
+                        TruckersMP.install(TruckersMPUpdateProgress,TruckersMPUpdateProgressLabel);
+                    }
+                    else
+                    {
+                        Environment.Exit(1);
+                    }*/
+                DialogResult dialogResult = MessageBox.Show("Unable to locate TruckersMP!\n\nPlease install TruckersMP. ", "TruckersMP Launcher", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    Launcher.ETS2Installed = true;
-                    Launcher.ATSInstalled = true;
-
-                    TruckersMP.install(TruckersMPUpdateProgress, TruckersMPUpdateProgressLabel);
+                    System.Diagnostics.Process.Start("http://truckersmp.com/en_US/download");
+                    Environment.Exit(1);
                 }
                 else
                 {

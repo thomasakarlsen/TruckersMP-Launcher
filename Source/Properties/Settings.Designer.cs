@@ -49,7 +49,7 @@ namespace truckersmplauncher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.15")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.16")]
         public string LauncherVersion {
             get {
                 return ((string)(this["LauncherVersion"]));
@@ -101,18 +101,6 @@ namespace truckersmplauncher.Properties {
             }
             set {
                 this["ATSLaunchArguments"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool AutoUpdateTMP {
-            get {
-                return ((bool)(this["AutoUpdateTMP"]));
-            }
-            set {
-                this["AutoUpdateTMP"] = value;
             }
         }
         

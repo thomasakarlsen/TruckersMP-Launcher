@@ -38,13 +38,26 @@
             this.Launcher_tab = new System.Windows.Forms.TabPage();
             this.closeDelay_numeric = new System.Windows.Forms.NumericUpDown();
             this.StartSteam_chkbox = new System.Windows.Forms.CheckBox();
-            this.AutoUpdate_TMP_chkbox = new System.Windows.Forms.CheckBox();
             this.ets2_tab = new System.Windows.Forms.TabPage();
+            this.ets2_gameoptions = new System.Windows.Forms.GroupBox();
+            this.ets_save_format = new System.Windows.Forms.TextBox();
+            this.ets_save_format_lbl = new System.Windows.Forms.Label();
+            this.ets2_show_fps = new System.Windows.Forms.CheckBox();
+            this.ets2_online_loading = new System.Windows.Forms.CheckBox();
+            this.ets2_traffic = new System.Windows.Forms.CheckBox();
+            this.ets2_console = new System.Windows.Forms.CheckBox();
             this.ets2_launchoptions = new System.Windows.Forms.GroupBox();
             this.ets2_launchargs = new System.Windows.Forms.TextBox();
             this.ets2sin_chkbox = new System.Windows.Forms.CheckBox();
             this.ets2_launchargs_label = new System.Windows.Forms.Label();
             this.ats_tab = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ats_save_format = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ats_show_fps = new System.Windows.Forms.CheckBox();
+            this.ats_online_loading = new System.Windows.Forms.CheckBox();
+            this.ats_traffic = new System.Windows.Forms.CheckBox();
+            this.ats_console = new System.Windows.Forms.CheckBox();
             this.ats_launchoptions = new System.Windows.Forms.GroupBox();
             this.ats_launchargs = new System.Windows.Forms.TextBox();
             this.atssin_chkbox = new System.Windows.Forms.CheckBox();
@@ -53,32 +66,19 @@
             this.Logo = new System.Windows.Forms.PictureBox();
             this.Footer_Panel = new System.Windows.Forms.Panel();
             this.Footer_seperator = new System.Windows.Forms.Panel();
-            this.ets2_gameoptions = new System.Windows.Forms.GroupBox();
-            this.ets2_console = new System.Windows.Forms.CheckBox();
-            this.ets2_traffic = new System.Windows.Forms.CheckBox();
-            this.ets2_online_loading = new System.Windows.Forms.CheckBox();
-            this.ets2_show_fps = new System.Windows.Forms.CheckBox();
-            this.ets_save_format_lbl = new System.Windows.Forms.Label();
-            this.ets_save_format = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ats_save_format = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ats_show_fps = new System.Windows.Forms.CheckBox();
-            this.ats_online_loading = new System.Windows.Forms.CheckBox();
-            this.ats_traffic = new System.Windows.Forms.CheckBox();
-            this.ats_console = new System.Windows.Forms.CheckBox();
+            this.tmp_update_info = new System.Windows.Forms.Label();
             this.Settings_tabControl.SuspendLayout();
             this.Launcher_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeDelay_numeric)).BeginInit();
             this.ets2_tab.SuspendLayout();
+            this.ets2_gameoptions.SuspendLayout();
             this.ets2_launchoptions.SuspendLayout();
             this.ats_tab.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.ats_launchoptions.SuspendLayout();
             this.Header_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.Footer_Panel.SuspendLayout();
-            this.ets2_gameoptions.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // AutoUpdate_chkbox
@@ -142,9 +142,9 @@
             // 
             // Launcher_tab
             // 
+            this.Launcher_tab.Controls.Add(this.tmp_update_info);
             this.Launcher_tab.Controls.Add(this.closeDelay_numeric);
             this.Launcher_tab.Controls.Add(this.StartSteam_chkbox);
-            this.Launcher_tab.Controls.Add(this.AutoUpdate_TMP_chkbox);
             this.Launcher_tab.Controls.Add(this.LauncherClose_chkbox);
             this.Launcher_tab.Controls.Add(this.AutoUpdate_chkbox);
             this.Launcher_tab.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -181,17 +181,6 @@
             this.StartSteam_chkbox.Text = "Start steam with launcher";
             this.StartSteam_chkbox.UseVisualStyleBackColor = true;
             // 
-            // AutoUpdate_TMP_chkbox
-            // 
-            this.AutoUpdate_TMP_chkbox.AutoSize = true;
-            this.AutoUpdate_TMP_chkbox.Enabled = false;
-            this.AutoUpdate_TMP_chkbox.Location = new System.Drawing.Point(8, 93);
-            this.AutoUpdate_TMP_chkbox.Name = "AutoUpdate_TMP_chkbox";
-            this.AutoUpdate_TMP_chkbox.Size = new System.Drawing.Size(303, 23);
-            this.AutoUpdate_TMP_chkbox.TabIndex = 2;
-            this.AutoUpdate_TMP_chkbox.Text = "Check for TruckersMP updates automaticly";
-            this.AutoUpdate_TMP_chkbox.UseVisualStyleBackColor = true;
-            // 
             // ets2_tab
             // 
             this.ets2_tab.Controls.Add(this.ets2_gameoptions);
@@ -203,6 +192,84 @@
             this.ets2_tab.TabIndex = 2;
             this.ets2_tab.Text = "ETS2";
             this.ets2_tab.UseVisualStyleBackColor = true;
+            // 
+            // ets2_gameoptions
+            // 
+            this.ets2_gameoptions.Controls.Add(this.ets_save_format);
+            this.ets2_gameoptions.Controls.Add(this.ets_save_format_lbl);
+            this.ets2_gameoptions.Controls.Add(this.ets2_show_fps);
+            this.ets2_gameoptions.Controls.Add(this.ets2_online_loading);
+            this.ets2_gameoptions.Controls.Add(this.ets2_traffic);
+            this.ets2_gameoptions.Controls.Add(this.ets2_console);
+            this.ets2_gameoptions.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ets2_gameoptions.Location = new System.Drawing.Point(3, 84);
+            this.ets2_gameoptions.Name = "ets2_gameoptions";
+            this.ets2_gameoptions.Size = new System.Drawing.Size(552, 116);
+            this.ets2_gameoptions.TabIndex = 3;
+            this.ets2_gameoptions.TabStop = false;
+            this.ets2_gameoptions.Text = "Options";
+            // 
+            // ets_save_format
+            // 
+            this.ets_save_format.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ets_save_format.Location = new System.Drawing.Point(336, 50);
+            this.ets_save_format.Name = "ets_save_format";
+            this.ets_save_format.Size = new System.Drawing.Size(34, 27);
+            this.ets_save_format.TabIndex = 3;
+            // 
+            // ets_save_format_lbl
+            // 
+            this.ets_save_format_lbl.AutoSize = true;
+            this.ets_save_format_lbl.Location = new System.Drawing.Point(240, 53);
+            this.ets_save_format_lbl.Name = "ets_save_format_lbl";
+            this.ets_save_format_lbl.Size = new System.Drawing.Size(90, 19);
+            this.ets_save_format_lbl.TabIndex = 6;
+            this.ets_save_format_lbl.Text = "Save format:";
+            // 
+            // ets2_show_fps
+            // 
+            this.ets2_show_fps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ets2_show_fps.AutoSize = true;
+            this.ets2_show_fps.Location = new System.Drawing.Point(146, 52);
+            this.ets2_show_fps.Name = "ets2_show_fps";
+            this.ets2_show_fps.Size = new System.Drawing.Size(88, 23);
+            this.ets2_show_fps.TabIndex = 3;
+            this.ets2_show_fps.Text = "Show FPS";
+            this.ets2_show_fps.UseVisualStyleBackColor = true;
+            // 
+            // ets2_online_loading
+            // 
+            this.ets2_online_loading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ets2_online_loading.AutoSize = true;
+            this.ets2_online_loading.Location = new System.Drawing.Point(294, 23);
+            this.ets2_online_loading.Name = "ets2_online_loading";
+            this.ets2_online_loading.Size = new System.Drawing.Size(177, 23);
+            this.ets2_online_loading.TabIndex = 2;
+            this.ets2_online_loading.Text = "Online loading screens";
+            this.ets2_online_loading.UseVisualStyleBackColor = true;
+            // 
+            // ets2_traffic
+            // 
+            this.ets2_traffic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ets2_traffic.AutoSize = true;
+            this.ets2_traffic.Location = new System.Drawing.Point(14, 52);
+            this.ets2_traffic.Name = "ets2_traffic";
+            this.ets2_traffic.Size = new System.Drawing.Size(114, 23);
+            this.ets2_traffic.TabIndex = 1;
+            this.ets2_traffic.Text = "Enable traffic";
+            this.ets2_traffic.UseVisualStyleBackColor = true;
+            // 
+            // ets2_console
+            // 
+            this.ets2_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ets2_console.AutoSize = true;
+            this.ets2_console.Location = new System.Drawing.Point(14, 23);
+            this.ets2_console.Name = "ets2_console";
+            this.ets2_console.Size = new System.Drawing.Size(274, 23);
+            this.ets2_console.TabIndex = 0;
+            this.ets2_console.Text = "Enable console and developer camera";
+            this.ets2_console.UseVisualStyleBackColor = true;
             // 
             // ets2_launchoptions
             // 
@@ -258,6 +325,84 @@
             this.ats_tab.TabIndex = 1;
             this.ats_tab.Text = "ATS";
             this.ats_tab.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.ats_save_format);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.ats_show_fps);
+            this.groupBox1.Controls.Add(this.ats_online_loading);
+            this.groupBox1.Controls.Add(this.ats_traffic);
+            this.groupBox1.Controls.Add(this.ats_console);
+            this.groupBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(3, 84);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(552, 116);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Options";
+            // 
+            // ats_save_format
+            // 
+            this.ats_save_format.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ats_save_format.Location = new System.Drawing.Point(336, 50);
+            this.ats_save_format.Name = "ats_save_format";
+            this.ats_save_format.Size = new System.Drawing.Size(34, 27);
+            this.ats_save_format.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(240, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 19);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Save format:";
+            // 
+            // ats_show_fps
+            // 
+            this.ats_show_fps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ats_show_fps.AutoSize = true;
+            this.ats_show_fps.Location = new System.Drawing.Point(146, 52);
+            this.ats_show_fps.Name = "ats_show_fps";
+            this.ats_show_fps.Size = new System.Drawing.Size(88, 23);
+            this.ats_show_fps.TabIndex = 3;
+            this.ats_show_fps.Text = "Show FPS";
+            this.ats_show_fps.UseVisualStyleBackColor = true;
+            // 
+            // ats_online_loading
+            // 
+            this.ats_online_loading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ats_online_loading.AutoSize = true;
+            this.ats_online_loading.Location = new System.Drawing.Point(294, 23);
+            this.ats_online_loading.Name = "ats_online_loading";
+            this.ats_online_loading.Size = new System.Drawing.Size(177, 23);
+            this.ats_online_loading.TabIndex = 2;
+            this.ats_online_loading.Text = "Online loading screens";
+            this.ats_online_loading.UseVisualStyleBackColor = true;
+            // 
+            // ats_traffic
+            // 
+            this.ats_traffic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ats_traffic.AutoSize = true;
+            this.ats_traffic.Location = new System.Drawing.Point(14, 52);
+            this.ats_traffic.Name = "ats_traffic";
+            this.ats_traffic.Size = new System.Drawing.Size(114, 23);
+            this.ats_traffic.TabIndex = 1;
+            this.ats_traffic.Text = "Enable traffic";
+            this.ats_traffic.UseVisualStyleBackColor = true;
+            // 
+            // ats_console
+            // 
+            this.ats_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ats_console.AutoSize = true;
+            this.ats_console.Location = new System.Drawing.Point(14, 23);
+            this.ats_console.Name = "ats_console";
+            this.ats_console.Size = new System.Drawing.Size(274, 23);
+            this.ats_console.TabIndex = 0;
+            this.ats_console.Text = "Enable console and developer camera";
+            this.ats_console.UseVisualStyleBackColor = true;
             // 
             // ats_launchoptions
             // 
@@ -348,161 +493,15 @@
             this.Footer_seperator.Size = new System.Drawing.Size(564, 1);
             this.Footer_seperator.TabIndex = 50;
             // 
-            // ets2_gameoptions
+            // tmp_update_info
             // 
-            this.ets2_gameoptions.Controls.Add(this.ets_save_format);
-            this.ets2_gameoptions.Controls.Add(this.ets_save_format_lbl);
-            this.ets2_gameoptions.Controls.Add(this.ets2_show_fps);
-            this.ets2_gameoptions.Controls.Add(this.ets2_online_loading);
-            this.ets2_gameoptions.Controls.Add(this.ets2_traffic);
-            this.ets2_gameoptions.Controls.Add(this.ets2_console);
-            this.ets2_gameoptions.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ets2_gameoptions.Location = new System.Drawing.Point(3, 84);
-            this.ets2_gameoptions.Name = "ets2_gameoptions";
-            this.ets2_gameoptions.Size = new System.Drawing.Size(552, 116);
-            this.ets2_gameoptions.TabIndex = 3;
-            this.ets2_gameoptions.TabStop = false;
-            this.ets2_gameoptions.Text = "Options";
-            // 
-            // ets2_console
-            // 
-            this.ets2_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ets2_console.AutoSize = true;
-            this.ets2_console.Location = new System.Drawing.Point(14, 23);
-            this.ets2_console.Name = "ets2_console";
-            this.ets2_console.Size = new System.Drawing.Size(274, 23);
-            this.ets2_console.TabIndex = 0;
-            this.ets2_console.Text = "Enable console and developer camera";
-            this.ets2_console.UseVisualStyleBackColor = true;
-            // 
-            // ets2_traffic
-            // 
-            this.ets2_traffic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ets2_traffic.AutoSize = true;
-            this.ets2_traffic.Location = new System.Drawing.Point(14, 52);
-            this.ets2_traffic.Name = "ets2_traffic";
-            this.ets2_traffic.Size = new System.Drawing.Size(114, 23);
-            this.ets2_traffic.TabIndex = 1;
-            this.ets2_traffic.Text = "Enable traffic";
-            this.ets2_traffic.UseVisualStyleBackColor = true;
-            // 
-            // ets2_online_loading
-            // 
-            this.ets2_online_loading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ets2_online_loading.AutoSize = true;
-            this.ets2_online_loading.Location = new System.Drawing.Point(294, 23);
-            this.ets2_online_loading.Name = "ets2_online_loading";
-            this.ets2_online_loading.Size = new System.Drawing.Size(177, 23);
-            this.ets2_online_loading.TabIndex = 2;
-            this.ets2_online_loading.Text = "Online loading screens";
-            this.ets2_online_loading.UseVisualStyleBackColor = true;
-            // 
-            // ets2_show_fps
-            // 
-            this.ets2_show_fps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ets2_show_fps.AutoSize = true;
-            this.ets2_show_fps.Location = new System.Drawing.Point(146, 52);
-            this.ets2_show_fps.Name = "ets2_show_fps";
-            this.ets2_show_fps.Size = new System.Drawing.Size(88, 23);
-            this.ets2_show_fps.TabIndex = 3;
-            this.ets2_show_fps.Text = "Show FPS";
-            this.ets2_show_fps.UseVisualStyleBackColor = true;
-            // 
-            // ets_save_format_lbl
-            // 
-            this.ets_save_format_lbl.AutoSize = true;
-            this.ets_save_format_lbl.Location = new System.Drawing.Point(240, 53);
-            this.ets_save_format_lbl.Name = "ets_save_format_lbl";
-            this.ets_save_format_lbl.Size = new System.Drawing.Size(90, 19);
-            this.ets_save_format_lbl.TabIndex = 6;
-            this.ets_save_format_lbl.Text = "Save format:";
-            // 
-            // ets_save_format
-            // 
-            this.ets_save_format.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ets_save_format.Location = new System.Drawing.Point(336, 50);
-            this.ets_save_format.Name = "ets_save_format";
-            this.ets_save_format.Size = new System.Drawing.Size(34, 27);
-            this.ets_save_format.TabIndex = 3;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.ats_save_format);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.ats_show_fps);
-            this.groupBox1.Controls.Add(this.ats_online_loading);
-            this.groupBox1.Controls.Add(this.ats_traffic);
-            this.groupBox1.Controls.Add(this.ats_console);
-            this.groupBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 84);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(552, 116);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Options";
-            // 
-            // ats_save_format
-            // 
-            this.ats_save_format.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ats_save_format.Location = new System.Drawing.Point(336, 50);
-            this.ats_save_format.Name = "ats_save_format";
-            this.ats_save_format.Size = new System.Drawing.Size(34, 27);
-            this.ats_save_format.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(240, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 19);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Save format:";
-            // 
-            // ats_show_fps
-            // 
-            this.ats_show_fps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ats_show_fps.AutoSize = true;
-            this.ats_show_fps.Location = new System.Drawing.Point(146, 52);
-            this.ats_show_fps.Name = "ats_show_fps";
-            this.ats_show_fps.Size = new System.Drawing.Size(88, 23);
-            this.ats_show_fps.TabIndex = 3;
-            this.ats_show_fps.Text = "Show FPS";
-            this.ats_show_fps.UseVisualStyleBackColor = true;
-            // 
-            // ats_online_loading
-            // 
-            this.ats_online_loading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ats_online_loading.AutoSize = true;
-            this.ats_online_loading.Location = new System.Drawing.Point(294, 23);
-            this.ats_online_loading.Name = "ats_online_loading";
-            this.ats_online_loading.Size = new System.Drawing.Size(177, 23);
-            this.ats_online_loading.TabIndex = 2;
-            this.ats_online_loading.Text = "Online loading screens";
-            this.ats_online_loading.UseVisualStyleBackColor = true;
-            // 
-            // ats_traffic
-            // 
-            this.ats_traffic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ats_traffic.AutoSize = true;
-            this.ats_traffic.Location = new System.Drawing.Point(14, 52);
-            this.ats_traffic.Name = "ats_traffic";
-            this.ats_traffic.Size = new System.Drawing.Size(114, 23);
-            this.ats_traffic.TabIndex = 1;
-            this.ats_traffic.Text = "Enable traffic";
-            this.ats_traffic.UseVisualStyleBackColor = true;
-            // 
-            // ats_console
-            // 
-            this.ats_console.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ats_console.AutoSize = true;
-            this.ats_console.Location = new System.Drawing.Point(14, 23);
-            this.ats_console.Name = "ats_console";
-            this.ats_console.Size = new System.Drawing.Size(274, 23);
-            this.ats_console.TabIndex = 0;
-            this.ats_console.Text = "Enable console and developer camera";
-            this.ats_console.UseVisualStyleBackColor = true;
+            this.tmp_update_info.AutoSize = true;
+            this.tmp_update_info.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.tmp_update_info.Location = new System.Drawing.Point(26, 90);
+            this.tmp_update_info.Name = "tmp_update_info";
+            this.tmp_update_info.Size = new System.Drawing.Size(267, 19);
+            this.tmp_update_info.TabIndex = 5;
+            this.tmp_update_info.Text = "TruckersMP will be automaticly updated";
             // 
             // Settings
             // 
@@ -526,18 +525,18 @@
             this.Launcher_tab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeDelay_numeric)).EndInit();
             this.ets2_tab.ResumeLayout(false);
+            this.ets2_gameoptions.ResumeLayout(false);
+            this.ets2_gameoptions.PerformLayout();
             this.ets2_launchoptions.ResumeLayout(false);
             this.ets2_launchoptions.PerformLayout();
             this.ats_tab.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ats_launchoptions.ResumeLayout(false);
             this.ats_launchoptions.PerformLayout();
             this.Header_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.Footer_Panel.ResumeLayout(false);
-            this.ets2_gameoptions.ResumeLayout(false);
-            this.ets2_gameoptions.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -557,7 +556,6 @@
         private System.Windows.Forms.GroupBox ets2_launchoptions;
         private System.Windows.Forms.TextBox ets2_launchargs;
         private System.Windows.Forms.Label ets2_launchargs_label;
-        private System.Windows.Forms.CheckBox AutoUpdate_TMP_chkbox;
         private System.Windows.Forms.GroupBox ats_launchoptions;
         private System.Windows.Forms.TextBox ats_launchargs;
         private System.Windows.Forms.CheckBox atssin_chkbox;
@@ -582,5 +580,6 @@
         private System.Windows.Forms.CheckBox ats_online_loading;
         private System.Windows.Forms.CheckBox ats_traffic;
         private System.Windows.Forms.CheckBox ats_console;
+        private System.Windows.Forms.Label tmp_update_info;
     }
 }

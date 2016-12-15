@@ -9,7 +9,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="LauncherVersion" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">0.15</Value>
+      <Value Profile="(Default)">0.16</Value>
     </Setting>
     <Setting Name="AutoUpdateLauncher" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -22,9 +22,6 @@
     </Setting>
     <Setting Name="ATSLaunchArguments" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="AutoUpdateTMP" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="SendStatistics" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

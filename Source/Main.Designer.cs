@@ -60,7 +60,7 @@
             this.link_ets2mp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
             this.link_ets2mp.Location = new System.Drawing.Point(135, 10);
             this.link_ets2mp.Name = "link_ets2mp";
-            this.link_ets2mp.Size = new System.Drawing.Size(206, 18);
+            this.link_ets2mp.Size = new System.Drawing.Size(204, 18);
             this.link_ets2mp.TabIndex = 48;
             this.link_ets2mp.Text = "TRUCKERSMP OFFICIAL WEBSITE";
             this.link_ets2mp.Click += new System.EventHandler(this.ets2mp_site_link_Click);
@@ -74,7 +74,7 @@
             this.about_launcher.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
             this.about_launcher.Location = new System.Drawing.Point(9, 10);
             this.about_launcher.Name = "about_launcher";
-            this.about_launcher.Size = new System.Drawing.Size(122, 18);
+            this.about_launcher.Size = new System.Drawing.Size(120, 18);
             this.about_launcher.TabIndex = 47;
             this.about_launcher.Text = "ABOUT LAUNCHER";
             this.about_launcher.Click += new System.EventHandler(this.About_btn_Click);
@@ -89,7 +89,7 @@
             this.design_creator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
             this.design_creator.Location = new System.Drawing.Point(873, 10);
             this.design_creator.Name = "design_creator";
-            this.design_creator.Size = new System.Drawing.Size(115, 18);
+            this.design_creator.Size = new System.Drawing.Size(114, 18);
             this.design_creator.TabIndex = 49;
             this.design_creator.Text = "DESIGN BY GAMA";
             this.design_creator.Click += new System.EventHandler(this.design_creator_Click);
@@ -182,13 +182,14 @@
             // 
             // TruckersMPUpdateProgressLabel
             // 
-            this.TruckersMPUpdateProgressLabel.AutoSize = true;
+            this.TruckersMPUpdateProgressLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TruckersMPUpdateProgressLabel.BackColor = System.Drawing.Color.Transparent;
             this.TruckersMPUpdateProgressLabel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TruckersMPUpdateProgressLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.TruckersMPUpdateProgressLabel.Location = new System.Drawing.Point(713, 12);
+            this.TruckersMPUpdateProgressLabel.Location = new System.Drawing.Point(501, 12);
             this.TruckersMPUpdateProgressLabel.Name = "TruckersMPUpdateProgressLabel";
-            this.TruckersMPUpdateProgressLabel.Size = new System.Drawing.Size(149, 15);
+            this.TruckersMPUpdateProgressLabel.Size = new System.Drawing.Size(366, 17);
             this.TruckersMPUpdateProgressLabel.TabIndex = 52;
             this.TruckersMPUpdateProgressLabel.Text = "Downloading TruckersMP...";
             this.TruckersMPUpdateProgressLabel.Visible = false;
@@ -198,7 +199,7 @@
             this.TruckersMPUpdateProgress.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
             this.TruckersMPUpdateProgress.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
             this.TruckersMPUpdateProgress.FillStyle = truckersmplauncher.CProgressBar.FillStyles.Solid;
-            this.TruckersMPUpdateProgress.Location = new System.Drawing.Point(558, 8);
+            this.TruckersMPUpdateProgress.Location = new System.Drawing.Point(345, 8);
             this.TruckersMPUpdateProgress.Maximum = 100;
             this.TruckersMPUpdateProgress.Minimum = 0;
             this.TruckersMPUpdateProgress.Name = "TruckersMPUpdateProgress";

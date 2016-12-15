@@ -13,6 +13,7 @@ namespace truckersmplauncher
         public static Boolean ETS2Installed = false;
         public static Boolean ATSInstalled = false;
         public static Boolean TFMRadioPlaying = false;
+        public static Boolean working = false;
 
         public static truckersfm tfm = new truckersfm();
 

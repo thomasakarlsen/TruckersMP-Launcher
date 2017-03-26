@@ -8,6 +8,7 @@ namespace truckersmplauncher
     {
         Dictionary<string, string> ETS2Config = new Dictionary<string, string>();
         Dictionary<string, string> ATSConfig = new Dictionary<string, string>();
+
         public Settings()
         {
             InitializeComponent();
@@ -22,24 +23,42 @@ namespace truckersmplauncher
             AutoUpdate_chkbox.Checked = Properties.Settings.Default.AutoUpdateLauncher;
             StartSteam_chkbox.Checked = Properties.Settings.Default.StartSteam;
 
+            if (Properties.Settings.Default.mode.Equals("advanced"))
+                advancedLauncher_btn.Checked = true;
+            else if (Properties.Settings.Default.mode.Equals("simple"))
+                simpleLauncher_btn.Checked = true;
+
             //ETS2
             ets2sin_chkbox.Checked = Properties.Settings.Default.ETS2NoIntro;
             ets2_launchargs.Text = Properties.Settings.Default.ETS2LaunchArguments;
-            ets_save_format.Text = ETS2Config["g_save_format"];
-            ets2_console.Checked = Convert.ToBoolean(Convert.ToInt32(ETS2Config["g_console"]));
-            ets2_online_loading.Checked = Convert.ToBoolean(Convert.ToInt32(ETS2Config["g_online_loading_screens"]));
-            ets2_traffic.Checked = Convert.ToBoolean(Convert.ToInt32(ETS2Config["g_traffic"].Replace(".0", "")));
-            ets2_show_fps.Checked = Convert.ToBoolean(Convert.ToInt32(ETS2Config["g_fps"]));
+            if (ETS2Config != null)
+            {
+                ets2_gameoptions.Visible = true;
+                ets_save_format.Text = ETS2Config["g_save_format"];
+                ets2_console.Checked = Convert.ToBoolean(Convert.ToInt32(ETS2Config["g_console"]));
+                ets2_online_loading.Checked = Convert.ToBoolean(Convert.ToInt32(ETS2Config["g_online_loading_screens"]));
+                ets2_traffic.Checked = Convert.ToBoolean(Convert.ToInt32(ETS2Config["g_traffic"].Replace(".0", "")));
+                ets2_show_fps.Checked = Convert.ToBoolean(Convert.ToInt32(ETS2Config["g_fps"]));
+            }
+            else {
+                ets2_gameoptions.Visible = false;
+            }
 
             //ATS
             atssin_chkbox.Checked = Properties.Settings.Default.ATSNoIntro;
             ats_launchargs.Text = Properties.Settings.Default.ATSLaunchArguments;
-            ats_save_format.Text = ATSConfig["g_save_format"];
-            ats_console.Checked = Convert.ToBoolean(Convert.ToInt32(ATSConfig["g_console"]));
-            ats_online_loading.Checked = Convert.ToBoolean(Convert.ToInt32(ATSConfig["g_online_loading_screens"]));
-            ats_traffic.Checked = Convert.ToBoolean(Convert.ToInt32(ATSConfig["g_traffic"].Replace(".0", "")));
-            ats_show_fps.Checked = Convert.ToBoolean(Convert.ToInt32(ATSConfig["g_fps"]));
-
+            if (ATSConfig != null)
+            {
+                ats_gameoptions.Visible = true;
+                ats_save_format.Text = ATSConfig["g_save_format"];
+                ats_console.Checked = Convert.ToBoolean(Convert.ToInt32(ATSConfig["g_console"]));
+                ats_online_loading.Checked = Convert.ToBoolean(Convert.ToInt32(ATSConfig["g_online_loading_screens"]));
+                ats_traffic.Checked = Convert.ToBoolean(Convert.ToInt32(ATSConfig["g_traffic"].Replace(".0", "")));
+                ats_show_fps.Checked = Convert.ToBoolean(Convert.ToInt32(ATSConfig["g_fps"]));
+            }
+            else {
+                ats_gameoptions.Visible = false;
+            }
         }
 
         //
@@ -60,28 +79,40 @@ namespace truckersmplauncher
             Properties.Settings.Default.AutoUpdateLauncher = AutoUpdate_chkbox.Checked;
             Properties.Settings.Default.StartSteam = StartSteam_chkbox.Checked;
 
+            if (advancedLauncher_btn.Checked)
+                Properties.Settings.Default.mode = "advanced";
+            else if (simpleLauncher_btn.Checked)
+                Properties.Settings.Default.mode = "simple";
+
             //ETS2
             Properties.Settings.Default.ETS2NoIntro = ets2sin_chkbox.Checked;
             Properties.Settings.Default.ETS2LaunchArguments = ets2_launchargs.Text;
-            ETS2Config["g_save_format"] = ets_save_format.Text;
-            ETS2Config["g_console"] = (Convert.ToInt32(ets2_console.Checked)).ToString();
-            ETS2Config["g_developer"] = (Convert.ToInt32(ets2_console.Checked)).ToString();
-            ETS2Config["g_online_loading_screens"] = (Convert.ToInt32(ets2_online_loading.Checked)).ToString();
-            ETS2Config["g_traffic"] = (Convert.ToInt32(ets2_traffic.Checked)).ToString();
-            ETS2Config["g_fps"] = (Convert.ToInt32(ets2_show_fps.Checked)).ToString();
+            if (ETS2Config != null)
+            {
+                ETS2Config["g_save_format"] = ets_save_format.Text;
+                ETS2Config["g_console"] = (Convert.ToInt32(ets2_console.Checked)).ToString();
+                ETS2Config["g_developer"] = (Convert.ToInt32(ets2_console.Checked)).ToString();
+                ETS2Config["g_online_loading_screens"] = (Convert.ToInt32(ets2_online_loading.Checked)).ToString();
+                ETS2Config["g_traffic"] = (Convert.ToInt32(ets2_traffic.Checked)).ToString();
+                ETS2Config["g_fps"] = (Convert.ToInt32(ets2_show_fps.Checked)).ToString();
+            }
 
             //ATS
             Properties.Settings.Default.ATSNoIntro = atssin_chkbox.Checked;
             Properties.Settings.Default.ATSLaunchArguments = ats_launchargs.Text;
-            ATSConfig["g_save_format"] = ats_save_format.Text;
-            ATSConfig["g_console"] = (Convert.ToInt32(ats_console.Checked)).ToString();
-            ATSConfig["g_developer"] = (Convert.ToInt32(ats_console.Checked)).ToString();
-            ATSConfig["g_online_loading_screens"] = (Convert.ToInt32(ats_online_loading.Checked)).ToString();
-            ATSConfig["g_traffic"] = (Convert.ToInt32(ats_traffic.Checked)).ToString();
-            ATSConfig["g_fps"] = (Convert.ToInt32(ats_show_fps.Checked)).ToString();
-
-            Game.writeConfig("ETS2", ETS2Config);
-            Game.writeConfig("ATS", ATSConfig);
+            if (ATSConfig != null)
+            {
+                ATSConfig["g_save_format"] = ats_save_format.Text;
+                ATSConfig["g_console"] = (Convert.ToInt32(ats_console.Checked)).ToString();
+                ATSConfig["g_developer"] = (Convert.ToInt32(ats_console.Checked)).ToString();
+                ATSConfig["g_online_loading_screens"] = (Convert.ToInt32(ats_online_loading.Checked)).ToString();
+                ATSConfig["g_traffic"] = (Convert.ToInt32(ats_traffic.Checked)).ToString();
+                ATSConfig["g_fps"] = (Convert.ToInt32(ats_show_fps.Checked)).ToString();
+            }
+            if (ETS2Config != null)
+                Game.writeConfig("ETS2", ETS2Config);
+            if (ATSConfig != null)
+                Game.writeConfig("ATS", ATSConfig);
 
             Properties.Settings.Default.Save();
             this.Close();

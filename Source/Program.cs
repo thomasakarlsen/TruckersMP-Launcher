@@ -59,8 +59,7 @@ namespace truckersmplauncher
 
                 if (latest == "0")
                 {
-                    Main main = new Main();
-                    main.Show();
+                    launch();
                     return;
                 }
 
@@ -70,17 +69,31 @@ namespace truckersmplauncher
                 }
                 else
                 {
-                    Main main = new Main();
-                    main.Show();
+                    launch();
                 }
             }
             else
             {
-                Main main = new Main();
-                main.Show();
+                launch();
             }
-            
-            
+        }
+
+        void launch() {
+            if (Properties.Settings.Default.mode.Equals("")) {
+                Mode mode = new Mode();
+                mode.Show();
+            } else {
+                if (Properties.Settings.Default.mode.Equals("advanced"))
+                {
+                    Main main = new Main();
+                    main.Show();
+                }
+                else if (Properties.Settings.Default.mode.Equals("simple"))
+                {
+                    Simple simple = new Simple();
+                    simple.Show();
+                }
+            }
         }
 
         void Application_Idle(object sender, EventArgs e)

@@ -115,6 +115,8 @@ namespace truckersmplauncher
             Dictionary<string, string> localFiles = new Dictionary<string, string>();
             List<string> mismatchedFiles = new List<string>();
 
+            Launcher.working = true;
+
             //Get files from TMP
 
             using (WebClient client = new WebClient())
@@ -127,15 +129,29 @@ namespace truckersmplauncher
                 catch (WebException)
                 {
                     Console.WriteLine("Unable to connect to TruckersMP Update API. Cannot check TMP integrity!");
+                    if (runGame)
+                    {
+                        if (game == "ETS2MP" || game.Equals("play_ets2mp_btn"))
+                            Game.runETS2MP();
+                        else if (game == "ATSMP" || game.Equals("play_atsmp_btn"))
+                            Game.runATSMP();
+                    }
                     return;
                 }
             }
+
+            int step = 0;
+            TruckersMPUpdateProgress.Invoke((MethodInvoker)(() => TruckersMPUpdateProgress.Visible = true));
+            TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Visible = true));
+            TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "Checking mod integrity..."));
 
             //Get local files
 
             try
             {
-                foreach (var file in System.IO.Directory.GetFiles(Launcher.TruckersMPLocation, "*.*", System.IO.SearchOption.AllDirectories))
+                var files = System.IO.Directory.GetFiles(Launcher.TruckersMPLocation, "*.*", System.IO.SearchOption.AllDirectories);
+                TruckersMPUpdateProgress.Invoke((MethodInvoker)(() => TruckersMPUpdateProgress.Maximum = (files.Length)));
+                foreach (var file in files)
                 {
                     FileInfo info = new FileInfo(file);
 
@@ -144,11 +160,20 @@ namespace truckersmplauncher
                     key = key.Replace(Launcher.TruckersMPLocation, "");
                     
                     localFiles.Add(key, checksum);
+                    step = step + 1;
+                    TruckersMPUpdateProgress.Invoke((MethodInvoker)(() => TruckersMPUpdateProgress.Value = step));
                 }
             }
-            catch (WebException)
+            catch
             {
                 Console.WriteLine("Unable to load local files. Cannot check TMP integrity!");
+                if (runGame)
+                {
+                    if (game == "ETS2MP" || game.Equals("play_ets2mp_btn"))
+                        Game.runETS2MP();
+                    else if (game == "ATSMP" || game.Equals("play_atsmp_btn"))
+                        Game.runATSMP();
+                }
                 return;
             }
 
@@ -200,9 +225,16 @@ namespace truckersmplauncher
 
                 }
             }
-            catch (WebException)
+            catch
             {
                 Console.WriteLine("An error occured comparing files. Cannot check TMP integrity!");
+                if (runGame)
+                {
+                    if (game == "ETS2MP" || game.Equals("play_ets2mp_btn"))
+                        Game.runETS2MP();
+                    else if (game == "ATSMP" || game.Equals("play_atsmp_btn"))
+                        Game.runATSMP();
+                }
                 return;
             }
 
@@ -212,22 +244,26 @@ namespace truckersmplauncher
                 if (dialogResult == DialogResult.Yes)
                 {
                     TruckersMP.update(TruckersMPUpdateProgress, TruckersMPUpdateProgressLabel, mismatchedFiles, runGame, game);
+                    return;
                 }
             }
             else
             {
                 if (runGame)
                 {
-                    if (game == "ETS2MP")
-                    {
+                    if (game == "ETS2MP" || game.Equals("play_ets2mp_btn"))
                         Game.runETS2MP();
-                    }
-                    else if (game == "ATSMP")
-                    {
+                    else if (game == "ATSMP" || game.Equals("play_atsmp_btn"))
                         Game.runATSMP();
-                    }
                 }
             }
+
+            Launcher.working = false;
+            TruckersMPUpdateProgress.Invoke((MethodInvoker)(() => TruckersMPUpdateProgress.Visible = false));
+            TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "Integrity check done!"));
+            System.Threading.Thread.Sleep(6000);
+            if(!Launcher.working)
+                TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Visible = false));
 
         }
 
@@ -318,68 +354,6 @@ namespace truckersmplauncher
                                 TruckersMPUpdateProgress.Value = e.ProgressPercentage;
                             });
 
-                            downloadClient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler
-                                (delegate (object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-                                {
-                                    if (e.Error == null && !e.Cancelled)
-                                    {
-
-                                        /*TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "Unpacking TruckersMP..."));
-                                        System.IO.Compression.ZipFile.ExtractToDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\TMPLauncher\\client_" + version + ".zip", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\TMPLauncher\\client_" + version);
-                                        TruckersMPUpdateProgress.Value = 110;
-
-                                        TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "Updating TruckersMP..."));
-
-                                        ProcessStartInfo startInfo = new ProcessStartInfo();
-                                        startInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\TMPLauncher\\client_" + version + "\\Install TruckersMP.exe";
-                                        startInfo.Arguments = "/verysilent";
-
-                                        try
-                                        {
-                                            using (Process exeProcess = Process.Start(startInfo))
-                                            {
-                                                exeProcess.WaitForExit();
-                                            }
-                                        }
-                                        catch
-                                        {
-                                    // Log Error
-                                }
-                                        TruckersMPUpdateProgress.Value = 120;
-
-                                        TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "Cleaning up..."));
-                                        try
-                                        {
-                                            System.IO.Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\TMPLauncher\\client_" + version, true);
-                                            System.IO.File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\TMPLauncher\\client_" + version + ".zip");
-                                        }
-                                        catch
-                                        {
-                                    // Log error.
-                                }*/
-
-                                        /*TruckersMPUpdateProgress.Value = 100;
-
-                                        TruckersMPUpdateProgress.Invoke((MethodInvoker)(() => TruckersMPUpdateProgress.Visible = false));
-                                        TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "TruckersMP Updated!"));
-                                        if (runGame)
-                                        {
-                                            if (game == "ETS2MP")
-                                            {
-                                                Game.runETS2MP();
-                                            }
-                                            else if (game == "ATSMP")
-                                            {
-                                                Game.runATSMP();
-                                            }
-                                        }
-                                        System.Threading.Thread.Sleep(6000);
-                                        TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Visible = false));*/
-
-
-                                    }
-                                });
-
                             await downloadClient.DownloadFileTaskAsync(new Uri("http://download.ets2mp.com/files" + filePath), Launcher.TruckersMPLocation + localPath);
                         }
                     }
@@ -404,10 +378,11 @@ namespace truckersmplauncher
         private static void update(CProgressBar TruckersMPUpdateProgress, Label TruckersMPUpdateProgressLabel, List<string> mismatchedFiles, bool runGame = false, String game = "")
         {
             Launcher.working = true;
-            TruckersMPUpdateProgress.Visible = true;
-            TruckersMPUpdateProgressLabel.Visible = true;
+            TruckersMPUpdateProgress.Invoke((MethodInvoker)(() => TruckersMPUpdateProgress.Visible = true));
+            TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Visible = true));
+            TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "Updating TruckersMP..."));
 
-            TruckersMPUpdateProgress.Maximum = 100;
+            TruckersMPUpdateProgress.Invoke((MethodInvoker)(() => TruckersMPUpdateProgress.Maximum = 100));
 
             try
             {
@@ -457,68 +432,6 @@ namespace truckersmplauncher
                                 TruckersMPUpdateProgress.Value = e.ProgressPercentage;
                             });
 
-                            downloadClient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler
-                                (delegate (object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-                                {
-                                    if (e.Error == null && !e.Cancelled)
-                                    {
-                                    
-                                            /*TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "Unpacking TruckersMP..."));
-                                            System.IO.Compression.ZipFile.ExtractToDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\TMPLauncher\\client_" + version + ".zip", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\TMPLauncher\\client_" + version);
-                                            TruckersMPUpdateProgress.Value = 110;
-
-                                            TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "Updating TruckersMP..."));
-
-                                            ProcessStartInfo startInfo = new ProcessStartInfo();
-                                            startInfo.FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\TMPLauncher\\client_" + version + "\\Install TruckersMP.exe";
-                                            startInfo.Arguments = "/verysilent";
-
-                                            try
-                                            {
-                                                using (Process exeProcess = Process.Start(startInfo))
-                                                {
-                                                    exeProcess.WaitForExit();
-                                                }
-                                            }
-                                            catch
-                                            {
-                                        // Log Error
-                                    }
-                                            TruckersMPUpdateProgress.Value = 120;
-
-                                            TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "Cleaning up..."));
-                                            try
-                                            {
-                                                System.IO.Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\TMPLauncher\\client_" + version, true);
-                                                System.IO.File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\TMPLauncher\\client_" + version + ".zip");
-                                            }
-                                            catch
-                                            {
-                                        // Log error.
-                                    }*/
-
-                                            /*TruckersMPUpdateProgress.Value = 100;
-
-                                            TruckersMPUpdateProgress.Invoke((MethodInvoker)(() => TruckersMPUpdateProgress.Visible = false));
-                                            TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "TruckersMP Updated!"));
-                                            if (runGame)
-                                            {
-                                                if (game == "ETS2MP")
-                                                {
-                                                    Game.runETS2MP();
-                                                }
-                                                else if (game == "ATSMP")
-                                                {
-                                                    Game.runATSMP();
-                                                }
-                                            }
-                                            System.Threading.Thread.Sleep(6000);
-                                            TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Visible = false));*/
-                                    
-
-                                    }
-                                });
-
                             await downloadClient.DownloadFileTaskAsync(new Uri("http://download.ets2mp.com/files" + downloadFile), Launcher.TruckersMPLocation + file);
                         }
                     }
@@ -528,17 +441,14 @@ namespace truckersmplauncher
                     TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Text = "TruckersMP Updated!"));
                     if (runGame)
                     {
-                        if (game == "ETS2MP")
-                        {
+                        if (game == "ETS2MP" || game.Equals("play_ets2mp_btn"))
                             Game.runETS2MP();
-                        }
-                        else if (game == "ATSMP")
-                        {
+                        else if (game == "ATSMP" || game.Equals("play_atsmp_btn"))
                             Game.runATSMP();
-                        }
                     }
                     System.Threading.Thread.Sleep(6000);
-                    TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Visible = false));
+                    if (!Launcher.working)
+                        TruckersMPUpdateProgressLabel.Invoke((MethodInvoker)(() => TruckersMPUpdateProgressLabel.Visible = false));
                 });
             }
             catch (WebException)

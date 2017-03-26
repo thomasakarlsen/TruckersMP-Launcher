@@ -33,16 +33,17 @@
             this.about_launcher = new System.Windows.Forms.Label();
             this.design_creator = new System.Windows.Forms.Label();
             this.Header_Panel = new System.Windows.Forms.Panel();
+            this.back_btn = new System.Windows.Forms.Label();
             this.Mods_btn = new System.Windows.Forms.PictureBox();
             this.radio_btn = new System.Windows.Forms.PictureBox();
             this.Settings_btn = new System.Windows.Forms.PictureBox();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.Footer_Panel = new System.Windows.Forms.Panel();
             this.TruckersMPUpdateProgressLabel = new System.Windows.Forms.Label();
-            this.TruckersMPUpdateProgress = new truckersmplauncher.CProgressBar();
             this.Footer_seperator = new System.Windows.Forms.Panel();
             this.modspanel = new System.Windows.Forms.Panel();
             this.serverspanel = new System.Windows.Forms.Panel();
+            this.TruckersMPUpdateProgress = new truckersmplauncher.CProgressBar();
             this.Header_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Mods_btn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radio_btn)).BeginInit();
@@ -99,6 +100,7 @@
             this.Header_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Header_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.Header_Panel.Controls.Add(this.back_btn);
             this.Header_Panel.Controls.Add(this.Mods_btn);
             this.Header_Panel.Controls.Add(this.radio_btn);
             this.Header_Panel.Controls.Add(this.Settings_btn);
@@ -107,6 +109,21 @@
             this.Header_Panel.Name = "Header_Panel";
             this.Header_Panel.Size = new System.Drawing.Size(1000, 66);
             this.Header_Panel.TabIndex = 60;
+            // 
+            // back_btn
+            // 
+            this.back_btn.BackColor = System.Drawing.Color.Transparent;
+            this.back_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.back_btn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.back_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.back_btn.Location = new System.Drawing.Point(518, 18);
+            this.back_btn.Name = "back_btn";
+            this.back_btn.Size = new System.Drawing.Size(144, 31);
+            this.back_btn.TabIndex = 54;
+            this.back_btn.Text = "< Back to server list";
+            this.back_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.back_btn.Visible = false;
+            this.back_btn.Click += new System.EventHandler(this.back_btn_Click);
             // 
             // Mods_btn
             // 
@@ -122,6 +139,8 @@
             this.Mods_btn.TabIndex = 28;
             this.Mods_btn.TabStop = false;
             this.Mods_btn.Click += new System.EventHandler(this.Mods_btn_Click);
+            this.Mods_btn.MouseEnter += new System.EventHandler(this.Mods_btn_Hover);
+            this.Mods_btn.MouseLeave += new System.EventHandler(this.Mods_btn_HoverLeave);
             // 
             // radio_btn
             // 
@@ -194,21 +213,6 @@
             this.TruckersMPUpdateProgressLabel.Text = "Downloading TruckersMP...";
             this.TruckersMPUpdateProgressLabel.Visible = false;
             // 
-            // TruckersMPUpdateProgress
-            // 
-            this.TruckersMPUpdateProgress.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.TruckersMPUpdateProgress.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.TruckersMPUpdateProgress.FillStyle = truckersmplauncher.CProgressBar.FillStyles.Solid;
-            this.TruckersMPUpdateProgress.Location = new System.Drawing.Point(345, 8);
-            this.TruckersMPUpdateProgress.Maximum = 100;
-            this.TruckersMPUpdateProgress.Minimum = 0;
-            this.TruckersMPUpdateProgress.Name = "TruckersMPUpdateProgress";
-            this.TruckersMPUpdateProgress.Size = new System.Drawing.Size(150, 22);
-            this.TruckersMPUpdateProgress.Step = 10;
-            this.TruckersMPUpdateProgress.TabIndex = 53;
-            this.TruckersMPUpdateProgress.Value = 0;
-            this.TruckersMPUpdateProgress.Visible = false;
-            // 
             // Footer_seperator
             // 
             this.Footer_seperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -245,6 +249,21 @@
             this.serverspanel.Padding = new System.Windows.Forms.Padding(12);
             this.serverspanel.Size = new System.Drawing.Size(1000, 407);
             this.serverspanel.TabIndex = 62;
+            // 
+            // TruckersMPUpdateProgress
+            // 
+            this.TruckersMPUpdateProgress.BarColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.TruckersMPUpdateProgress.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.TruckersMPUpdateProgress.FillStyle = truckersmplauncher.CProgressBar.FillStyles.Solid;
+            this.TruckersMPUpdateProgress.Location = new System.Drawing.Point(345, 8);
+            this.TruckersMPUpdateProgress.Maximum = 100;
+            this.TruckersMPUpdateProgress.Minimum = 0;
+            this.TruckersMPUpdateProgress.Name = "TruckersMPUpdateProgress";
+            this.TruckersMPUpdateProgress.Size = new System.Drawing.Size(150, 22);
+            this.TruckersMPUpdateProgress.Step = 10;
+            this.TruckersMPUpdateProgress.TabIndex = 53;
+            this.TruckersMPUpdateProgress.Value = 0;
+            this.TruckersMPUpdateProgress.Visible = false;
             // 
             // Main
             // 
@@ -290,6 +309,7 @@
         private System.Windows.Forms.Panel modspanel;
         private System.Windows.Forms.PictureBox Logo;
         internal System.Windows.Forms.PictureBox radio_btn;
+        internal System.Windows.Forms.Label back_btn;
     }
 }
 

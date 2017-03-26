@@ -36,6 +36,7 @@
             this.Browse_Dialog = new System.Windows.Forms.FolderBrowserDialog();
             this.Settings_tabControl = new System.Windows.Forms.TabControl();
             this.Launcher_tab = new System.Windows.Forms.TabPage();
+            this.tmp_update_info = new System.Windows.Forms.Label();
             this.closeDelay_numeric = new System.Windows.Forms.NumericUpDown();
             this.StartSteam_chkbox = new System.Windows.Forms.CheckBox();
             this.ets2_tab = new System.Windows.Forms.TabPage();
@@ -51,7 +52,7 @@
             this.ets2sin_chkbox = new System.Windows.Forms.CheckBox();
             this.ets2_launchargs_label = new System.Windows.Forms.Label();
             this.ats_tab = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ats_gameoptions = new System.Windows.Forms.GroupBox();
             this.ats_save_format = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ats_show_fps = new System.Windows.Forms.CheckBox();
@@ -63,10 +64,12 @@
             this.atssin_chkbox = new System.Windows.Forms.CheckBox();
             this.ats_launchargs_label = new System.Windows.Forms.Label();
             this.Header_Panel = new System.Windows.Forms.Panel();
-            this.Logo = new System.Windows.Forms.PictureBox();
             this.Footer_Panel = new System.Windows.Forms.Panel();
             this.Footer_seperator = new System.Windows.Forms.Panel();
-            this.tmp_update_info = new System.Windows.Forms.Label();
+            this.advancedLauncher_btn = new System.Windows.Forms.RadioButton();
+            this.simpleLauncher_btn = new System.Windows.Forms.RadioButton();
+            this.launcherModeLbl = new System.Windows.Forms.Label();
+            this.Logo = new System.Windows.Forms.PictureBox();
             this.Settings_tabControl.SuspendLayout();
             this.Launcher_tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeDelay_numeric)).BeginInit();
@@ -74,11 +77,11 @@
             this.ets2_gameoptions.SuspendLayout();
             this.ets2_launchoptions.SuspendLayout();
             this.ats_tab.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.ats_gameoptions.SuspendLayout();
             this.ats_launchoptions.SuspendLayout();
             this.Header_Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.Footer_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
             // AutoUpdate_chkbox
@@ -142,6 +145,9 @@
             // 
             // Launcher_tab
             // 
+            this.Launcher_tab.Controls.Add(this.launcherModeLbl);
+            this.Launcher_tab.Controls.Add(this.simpleLauncher_btn);
+            this.Launcher_tab.Controls.Add(this.advancedLauncher_btn);
             this.Launcher_tab.Controls.Add(this.tmp_update_info);
             this.Launcher_tab.Controls.Add(this.closeDelay_numeric);
             this.Launcher_tab.Controls.Add(this.StartSteam_chkbox);
@@ -155,6 +161,16 @@
             this.Launcher_tab.TabIndex = 0;
             this.Launcher_tab.Text = "Launcher";
             this.Launcher_tab.UseVisualStyleBackColor = true;
+            // 
+            // tmp_update_info
+            // 
+            this.tmp_update_info.AutoSize = true;
+            this.tmp_update_info.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.tmp_update_info.Location = new System.Drawing.Point(26, 90);
+            this.tmp_update_info.Name = "tmp_update_info";
+            this.tmp_update_info.Size = new System.Drawing.Size(267, 19);
+            this.tmp_update_info.TabIndex = 5;
+            this.tmp_update_info.Text = "TruckersMP will automaticly be updated";
             // 
             // closeDelay_numeric
             // 
@@ -315,7 +331,7 @@
             // 
             // ats_tab
             // 
-            this.ats_tab.Controls.Add(this.groupBox1);
+            this.ats_tab.Controls.Add(this.ats_gameoptions);
             this.ats_tab.Controls.Add(this.ats_launchoptions);
             this.ats_tab.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ats_tab.Location = new System.Drawing.Point(4, 28);
@@ -326,21 +342,21 @@
             this.ats_tab.Text = "ATS";
             this.ats_tab.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // ats_gameoptions
             // 
-            this.groupBox1.Controls.Add(this.ats_save_format);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.ats_show_fps);
-            this.groupBox1.Controls.Add(this.ats_online_loading);
-            this.groupBox1.Controls.Add(this.ats_traffic);
-            this.groupBox1.Controls.Add(this.ats_console);
-            this.groupBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 84);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(552, 116);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Options";
+            this.ats_gameoptions.Controls.Add(this.ats_save_format);
+            this.ats_gameoptions.Controls.Add(this.label1);
+            this.ats_gameoptions.Controls.Add(this.ats_show_fps);
+            this.ats_gameoptions.Controls.Add(this.ats_online_loading);
+            this.ats_gameoptions.Controls.Add(this.ats_traffic);
+            this.ats_gameoptions.Controls.Add(this.ats_console);
+            this.ats_gameoptions.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ats_gameoptions.Location = new System.Drawing.Point(3, 84);
+            this.ats_gameoptions.Name = "ats_gameoptions";
+            this.ats_gameoptions.Size = new System.Drawing.Size(552, 116);
+            this.ats_gameoptions.TabIndex = 4;
+            this.ats_gameoptions.TabStop = false;
+            this.ats_gameoptions.Text = "Options";
             // 
             // ats_save_format
             // 
@@ -461,16 +477,6 @@
             this.Header_Panel.Size = new System.Drawing.Size(564, 306);
             this.Header_Panel.TabIndex = 63;
             // 
-            // Logo
-            // 
-            this.Logo.BackgroundImage = global::truckersmplauncher.Properties.Resources.launcherlogo;
-            this.Logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Logo.Location = new System.Drawing.Point(0, -9);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(289, 84);
-            this.Logo.TabIndex = 4;
-            this.Logo.TabStop = false;
-            // 
             // Footer_Panel
             // 
             this.Footer_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -493,15 +499,46 @@
             this.Footer_seperator.Size = new System.Drawing.Size(564, 1);
             this.Footer_seperator.TabIndex = 50;
             // 
-            // tmp_update_info
+            // advancedLauncher_btn
             // 
-            this.tmp_update_info.AutoSize = true;
-            this.tmp_update_info.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.tmp_update_info.Location = new System.Drawing.Point(26, 90);
-            this.tmp_update_info.Name = "tmp_update_info";
-            this.tmp_update_info.Size = new System.Drawing.Size(267, 19);
-            this.tmp_update_info.TabIndex = 5;
-            this.tmp_update_info.Text = "TruckersMP will be automaticly updated";
+            this.advancedLauncher_btn.AutoSize = true;
+            this.advancedLauncher_btn.Location = new System.Drawing.Point(10, 165);
+            this.advancedLauncher_btn.Name = "advancedLauncher_btn";
+            this.advancedLauncher_btn.Size = new System.Drawing.Size(153, 23);
+            this.advancedLauncher_btn.TabIndex = 6;
+            this.advancedLauncher_btn.TabStop = true;
+            this.advancedLauncher_btn.Text = "Advanced Launcher";
+            this.advancedLauncher_btn.UseVisualStyleBackColor = true;
+            // 
+            // simpleLauncher_btn
+            // 
+            this.simpleLauncher_btn.AutoSize = true;
+            this.simpleLauncher_btn.Location = new System.Drawing.Point(10, 136);
+            this.simpleLauncher_btn.Name = "simpleLauncher_btn";
+            this.simpleLauncher_btn.Size = new System.Drawing.Size(133, 23);
+            this.simpleLauncher_btn.TabIndex = 7;
+            this.simpleLauncher_btn.TabStop = true;
+            this.simpleLauncher_btn.Text = "Simple Launcher";
+            this.simpleLauncher_btn.UseVisualStyleBackColor = true;
+            // 
+            // launcherModeLbl
+            // 
+            this.launcherModeLbl.AutoSize = true;
+            this.launcherModeLbl.Location = new System.Drawing.Point(4, 114);
+            this.launcherModeLbl.Name = "launcherModeLbl";
+            this.launcherModeLbl.Size = new System.Drawing.Size(227, 19);
+            this.launcherModeLbl.TabIndex = 8;
+            this.launcherModeLbl.Text = "Launcher mode (Restart required)";
+            // 
+            // Logo
+            // 
+            this.Logo.BackgroundImage = global::truckersmplauncher.Properties.Resources.launcherlogo;
+            this.Logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Logo.Location = new System.Drawing.Point(0, -9);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(289, 84);
+            this.Logo.TabIndex = 4;
+            this.Logo.TabStop = false;
             // 
             // Settings
             // 
@@ -530,13 +567,13 @@
             this.ets2_launchoptions.ResumeLayout(false);
             this.ets2_launchoptions.PerformLayout();
             this.ats_tab.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.ats_gameoptions.ResumeLayout(false);
+            this.ats_gameoptions.PerformLayout();
             this.ats_launchoptions.ResumeLayout(false);
             this.ats_launchoptions.PerformLayout();
             this.Header_Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.Footer_Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -573,7 +610,7 @@
         private System.Windows.Forms.CheckBox ets2_show_fps;
         private System.Windows.Forms.CheckBox ets2_online_loading;
         private System.Windows.Forms.CheckBox ets2_traffic;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox ats_gameoptions;
         private System.Windows.Forms.TextBox ats_save_format;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox ats_show_fps;
@@ -581,5 +618,8 @@
         private System.Windows.Forms.CheckBox ats_traffic;
         private System.Windows.Forms.CheckBox ats_console;
         private System.Windows.Forms.Label tmp_update_info;
+        private System.Windows.Forms.Label launcherModeLbl;
+        private System.Windows.Forms.RadioButton simpleLauncher_btn;
+        private System.Windows.Forms.RadioButton advancedLauncher_btn;
     }
 }

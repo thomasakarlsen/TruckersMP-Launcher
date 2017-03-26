@@ -139,5 +139,29 @@ namespace truckersmplauncher.Properties {
                 this["closeDelay"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string InstalledMods {
+            get {
+                return ((string)(this["InstalledMods"]));
+            }
+            set {
+                this["InstalledMods"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string mode {
+            get {
+                return ((string)(this["mode"]));
+            }
+            set {
+                this["mode"] = value;
+            }
+        }
     }
 }

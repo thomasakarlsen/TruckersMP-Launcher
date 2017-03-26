@@ -341,17 +341,17 @@ namespace truckersmplauncher
                             {
                                 lastplayed = JArray.Parse(client.DownloadString("https://api.truckers.fm/lastplayed/1"));
                                 currentDJ = JObject.Parse(client.DownloadString("https://api.truckers.fm/shows"));
+
+                                string dj = (string)currentDJ["currentdj"]["dj"];
+                                string song = (string)lastplayed[0]["song"];
+                                string artist = (string)lastplayed[0]["artist"];
+                                tfm_currently_playing.Invoke((MethodInvoker)(() => tfm_currently_playing.Text = dj + " playing " + artist + " - " + song));
                             }
                             catch (WebException)
                             {
                                 Console.WriteLine("Unable to connect to TruckersFM API. Cannot get TFM Data");
                             }
                         }
-
-                        string dj = (string)currentDJ["currentdj"]["dj"];
-                        string song = (string)lastplayed[0]["song"];
-                        string artist = (string)lastplayed[0]["artist"];
-                        tfm_currently_playing.Invoke((MethodInvoker)(() => tfm_currently_playing.Text = dj + " playing " + artist + " - " + song));
                     }
 
                     d++;

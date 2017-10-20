@@ -197,6 +197,7 @@
             this.TruckersMPUpdateProgress.Step = 10;
             this.TruckersMPUpdateProgress.TabIndex = 55;
             this.TruckersMPUpdateProgress.Value = 65;
+            this.TruckersMPUpdateProgress.Visible = false;
             // 
             // TruckersMPUpdateProgressLabel
             // 
@@ -209,6 +210,7 @@
             this.TruckersMPUpdateProgressLabel.Size = new System.Drawing.Size(182, 19);
             this.TruckersMPUpdateProgressLabel.TabIndex = 57;
             this.TruckersMPUpdateProgressLabel.Text = "Downloading TruckersMP...";
+            this.TruckersMPUpdateProgressLabel.Visible = false;
             // 
             // Simple
             // 

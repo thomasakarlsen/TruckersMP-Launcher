@@ -144,7 +144,7 @@ namespace truckersmplauncher
                     catch (WebException)
                     {
                         Console.WriteLine("Unable to connect to launcher API. Cannot check for new version");
-                        MessageBox.Show("Unable to connect to API.\n\nPlease check your internet connection and try again.", "TruckersMP Launcher", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                        MessageBox.Show("Unable to connect to API.\n\nPlease check your internet connection and try again.", "TruckersMP Launcher", MessageBoxButtons.OK);
                         return;
                     }
                 }
